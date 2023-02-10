@@ -79,8 +79,9 @@ export const Navbar = () => {
   },[])
   // console.log("User Data", userData)
   const logout = ()=>{
+  
     // cookies.remove('token',{ path: '/' })
-    removeCookie("token",{domain:"frail-erin-scarab.cyclic.app",path:"/"});
+    removeCookie("token");
     // cookies.remove('token',{ path: '/host' })
     // cookies.remove('token',{ path: '/user' })
     setLogin({login:false,userType:""})
