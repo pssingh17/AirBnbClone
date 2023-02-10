@@ -1,8 +1,8 @@
 const Model = require("../../models/model");
 
 async function Popular(req) {
-  const page = parseInt(req.query.page) - 1 || 0;
-  const limit = parseInt(req.query.limit) || 16;
+  const page = parseInt(req.body.page) - 1 || 0;
+  const limit = parseInt(req.body.limit) || 16;
   //   console.log("page:", page);
   // });
   const newData = await Model.find({})

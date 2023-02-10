@@ -15,7 +15,7 @@ export const Trending = () => {
 
 
     useEffect(()=>{
-        axios.get("/api/Popular").then(res=>{
+        axios.post("/api/Popular").then(res=>{
             // console.log(res.data)
             setlistings(res.data.newData)
             dispatch(allListingsData(res.data))

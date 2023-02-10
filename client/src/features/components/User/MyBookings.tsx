@@ -31,8 +31,9 @@ export const MyBookings = () => {
     let token = cookies.get('token')
 
     axios({
-      method:'get',
-      url: `/api/getById?Id=${Id}`,
+      method:'post',
+      url: `/api/getById`,
+      data:{Id:Id},
       headers: {
         Authorization: `Bearer ${token}`,
         'content-type': 'application/x-www-form-urlencoded;charset=utf-8'

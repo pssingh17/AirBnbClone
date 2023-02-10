@@ -59,12 +59,14 @@ export const MyFavourites = () => {
     
     // console.log("token in useEfect:", token)
     axios({
-      method:'get',
-      url: `/api/getById?Id=${Id}`,
+      method:'post',
+      url: `/api/getById`,
+      data:{Id:Id},
       headers: {
         Authorization: `Bearer ${token}`,
         'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
-      }
+      },
+      
     }).then(res=>{
       console.log("rrsponse from booking my fav",res.data)
       // dispatch(userData(res.data))

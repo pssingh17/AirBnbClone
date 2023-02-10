@@ -15,7 +15,7 @@ export const TopRated = () => {
 
 
     useEffect(()=>{
-        axios.get("/api/topRated").then(res=>{
+        axios.post("/api/topRated").then(res=>{
             // console.log(res.data)
             setlistings(res.data.newData)
             dispatch(allListingsData(res.data))

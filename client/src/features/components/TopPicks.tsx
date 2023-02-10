@@ -17,7 +17,7 @@ export const TopPicks = () => {
     
 
     useEffect(()=>{
-        axios.get("/api/topPicks").then(res=>{
+        axios.post("/api/topPicks").then(res=>{
             // console.log(res.data)
             setlistings(res.data.newData)
             dispatch(allListingsData(res.data))

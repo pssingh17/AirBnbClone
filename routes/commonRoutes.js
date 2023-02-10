@@ -33,7 +33,7 @@ router.post("/getAll", async (req, res) => {
       res.json(err);
     });
 });
-router.get("/getById", async (req, res) => {
+router.post("/getById", async (req, res) => {
   await GetById(req)
     .then((data) => {
       
@@ -54,7 +54,7 @@ router.post("/search", (req, res) => {
       res.json(err);
     });
 });
-router.get("/Popular", (req, res) => {
+router.post("/Popular", (req, res) => {
   Popular(req)
     .then((data) => {
       res.json(data);
@@ -63,7 +63,7 @@ router.get("/Popular", (req, res) => {
       res.json(err);
     });
 });
-router.get("/topPicks", (req, res) => {
+router.post("/topPicks", (req, res) => {
   TopPicked(req)
     .then((data) => {
       res.json(data);
@@ -72,7 +72,7 @@ router.get("/topPicks", (req, res) => {
       res.json(err);
     });
 });
-router.get("/topRated", (req, res) => {
+router.post("/topRated", (req, res) => {
   TopRated(req)
     .then((data) => {
       res.json(data);
