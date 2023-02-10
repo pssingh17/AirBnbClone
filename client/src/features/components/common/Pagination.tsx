@@ -106,10 +106,10 @@ axios({
       page = page+1
       axios({
         
-        method: 'get',
+        method: 'post',
         
         url: `/api/${dataFrom}`,
-        params:{page:page},
+        data:{page:page},
         
       }).then(res=>{
         // console.log(res.data)
@@ -218,10 +218,10 @@ axios({
       
       axios({
         
-        method: 'get',
+        method: 'post',
         
         url: `/api/${dataFrom}`,
-        params:{page:page},
+        data:{page:page},
         
       }).then(res=>{
       //  console.log(res.data)
