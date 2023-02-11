@@ -146,3 +146,11 @@
         width: 20rem !important;
       }
     }
+ .navbar-expand-lg .navbar-nav .dropdown-menu {
+      
+      border-radius: 13px !important;
+  }
+  .dropdown-item:hover{
+    color: aqua !important;
+    background-color: transparent !important;
+  }

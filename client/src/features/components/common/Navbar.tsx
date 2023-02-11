@@ -42,9 +42,7 @@ export const Navbar = () => {
     var body ={
       "searchString": data.searchString,
     }
-    if(data.searchString===""){
-      return navigate('/')
-    }
+   
     // console.log(data)
     axios({
       
