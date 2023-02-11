@@ -87,7 +87,7 @@ export const LandingPage = () => {
  </div>
  {filterPresent?
  <div className='m-1'>
- <button type='button' className='btn btn-dark' onClick={clearFilters}>Clear All</button>
+ <button type='button' className='btn btn-dark' onClick={clearFilters}>Clear Filters</button>
  </div>:""
 }
  
