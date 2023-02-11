@@ -130,3 +130,9 @@
         padding: 0 2rem;
       }
     }
+
+    @media screen and (max-width:400px){
+      .customContainer{
+        padding: 0 0.3rem;
+      }
+    }
