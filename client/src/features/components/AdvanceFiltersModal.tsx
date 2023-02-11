@@ -78,6 +78,7 @@ export function AdvanceFiltersModal(filterStateSetter:any) {
         options={amenity}
         value={selectedAmenity}
         onChange={setSelectedAmenity}
+        disableSearch={true}
         labelledBy="Select"
       />
     </div>
@@ -88,6 +89,8 @@ export function AdvanceFiltersModal(filterStateSetter:any) {
         options={price}
         value={selectedPrice}
         onChange={setSelectedPrice}
+        disableSearch={true}
+        closeOnChangedValue={true}
         labelledBy="Select"
       />
     </div>

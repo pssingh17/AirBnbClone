@@ -88,6 +88,12 @@
         right: 10px;
     
     }
+    .modal-dialog{
+      height: 100%;
+    }
+        .modal-content{
+          height: 90% !important;
+        }
     #searchField{
       margin-left: 1rem;
       width: 46vw;
