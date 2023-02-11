@@ -8,7 +8,7 @@ async function TopPicked(req) {
       { number_of_reviews: { $gt: 10 } },
       { "review_scores.review_scores_rating": { $gt: 80 } },
     ],
-  })
+  },{password:0,verifyToken:0})
     .skip(page * limit)
     .limit(limit);
   // console.log("reached getALl", newData);

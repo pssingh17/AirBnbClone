@@ -28,7 +28,7 @@ async function GetAll(req) {
   let newData
   
   if(priceRange === undefined){
-    newData = await Model.find({},{"_id":true,password:0})
+    newData = await Model.find({},{"_id":true,password:0,verifyToken:0})
     .where("amenities" )
     .in([...amenities])
     // .sort(sortBy)
@@ -63,7 +63,7 @@ async function GetAll(req) {
     newData = await Model.find({ $and: [
       { price: { $lt: maxPrice } },
       { price: { $gt: minPrice } },
-    ],})     
+    ],},{password:0,verifyToken:0})     
     .where("amenities" )
     .in([...amenities])
     // .sort(sortBy)

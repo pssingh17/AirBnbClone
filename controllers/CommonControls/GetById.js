@@ -6,7 +6,7 @@ async function GetById(req) {
   
    
   let newData
-    newData = await Model.findOne({"host.host_id": req.body.Id}).select('-password')
+    newData = await Model.findOne({"host.host_id": req.body.Id},{password:0,verifyToken:0})
     
     console.log("New data kith aa: ",newData)
   

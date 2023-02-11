@@ -5,7 +5,7 @@ async function TopRated(req) {
   const limit = parseInt(req.body.limit) || 16;
   // console.log("page:", page);
   // });
-  const newData = await Model.find({})
+  const newData = await Model.find({},{password:0,verifyToken:0})
     .sort({ "review_scores.review_scores_rating": "desc" })
     .skip(page * limit)
     .limit(limit);

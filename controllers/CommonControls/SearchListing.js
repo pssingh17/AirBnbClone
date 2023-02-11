@@ -15,7 +15,7 @@ async function SearchListing(data) {
       { amenities: { $regex: data.searchString, $options: "i" } },
       { summary: { $regex: data.searchString, $options: "i" } },
     ],
-  }).skip(page * limit)
+  },{password:0,verifyToken:0}).skip(page * limit)
   .limit(limit);
    // console.log("reached getALl", newData);
    if(newData.length<1){

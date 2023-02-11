@@ -5,7 +5,7 @@ async function Popular(req) {
   const limit = parseInt(req.body.limit) || 16;
   //   console.log("page:", page);
   // });
-  const newData = await Model.find({})
+  const newData = await Model.find({},{password:0,verifyToken:0})
     .sort({ number_of_reviews: "desc" })
     .skip(page * limit)
     .limit(limit);
