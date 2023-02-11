@@ -41,7 +41,7 @@ function App() {
     <>
      <Navbar />
     <div className="App">
-    <div className='container'>
+    <div className='customContainer'>
     <div className='row justify-content-center'> 
     <Routes>
       <Route path='/' element={<LandingPage />} />
