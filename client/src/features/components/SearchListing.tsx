@@ -17,7 +17,7 @@ export const SearchListing = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     let listingsData : any = useSelector((state: RootState) => state.AllListingsSlice.value)
-    console.log(listingsData)
+   // console.log(listingsData)
     // @ts-ignore
     const searchlistingsData = useSelector((state: RootState) => state.SearchListingSlice.value.newData)
     // @ts-ignore

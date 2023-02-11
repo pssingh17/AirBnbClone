@@ -30,7 +30,7 @@ export const MyHostProfile = () => {
         'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
       }
     }).then(res=>{
-      console.log("rrsponse from myHostProfile",res.data)
+      // console.log("rrsponse from myHostProfile",res.data)
 
       localStorage.setItem("User Data",JSON.stringify(res.data))
       localStorage.setItem("User Listings",JSON.stringify(res.data.credentials))

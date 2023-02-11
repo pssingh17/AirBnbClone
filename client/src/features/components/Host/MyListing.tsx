@@ -45,7 +45,7 @@ export const MyListing = () => {
         'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
       }
     }).then(res=>{
-      console.log("rrsponse from myHostProfile",res.data)
+      // console.log("rrsponse from myHostProfile",res.data)
       let name1=undefined ?? res.data.credentials.name
       if( name1 === undefined){
 
@@ -71,7 +71,7 @@ export const MyListing = () => {
         'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
       }
     }).then(res=>{
-      console.log("rrsponse from myHostProfile",res.data)
+      // console.log("rrsponse from myHostProfile",res.data)
       
       let name1= res.data.credentials.name
       if(name1){

@@ -4,6 +4,7 @@ import type { RootState } from '../../../app/store'
 import { allListingsData } from '../../AllListingsReducer/AllListingsSlice'
 import axios from 'axios'
 import { searchListingData } from '../../SearchListingReducer/SearchListingSlice'
+import { LoaderStatus } from '../../LoaderReducer/LoaderSlice'
 
 interface Page{
   dataFrom: String
@@ -20,6 +21,7 @@ export const Pagination = ({dataFrom,page}:Page) => {
     const searchlistingsDataCheck = useSelector((state: RootState) => state.SearchListingSlice.value.newData)
     // console.log("Paginated gets page no. : ", dataFrom,page)
     const nextPage = ()=>{
+      dispatch(LoaderStatus(true))
       window.scrollTo({
         top: 0,
         behavior: 'smooth',
@@ -46,6 +48,7 @@ export const Pagination = ({dataFrom,page}:Page) => {
               }
             }).then(res=>{
               // console.log(res.data)
+              dispatch(LoaderStatus(false))
               setlistings(res.data.newData)
               dispatch(allListingsData(res.data))
               localStorage.setItem("SelectedAmenity",JSON.stringify(SelectedAmenity))
@@ -65,6 +68,7 @@ export const Pagination = ({dataFrom,page}:Page) => {
           }
         }).then(res=>{
           // console.log(res.data)
+          dispatch(LoaderStatus(false))
           setlistings(res.data.newData)
           dispatch(allListingsData(res.data))
           // console.log(res.data)
@@ -90,6 +94,7 @@ axios({
   }
 }).then(res=>{
   // console.log(res.data)
+  dispatch(LoaderStatus(false))
   setlistings(res.data.newData)
   dispatch(searchListingData(res.data))
   // console.log(res.data)
@@ -113,6 +118,7 @@ axios({
         
       }).then(res=>{
         // console.log(res.data)
+        dispatch(LoaderStatus(false))
         setlistings(res.data.newData)
         dispatch(allListingsData(res.data))
         // console.log(res.data)
@@ -122,6 +128,7 @@ axios({
      
     }
     const previousPage = ()=>{
+      dispatch(LoaderStatus(true))
       window.scrollTo({
         top: 0,
         behavior: 'smooth',
@@ -153,6 +160,7 @@ axios({
           }
         }).then(res=>{
           // console.log(res.data)
+          dispatch(LoaderStatus(false))
           setlistings(res.data.newData)
           dispatch(allListingsData(res.data))
           localStorage.setItem("SelectedAmenity",JSON.stringify(SelectedAmenity))
@@ -173,6 +181,7 @@ axios({
         }).then(res=>{
         //  console.log(res.data)
          // console.log(res.data)
+         dispatch(LoaderStatus(false))
          setlistings(res.data.newData)
          dispatch(allListingsData(res.data))
        }).catch(err=>{console.log(err)})
@@ -201,6 +210,7 @@ axios({
         
       }).then(res=>{
       //  console.log(res.data)
+      dispatch(LoaderStatus(false))
        // console.log(res.data)
        setlistings(res.data.newData)
        dispatch(searchListingData(res.data))
@@ -226,6 +236,7 @@ axios({
       }).then(res=>{
       //  console.log(res.data)
        // console.log(res.data)
+       dispatch(LoaderStatus(false))
        setlistings(res.data.newData)
        dispatch(allListingsData(res.data))
      }).catch(err=>{console.log(err)})

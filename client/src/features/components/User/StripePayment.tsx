@@ -37,7 +37,7 @@ export const StripePayment = () => {
             stripeToken:token.id,
             amount:viewDetailsRedux?.price,
           }).then(res=>{
-            console.log(res)
+            // console.log(res)
             if(res.status===200){
               let token = cookie.token
       let newData = {
@@ -58,7 +58,7 @@ export const StripePayment = () => {
           "content-type": "application/x-www-form-urlencoded;charset=utf-8",
         },
       }).then((res) => {
-        console.log("rrsponse from booking", res.data);
+        // console.log("rrsponse from booking", res.data);
         setShowGreen(true)
         setAlertValue(res.data.message)
         // navRef.current('/user/bookings')

@@ -25,7 +25,7 @@ export const CreateNewListingPage = () => {
       "confirmPassword": data.confirmPassword,
       "userType": "Host"
     }
-    console.log(data)
+    // console.log(data)
     axios({
       
       method: 'post',
@@ -42,10 +42,10 @@ export const CreateNewListingPage = () => {
 
       //   localStorage.setItem("User Favourites",JSON.stringify(res.data.credentials.favourites))
       // }
-      console.log("hostsignup respose:", res.data)
+      // console.log("hostsignup respose:", res.data)
 
       let cookieCheck = cookie.token
-      console.log("Cookie check:",cookieCheck)
+      // console.log("Cookie check:",cookieCheck)
       if(!cookieCheck  && res.data.token){
         dispatch(userData(res.data))
       localStorage.setItem("User Data",JSON.stringify(res.data))
@@ -57,7 +57,7 @@ export const CreateNewListingPage = () => {
       else{
         alert(res.data)
       }
-      console.log(res.data)
+      // console.log(res.data)
       
     }
       ).catch(err=>{console.log(err)})

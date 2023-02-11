@@ -49,7 +49,7 @@ const dispatch = useDispatch()
       //            + Difference_In_Days);
     }
     else{
-      console.log("two dates are required")
+      // console.log("two dates are required")
     }
     localStorage.setItem("NumberOFDays",JSON.stringify(Difference_In_Days))
     localStorage.setItem("DateFrom",JSON.stringify(range?.from))

@@ -7,6 +7,7 @@ import { MultiSelect } from "react-multi-select-component";
 import axios from 'axios';
 import { useDispatch } from 'react-redux'
 import { allListingsData } from '../AllListingsReducer/AllListingsSlice'
+import { LoaderStatus } from '../LoaderReducer/LoaderSlice';
 
 
 
@@ -20,6 +21,7 @@ export function AdvanceFiltersModal(filterStateSetter:any) {
   let listingsData : any = useSelector((state: RootState) => state.AllListingsSlice.value)
   let amenities = listingsData.amenities
   const applyFilters = () =>{ 
+    dispatch(LoaderStatus(true))
     // console.log("slected price:", selectedPrice)
     axios({
       
@@ -35,6 +37,7 @@ export function AdvanceFiltersModal(filterStateSetter:any) {
       // console.log(res.data)
       setlistings(res.data.newData)
       dispatch(allListingsData(res.data))
+      dispatch(LoaderStatus(false))
       localStorage.setItem("SelectedAmenity",JSON.stringify(selectedAmenity))
       localStorage.setItem("SelectedPrice",JSON.stringify(selectedPrice))
       filterStateSetter.filterStateSetter()

@@ -31,7 +31,7 @@ export const HSignUp = () => {
         "verificationCode": data.verificationCode,
     }
     
-    console.log("Sending body to verify data:",body)
+    // console.log("Sending body to verify data:",body)
     axios({
       
       method: 'post',
@@ -43,7 +43,7 @@ export const HSignUp = () => {
         'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
       }
     }).then(res=>{
-        console.log("usersignup respose:", res.data)
+        // console.log("usersignup respose:", res.data)
           if(res.data?.message==="Verified Successfully"){
             alert("Thank You for Verifying, You will be reidrected to home page")
             sessionStorage.clear();
@@ -51,10 +51,10 @@ export const HSignUp = () => {
          
       
       
-      console.log("hostsignup respose:", res.data)
+      // console.log("hostsignup respose:", res.data)
 
       let cookieCheck = cookie.token
-      console.log("Cookie check:",cookieCheck)
+      // console.log("Cookie check:",cookieCheck)
       if(!cookieCheck  && res.data.token){
         dispatch(userData(res.data))
       localStorage.setItem("User Data",JSON.stringify(res.data))
@@ -66,7 +66,7 @@ export const HSignUp = () => {
       else{
         alert(res.data)
       }
-      console.log(res.data)
+      // console.log(res.data)
       
     }
       ).catch(err=>{console.log(err)})

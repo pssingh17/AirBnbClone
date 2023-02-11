@@ -31,7 +31,7 @@ export const HForgotPassword = () => {
         
           "userType": "Host"
         }
-        console.log("Sending body to verify data:",body)
+        // console.log("Sending body to verify data:",body)
         axios({
           
           method: 'post',
@@ -43,7 +43,7 @@ export const HForgotPassword = () => {
             'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
           }
         }).then(res=>{
-          console.log("Hostfpassowrd respose:", res.data)
+          // console.log("Hostfpassowrd respose:", res.data)
         
           if(res?.data?.response == true){
             setShowGreen(true)
@@ -55,7 +55,7 @@ export const HForgotPassword = () => {
             setShowRed(true)
             setAlertValue(res.data.message)
           }
-          console.log(res.data)
+          // console.log(res.data)
           }).catch(err=>{console.log(err)})
         
       });

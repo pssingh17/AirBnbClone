@@ -39,7 +39,7 @@ export const HostSignUp = () => {
       "userType": "Host"
     }
     
-    console.log(data)
+    // console.log(data)
     axios({
       
       method: 'post',
@@ -53,11 +53,11 @@ export const HostSignUp = () => {
     }).then(res=>{
       
      
-      console.log("hostverifyemail respose:", res.data)
+      // console.log("hostverifyemail respose:", res.data)
       if(res.data =="Verify Your Email"){
         setShowGreen(true)
         setAlertValue(res.data)
-        console.log(res.data)
+        // console.log(res.data)
         sessionStorage.setItem("UTempEmail",JSON.stringify(data.email))
         // navigate('/host/verifyEmail')
       }

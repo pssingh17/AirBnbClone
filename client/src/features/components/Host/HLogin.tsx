@@ -50,7 +50,7 @@ export const HLogin = () => {
     }).then(res=>{
       
       let cookieCheck = cookie.token
-      console.log("Cookie check:",cookieCheck)
+      // console.log("Cookie check:",cookieCheck)
 
       if(!cookieCheck  && res.data.token){
       setShowGreen(true)
@@ -153,9 +153,9 @@ export const HLogin = () => {
                 </form>
                 <div>
                 <p className="mb-0  text-center">
-                    Forgot Password?{" "}
+                   
                     <Link to="/host/forgotPassword" className="text-primary fw-bold">
-                      Create New
+                    Forgot Password?{" "}
                     </Link>
                   </p>
                   <p className="mb-0  text-center">

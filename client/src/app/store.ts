@@ -4,6 +4,7 @@ import UserDataSliceReducer from '../features/UserDataReducer/UserDataSlice'
 import SearchListingSliceReducer from '../features/SearchListingReducer/SearchListingSlice'
 import ViewDetailsSliceReducer from '../features/ViewDetailsReducer/ViewDetailsSlice'
 import FavouritesSliceReducer from '../features/FavouritesReducer/FavouritesSlice'
+import LoaderSliceReducer from '../features/LoaderReducer/LoaderSlice'
 
 export const store = configureStore({
   reducer: {
@@ -11,7 +12,8 @@ export const store = configureStore({
     UserDataSlice : UserDataSliceReducer,
     SearchListingSlice: SearchListingSliceReducer,
     ViewDetailsSlice : ViewDetailsSliceReducer,
-    FavouritesSlice: FavouritesSliceReducer
+    FavouritesSlice: FavouritesSliceReducer,
+    LoaderSlice:LoaderSliceReducer
   },
 })
 

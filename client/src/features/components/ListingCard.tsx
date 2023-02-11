@@ -24,7 +24,7 @@ const ListingCard = (props: listingsProp) => {
     const ViewDetails = (data:any)=>{
       if(data){
 
-        console.log("View details console:", data)
+        // console.log("View details console:", data)
         dispatch(viewDetailsData(data))
         localStorage.setItem("LastViewDetailPage",JSON.stringify(data))
         return navigate('/viewDetails')

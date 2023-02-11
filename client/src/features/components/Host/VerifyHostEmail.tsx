@@ -36,7 +36,7 @@ export const VerifyHostEmail = () => {
         "verificationCode": data.verificationCode,
     }
     
-    console.log("Sending body to verify data:",body)
+    // console.log("Sending body to verify data:",body)
     axios({
       
       method: 'post',
@@ -48,7 +48,7 @@ export const VerifyHostEmail = () => {
         'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
       }
     }).then(res=>{
-        console.log("usersignup respose:", res.data)
+        // console.log("usersignup respose:", res.data)
           if(res.data?.message==="Verified Successfully"){
             setShowGreen(true)
            setAlertValue(res.data.message)
@@ -63,10 +63,10 @@ export const VerifyHostEmail = () => {
          
       
       
-      console.log("hostsignup respose:", res.data)
+      // console.log("hostsignup respose:", res.data)
 
       let cookieCheck = cookie.token
-      console.log("Cookie check:",cookieCheck)
+      // console.log("Cookie check:",cookieCheck)
       if(!cookieCheck  && res.data.token){
         dispatch(userData(res.data))
       localStorage.setItem("User Data",JSON.stringify(res.data))
@@ -79,7 +79,7 @@ export const VerifyHostEmail = () => {
         setShowRed(true)
         setAlertValue(res.data)
       }
-      console.log(res.data)
+      // console.log(res.data)
       
     }
       ).catch(err=>{console.log(err)})

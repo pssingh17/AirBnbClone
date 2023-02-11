@@ -36,7 +36,7 @@ export const USignUp = () => {
       "confirmPassword": data.confirmPassword,
       "userType": "User"
     }
-    console.log(data)
+    // console.log(data)
     axios({
       
       method: 'post',
@@ -52,8 +52,8 @@ export const USignUp = () => {
         // alert("Verify code sent to your email")
         setShowGreen(true)
         setAlertValue(res.data)
-        console.log("userverifyemail respose:", res.data)
-        console.log(res.data)
+        // console.log("userverifyemail respose:", res.data)
+        // console.log(res.data)
         sessionStorage.setItem("UTempEmail",JSON.stringify(data.email))
         // navigate('/user/verifyEmail')
       }

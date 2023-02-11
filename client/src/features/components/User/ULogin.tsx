@@ -33,7 +33,7 @@ export const ULogin = () => {
       "password": data.password,
       "userType": "User"
     }
-    console.log(data)
+    // console.log(data)
     axios({
       
       method: 'post',
@@ -47,7 +47,7 @@ export const ULogin = () => {
     }).then(res=>{
       
       let cookieCheck = cookie.token
-      console.log("Cookie check:",cookieCheck)
+      // console.log("Cookie check:",cookieCheck)
       if(!cookieCheck  && res.data.token){
       setShowGreen(true)
       setAlertValue(res.data.message)
@@ -67,7 +67,7 @@ export const ULogin = () => {
       }
       
       
-      console.log(res.data)
+      // console.log(res.data)
       }).catch(err=>{console.log(err)})
     
   });
@@ -154,9 +154,9 @@ export const ULogin = () => {
                 </form>
                 <div>
                 <p className="mb-0  text-center">
-                    Forgot Password?{" "}
+                   
                     <Link to="/user/forgotPassword" className="text-primary fw-bold">
-                      Create New
+                    Forgot Password?{" "}
                     </Link>
                   </p>
                   <p className="mb-0  text-center">

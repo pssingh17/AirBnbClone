@@ -6,12 +6,13 @@ import { useDispatch,useSelector } from 'react-redux'
 import { allListingsData } from '../AllListingsReducer/AllListingsSlice'
 import { Pagination } from './common/Pagination'
 import { Loader } from './Loader'
+import { LoaderStatus } from '../LoaderReducer/LoaderSlice'
 
 
 
 export const Trending = () => {
     const [listings, setlistings] = useState <String []>([])
-    const [isLoading, setIsLoading] = useState(true);
+    
 
     const dispatch = useDispatch()
   let listingsData : any = useSelector((state: RootState) => state.AllListingsSlice.value)
@@ -20,15 +21,13 @@ export const Trending = () => {
     useEffect(()=>{
         axios.post("/api/Popular").then(res=>{
             // console.log(res.data)
-            setIsLoading(false)
+            dispatch(LoaderStatus(false))
             setlistings(res.data.newData)
             dispatch(allListingsData(res.data))
         }).catch(err=>{console.log(err)})
     },[])
   return (<>
-  {isLoading?<>
-               <Loader loading={isLoading}/>
-               </>:<>
+ 
                {listingsData.newData?listingsData.newData.map((item : any)=>{
         return (
             
@@ -39,7 +38,7 @@ export const Trending = () => {
     :
     "NO data found"}
     <Pagination dataFrom="popular" page={listingsData.page}/>
-               </>}
+              
  
     
     </>

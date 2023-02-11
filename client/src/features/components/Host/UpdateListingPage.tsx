@@ -37,7 +37,7 @@ export const UpdateListingPage = () => {
       "images.picture_url": data?.images?.picture_url,
       "host":{"host_id":Date.now()},
     }
-    console.log(data)
+    // console.log(data)
     axios({
       
       method: 'post',
@@ -55,7 +55,7 @@ export const UpdateListingPage = () => {
 
       //   localStorage.setItem("User Favourites",JSON.stringify(res.data.credentials.favourites))
       // }
-      console.log("hostsignup respose:", res.data)
+      // console.log("hostsignup respose:", res.data)
 
       // let cookieCheck = cookie.token
       // console.log("Cookie check:",cookieCheck)
@@ -70,7 +70,7 @@ export const UpdateListingPage = () => {
       else{
         alert(res.data)
       }
-      console.log(res.data)
+      // console.log(res.data)
       
     }
       ).catch(err=>{console.log(err)})
@@ -86,7 +86,7 @@ export const UpdateListingPage = () => {
         'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
       }
     }).then(res=>{
-      console.log("rrsponse from myHostProfile",res.data)
+      // console.log("rrsponse from myHostProfile",res.data)
       setUserDataState(res.data)
       dispatch(userData(res.data))
     })

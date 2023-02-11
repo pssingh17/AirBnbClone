@@ -31,16 +31,24 @@ import { HForgotPassword } from './features/components/Host/HForgotPassword';
 import { UserFChangePassword } from './features/components/User/UserFChangePassword';
 import { HostFChangePassword } from './features/components/Host/HostFChangePassword';
 import { VerifyUserEmail } from './features/components/User/VerifyUserEmail';
+import { useSelector } from 'react-redux';
+import type { RootState } from './app/store'
+import { Loader } from './features/components/Loader';
+
 
 // import { AdvanceFiltersModal } from './features/AdvanceFiltersModal';
 
 function App() {
+  const isLoading = useSelector((state:RootState)=>state.LoaderSlice.value)
 
  
   return (
     <>
      <Navbar />
-    <div className="App">
+     {isLoading===true?<>
+      <Loader loading={isLoading}/>
+     </>:<>
+     <div className="App">
     <div className='customContainer'>
     <div className='row justify-content-center'> 
     <Routes>
@@ -79,6 +87,8 @@ function App() {
     </div>
    
     </div>
+     </>}
+   
     </>
   );
 }

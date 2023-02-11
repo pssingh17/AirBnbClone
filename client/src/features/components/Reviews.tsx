@@ -48,7 +48,7 @@ const deleteReview = (Id:String)=>{
       'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
     }
   }).then(res=>{
-    console.log("response from delted reviews:",res.data)
+    // console.log("response from delted reviews:",res.data)
     localStorage.setItem("LastViewDetailPage",JSON.stringify(res?.data?.credentials))
     dispatch(viewDetailsData(res?.data?.credentials));
     }).catch(err=>{console.log(err)})
@@ -74,10 +74,10 @@ const deleteReview = (Id:String)=>{
             "content-type": "application/x-www-form-urlencoded;charset=utf-8",
           },
         }).then((res) => {
-            console.log("responi", res?.data?.newData?.email)
+            // console.log("responi", res?.data?.newData?.email)
           // dispatch(FavouritesData(res.data?.newData));
           let data = viewDetailsRedux?.reviews.filter((email:any)=>{ return email.email === res.data.newData.email})
-          console.log(data)
+          // console.log(data)
           if(data[0]){
            setReviewerExist(true)
            setReviewerEmail(data[0].email)

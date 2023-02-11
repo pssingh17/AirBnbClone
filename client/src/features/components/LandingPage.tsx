@@ -8,6 +8,7 @@ import { allListingsData } from '../AllListingsReducer/AllListingsSlice'
 import { AdvanceFiltersModal } from './AdvanceFiltersModal'
 import { Pagination } from './common/Pagination'
 import { Loader } from './Loader'
+import { LoaderStatus } from '../LoaderReducer/LoaderSlice'
 
 
 
@@ -15,7 +16,7 @@ import { Loader } from './Loader'
 
 export const LandingPage = () => {
     const [listings, setlistings] = useState <String []>([])
-    const [isLoading, setIsLoading] = useState(true);
+  
 
     const dispatch = useDispatch()
     const [filterPresent, setFilterPresent] = useState(false)
@@ -25,7 +26,7 @@ export const LandingPage = () => {
   const clearFilters = ()=>{
     axios.post("/api/getAll").then(res=>{
             // console.log(res.data)
-            setIsLoading(false)
+            LoaderStatus(false)
             setlistings(res.data.newData)
             dispatch(allListingsData(res.data))
             localStorage.removeItem("SelectedAmenity")
@@ -53,7 +54,7 @@ export const LandingPage = () => {
           }
         }).then(res=>{
           // console.log(res.data)
-          setIsLoading(false)
+          dispatch(LoaderStatus(false))
           setlistings(res.data.newData)
           dispatch(allListingsData(res.data))
           localStorage.setItem("SelectedAmenity",JSON.stringify(SelectedAmenity))
@@ -62,7 +63,7 @@ export const LandingPage = () => {
     }
     else{
        axios.post("/api/getAll").then(res=>{
-            setIsLoading(false)
+            dispatch(LoaderStatus(false))
             setlistings(res.data.newData)
             dispatch(allListingsData(res.data))
             localStorage.removeItem("SelectedAmenity")
@@ -76,9 +77,7 @@ export const LandingPage = () => {
       setFilterPresent(true)
     }
   return (<>
-   {isLoading?<>
-               <Loader loading={isLoading}/>
-               </>:<>
+
                <div className='container d-flex'>
   <div className='m-1'>
  <AdvanceFiltersModal filterStateSetter={filterStateSetter} />
@@ -102,7 +101,7 @@ export const LandingPage = () => {
     "NO data found"}
     
     <Pagination dataFrom="getAll" page={listingsData.page}/>
-               </>}
+              
 
 
   

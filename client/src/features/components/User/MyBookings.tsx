@@ -39,10 +39,10 @@ export const MyBookings = () => {
         'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
       }
     }).then(res=>{
-      console.log("rrsponse from booking my fav",res.data)
+      // console.log("rrsponse from booking my fav",res.data)
       // dispatch(userData(res.data))
       let data = res.data?.newData
-      console.log("data response for Lvd", data)
+      // console.log("data response for Lvd", data)
       localStorage.setItem("LastViewDetailPage",JSON.stringify(data))
       navigate('/viewDetails')
     })

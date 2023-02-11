@@ -13,6 +13,7 @@ import { userData } from "../../UserDataReducer/UserDataSlice";
 import { removeUserData } from '../../UserDataReducer/UserDataSlice'
 import { useNavigate } from 'react-router-dom';
 import { searchListingData } from '../../SearchListingReducer/SearchListingSlice'
+import { LoaderStatus } from '../../LoaderReducer/LoaderSlice'
 
 
 
@@ -37,7 +38,7 @@ export const Navbar = () => {
 
 
   const onSubmit: SubmitHandler<SearchInput> = ((data) => {
-    
+    dispatch(LoaderStatus(true))
     var body ={
       "searchString": data.searchString,
     }
@@ -59,6 +60,7 @@ export const Navbar = () => {
     //  console.log("Search data", res.data)
      if(res.data){
       dispatch(searchListingData(res.data))
+      dispatch(LoaderStatus(false))
       return navigate('/searchListing')
      }
      
@@ -87,7 +89,7 @@ export const Navbar = () => {
     setLogin({login:false,userType:""})
     dispatch(removeUserData([]))
     localStorage.clear();
-    console.log("Success logout")
+    // console.log("Success logout")
     navigate('/')
   }
  
@@ -103,18 +105,25 @@ export const Navbar = () => {
         <ul className="navbar-nav nav-pills custom-color me-auto mb-2 mb-lg-0" id="pills-tab" role="tablist">
           <li className="nav-item " role="presentation">
             <button  className="nav-link px-2" aria-current="page" id="pills-home-tab" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" type="button" role="tab" aria-controls="pills-home" aria-selected="true" onClick={()=>{navigate('/')
+            dispatch(LoaderStatus(true))
           }}>Home</button>
              {/* data-bs-toggle="pill" data-bs-target="#pills-home" */}
           </li>
           <li className="nav-item " role="presentation">
-            <button  className="nav-link px-2" aria-current="page" id="pills-trending-tab" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" type="button" role="tab" aria-controls="pills-trending" aria-selected="true" onClick={()=>{navigate('/trending')}}>Trending</button>
+            <button  className="nav-link px-2" aria-current="page" id="pills-trending-tab" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" type="button" role="tab" aria-controls="pills-trending" aria-selected="true" onClick={()=>{navigate('/trending')
+            dispatch(LoaderStatus(true))
+          }}>Trending</button>
           </li>
           <li className="nav-item" role="presentation">
-            <button  className="nav-link px-2" id="pill-topPicks-tab" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"type="button" role="tab" aria-controls="pills-topPicks" aria-selected="true" onClick={()=>{navigate('/topPicks')}}>Top Picks</button>
+            <button  className="nav-link px-2" id="pill-topPicks-tab" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"type="button" role="tab" aria-controls="pills-topPicks" aria-selected="true" onClick={()=>{navigate('/topPicks')
+            dispatch(LoaderStatus(true))
+          }}>Top Picks</button>
           </li>
           <li className="nav-item" role="presentation">
             <button className="nav-link px-2" id="pills-topRated-tab" 
-            data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" type="button" role="tab" aria-controls="pills-topRated" aria-selected="true" onClick={()=>{navigate('/topRated')}}>Top Rated</button>
+            data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" type="button" role="tab" aria-controls="pills-topRated" aria-selected="true" onClick={()=>{
+              dispatch(LoaderStatus(true))
+              navigate('/topRated')}}>Top Rated</button>
           </li>
           {/* <li className="nav-item">
             <AdvanceFiltersModal />

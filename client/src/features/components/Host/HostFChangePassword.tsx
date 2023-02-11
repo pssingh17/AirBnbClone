@@ -35,7 +35,7 @@ export const HostFChangePassword = () => {
           "email": email,
           "userType": "Host"
         }
-        console.log("Sending body to verify data:",body)
+        // console.log("Sending body to verify data:",body)
         axios({
           
           method: 'post',
@@ -47,7 +47,7 @@ export const HostFChangePassword = () => {
             'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
           }
         }).then(res=>{
-          console.log("usersignup respose:", res.data)
+          // console.log("usersignup respose:", res.data)
             if(res.data.message === "Password Change Success"){
               setShowGreen(true)
             setAlertValue(res.data.message)
