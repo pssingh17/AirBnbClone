@@ -36,7 +36,7 @@ router.post("/removeFromFavourites", async (req, res) => {
                 
                      
                       const resp = await User.findOneAndUpdate({_id:o_id},  { $pull: {"favourites":{fav_id:fav_id}}},{  safe: true, upsert: true}).select('-password')
-                      const response = await User.findOne({_id:o_id}).select('-password')
+                      const response = await User.findOne({_id:o_id},{password:0,verifyToken:0})
                       res.json({"message":"Update Success", "credentials":response})
                   }
                   else{

@@ -36,7 +36,7 @@ router.post("/", async (req, res) => {
       const emailExist = await User.findOne({ email: data.email });
       // console.log("emailExist", emailExist)
       if (emailExist) {
-        const response = await User.findOneAndUpdate({email:data.email},{verifyToken:randomVerifyCode}).select('-password')
+        const response = await User.findOneAndUpdate({email:data.email},{verifyToken:randomVerifyCode},{password:0,verifyToken:0})
         var transporter = nodemailer.createTransport({
           service: "gmail",
           auth: {
@@ -75,7 +75,7 @@ router.post("/", async (req, res) => {
         const emailExist = await Model.findOne({ email: data.email });
         console.log("emailExist", emailExist)
         if (emailExist) {
-          const response = await Model.findOneAndUpdate({email:data.email},{verifyToken:randomVerifyCode}).select('-password')
+          const response = await Model.findOneAndUpdate({email:data.email},{verifyToken:randomVerifyCode},{password:0,verifyToken:0})
           var transporter = nodemailer.createTransport({
             service: "gmail",
             auth: {

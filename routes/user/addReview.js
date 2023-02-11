@@ -43,7 +43,7 @@ router.post("/addReview", async (req, res) => {
           { "host.host_id": host_id,"reviews.email": { $ne: userData.email } },
           { $push: { "reviews": data } }
         ).select("-password");
-        response = await Model.findOne({  "host.host_id": host_id }).select("-password");
+        response = await Model.findOne({  "host.host_id": host_id },{password:0,verifyToken:0});
 
         res.json({
           message: "Success",

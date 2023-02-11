@@ -38,7 +38,7 @@ router.post("/deleteReview", async (req, res) => {
           { "host.host_id": host_id },
           { $pull: {"reviews":{date:date}}},{  safe: true, upsert: true}
         ).select("-password");
-        response = await Model.findOne({  "host.host_id": host_id }).select("-password");
+        response = await Model.findOne({  "host.host_id": host_id },{password:0,verifyToken:0});
 
         res.json({
           message: "Success",

@@ -46,7 +46,7 @@ router.post("/updateHostListing", async (req, res) => {
                     
 
                 }
-                response = await Model.findOne({_id:o_id}).select('-password')
+                response = await Model.findOne({_id:o_id},{password:0,verifyToken:0})
                  
                   res.json({"message":"Update Success","token":token, "credentials":response})
                      

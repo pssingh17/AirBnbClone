@@ -26,7 +26,7 @@ router.post("/",async (req,res)=>{
                     
                    
                         newHashPassword = await bcrypt.hash(data.newPassword, 12)
-                        await User.findOneAndUpdate(userData._id, { $set: { password: newHashPassword } }).then(response=>{res.json({"message":"Password Change Success"})}).
+                        await User.findOneAndUpdate(userData._id, { $set: { password: newHashPassword } },{password:0,verifyToken:0}).then(response=>{res.json({"message":"Password Change Success"})}).
                         catch(err=>{res.send(err)})
                   
                     
@@ -47,7 +47,7 @@ router.post("/",async (req,res)=>{
                     
                    
                         newHashPassword = await bcrypt.hash(data.newPassword, 12)
-                        await Model.findOneAndUpdate(userData._id, { $set: { password: newHashPassword } }).then(response=>{res.json({"message":"Password Change Success"})}).
+                        await Model.findOneAndUpdate(userData._id, { $set: { password: newHashPassword } },{password:0,verifyToken:0}).then(response=>{res.json({"message":"Password Change Success"})}).
                         catch(err=>{res.send(err)})
                    
                     

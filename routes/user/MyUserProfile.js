@@ -25,7 +25,7 @@ router.post("/MyUserProfile", async (req, res) => {
 
     var o_id = new mongo.ObjectID(userID);
 
-    const userData = await User.findOne({ _id: o_id }).select("-password");
+    const userData = await User.findOne({ _id: o_id },{password:0,verifyToken:0});
    if(userData){
     let response = {
         message:"Success",

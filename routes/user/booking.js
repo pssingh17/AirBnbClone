@@ -34,7 +34,7 @@ router.post("/booking", async (req, res) => {
           { _id: o_id },
           { $push: { "bookings": data } }
         ).select("-password");
-        response = await User.findOne({ _id: o_id }).select("-password");
+        response = await User.findOne({ _id: o_id },{password:0,verifyToken:0});
 
         res.json({
           message: "Success",

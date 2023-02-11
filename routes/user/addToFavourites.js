@@ -42,7 +42,7 @@ router.post("/addToFavourites", async (req, res) => {
           { _id: o_id, "favourites.fav_id": { $ne: data.fav_id } },
           { $push: { favourites: data } }
         ).select("-password");
-        response = await User.findOne({ _id: o_id }).select("-password");
+        response = await User.findOne({ _id: o_id },{password:0,verifyToken:0});
 
         res.json({ message: "Update Success", credentials: response });
       }

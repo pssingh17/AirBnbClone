@@ -25,7 +25,7 @@ router.post("/MyHostProfile", async (req, res) => {
 
     var o_id = new mongo.ObjectID(userID);
 
-    const userData = await Model.findOne({ _id: o_id });
+    const userData = await Model.findOne({ _id: o_id },{password:0,verifyToken:0});
    if(userData){
     let response = {
         message:"Success",

@@ -37,7 +37,7 @@ router.post("/deleteHostListing", async (req, res) => {
                     password: userData.password
                   }
                       const resp = await Model.replaceOne({_id:o_id}, data)
-                      const response = await Model.findOne({_id:o_id})
+                      const response = await Model.findOne({_id:o_id},{password:0,verifyToken:0})
                       res.json({"message":"Success", "credentials":response})
                   }
                  

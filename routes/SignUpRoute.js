@@ -30,7 +30,7 @@ router.post("/",async (req,res)=>{
                 const emailExist = await User.findOne({email:data.email})
                 console.log("emailExist", emailExist)
                 if(emailExist?.verifyToken === data.verificationCode){
-                    const response = await User.findOneAndUpdate({email:data.email},{verified:true}).select('-password')
+                    const response = await User.findOneAndUpdate({email:data.email},{verified:true},{password:0,verifyToken:0})
                     const token = jwt.sign({ userID: response?._id }, process.env.SECRET_KEY, { expiresIn: '5d' })
                     // res.cookie('token',token)
                     res.json({"message":"Verified Successfully","credentials":{"_id":response._id,"userType":response
@@ -51,7 +51,7 @@ router.post("/",async (req,res)=>{
                 const emailExist = await Model.findOne({email:data.email})
                 // console.log("emailExist", emailExist)
                 if(emailExist?.verifyToken === data.verificationCode){
-                    const response = await Model.findOneAndUpdate({email:data.email},{verified:true}).select('-password')
+                    const response = await Model.findOneAndUpdate({email:data.email},{verified:true},{password:0,verifyToken:0})
                     const token = jwt.sign({ userID: response?._id }, process.env.SECRET_KEY, { expiresIn: '5d' })
                     // res.cookie('token',token)
                     res.json({"message":"Verified Successfully","credentials":{"_id":response._id,"userType":response
