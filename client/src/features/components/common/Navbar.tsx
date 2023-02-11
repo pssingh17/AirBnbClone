@@ -93,7 +93,7 @@ export const Navbar = () => {
  
   return (
     
-    <nav className="navbar navbar-dark navbar-expand-lg bg-dark py-3" style={{fontSize:"1.1rem"}}>
+    <nav className="navbar navbar-dark navbar-expand-lg bg-dark" style={{paddingTop:"0.7rem", paddingBottom:"0.7rem"}}>
     <div className="container-fluid">
       
       <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
