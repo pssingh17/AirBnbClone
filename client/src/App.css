@@ -119,3 +119,15 @@
   .fav-container-child{
     display: flex;
   }
+
+  .customContainer{
+    padding:0 1.5rem;
+  }
+  .row {
+    --bs-gutter-x: 0rem !important;}
+
+    @media screen and (max-width:600px){
+      .customContainer{
+        padding: 0 3rem;
+      }
+    }
