@@ -32,7 +32,7 @@ export const TopPicks = () => {
   return (<>
     {isLoading===true?<>
       <Loader loading={isLoading}/>
-     </>:<>
+     </>:<></>}
                
                {listingsData.newData?listingsData.newData.map((item : any)=>{
         return (
@@ -45,7 +45,7 @@ export const TopPicks = () => {
     "NO data found"}
     <Pagination dataFrom="topPicks" page={listingsData.page}/>
             
- </>}
+ 
     
     </>
   )

@@ -30,7 +30,7 @@ export const Trending = () => {
   return (<>
   {isLoading===true?<>
       <Loader loading={isLoading}/>
-     </>:<>
+     </>:<> </>}
                {listingsData.newData?listingsData.newData.map((item : any)=>{
         return (
             
@@ -43,7 +43,7 @@ export const Trending = () => {
     <Pagination dataFrom="popular" page={listingsData.page}/>
               
  
-    </>}
+   
     </>
   )
 }

@@ -31,7 +31,7 @@ export const TopRated = () => {
   return (<>
    {isLoading===true?<>
       <Loader loading={isLoading}/>
-     </>:<>
+     </>:<> </>}
                {listingsData.newData?listingsData.newData.map((item : any)=>{
         return (
             
@@ -44,7 +44,7 @@ export const TopRated = () => {
     <Pagination dataFrom="topRated" page={listingsData.page}/>
               
  
-    </>}
+   
     </>
   )
 }

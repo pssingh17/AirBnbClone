@@ -8,6 +8,7 @@ const override: CSSProperties = {
   top:"39%",
   margin: "auto",
   borderColor: "black",
+  zIndex:9
 };
 
 export const Loader = (loading:any) => {
@@ -20,6 +21,7 @@ export const Loader = (loading:any) => {
         size={150}
         aria-label="Loading Spinner"
         data-testid="loader"
+        
       />
     </>
   )

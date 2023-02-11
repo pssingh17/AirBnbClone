@@ -108,7 +108,7 @@ export const MyFavourites = () => {
       </h3>
       {isLoading===true?<>
       <Loader loading={isLoading}/>
-     </>:<>
+     </>:<> </>}
       { userFavouritesState
         ? userFavouritesState?.map((fav: any) => {
             return (
@@ -178,7 +178,7 @@ export const MyFavourites = () => {
             );
           })
         : "Nothing in favourites"}
-        </>}
+       
     </>
   );
 };
