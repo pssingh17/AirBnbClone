@@ -6,11 +6,15 @@ import { RootState } from "../../../app/store";
 import ListingCard from "../ListingCard";
 import { FavouritesData } from "../../FavouritesReducer/FavouritesSlice";
 import { useNavigate } from "react-router-dom";
+import { LoaderStatus } from "../../LoaderReducer/LoaderSlice";
+import { Loader } from "../Loader";
 
 export const MyFavourites = () => {
   let cookies = new Cookies();
   let dispatch = useDispatch();
   let navigate = useNavigate()
+  const isLoading = useSelector((state:RootState)=>state.LoaderSlice.value)
+
   
   // @ts-ignore
   const MyFavouritesRedux = useSelector( (state: RootState) => state.FavouritesSlice?.value?.favourites
@@ -80,6 +84,7 @@ export const MyFavourites = () => {
   useEffect(() => {
     let token = cookies.get("token");
     // console.log("token in useEfect:", token)
+    dispatch(LoaderStatus(false))
     axios({
       method: "post",
       url: "/user/MyUserProfile",
@@ -101,7 +106,9 @@ export const MyFavourites = () => {
       <h3 className="text-start mb-5 ml-2 mt-2">
         <i>My Favourites</i>
       </h3>
-
+      {isLoading===true?<>
+      <Loader loading={isLoading}/>
+     </>:<>
       { userFavouritesState
         ? userFavouritesState?.map((fav: any) => {
             return (
@@ -171,6 +178,7 @@ export const MyFavourites = () => {
             );
           })
         : "Nothing in favourites"}
+        </>}
     </>
   );
 };

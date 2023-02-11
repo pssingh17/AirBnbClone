@@ -9,11 +9,15 @@ import { useNavigate } from 'react-router-dom'
 import { userData } from '../../UserDataReducer/UserDataSlice'
 import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
+import { LoaderStatus } from '../../LoaderReducer/LoaderSlice'
+import { Loader } from '../Loader'
 
 export const MyListing = () => {
   const [cookie, setCookie, removeCookie] = useCookies(['token']);
   const navigate = useNavigate()
   let dispatch = useDispatch()
+  const isLoading = useSelector((state:RootState)=>state.LoaderSlice.value)
+
   const [listingExist,setListingExist] = useState(false)
   const [showGreen, setShowGreen] = useState(false);
   const [showRed, setShowRed] = useState(false)
@@ -72,7 +76,7 @@ export const MyListing = () => {
       }
     }).then(res=>{
       // console.log("rrsponse from myHostProfile",res.data)
-      
+      dispatch(LoaderStatus(false))
       let name1= res.data.credentials.name
       if(name1){
 
@@ -107,7 +111,9 @@ export const MyListing = () => {
       </Alert></>
     
     }
- 
+  {isLoading===true?<>
+      <Loader loading={isLoading}/>
+     </>:<>
     {listingExist?
     <>
 <div className='listing-details d-flex'>
@@ -164,6 +170,7 @@ export const MyListing = () => {
     <button  className=" btn btn-dark mt-auto m-1 w-auto" onClick={CreateNewListing}>Create New Listing</button>
     </div></>
     }
+    </>}
     
     </>)
 }
