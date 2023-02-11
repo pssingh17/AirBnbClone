@@ -13,6 +13,7 @@ import { LoaderStatus } from '../LoaderReducer/LoaderSlice'
 
 export const TopRated = () => {
     const [listings, setlistings] = useState <String []>([])
+    const isLoading = useSelector((state:RootState)=>state.LoaderSlice.value)
 
 
     const dispatch = useDispatch()
@@ -28,7 +29,9 @@ export const TopRated = () => {
         }).catch(err=>{console.log(err)})
     },[])
   return (<>
-  
+   {isLoading===true?<>
+      <Loader loading={isLoading}/>
+     </>:<>
                {listingsData.newData?listingsData.newData.map((item : any)=>{
         return (
             
@@ -41,7 +44,7 @@ export const TopRated = () => {
     <Pagination dataFrom="topRated" page={listingsData.page}/>
               
  
-    
+    </>}
     </>
   )
 }

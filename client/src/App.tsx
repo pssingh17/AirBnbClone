@@ -39,15 +39,12 @@ import { Loader } from './features/components/Loader';
 // import { AdvanceFiltersModal } from './features/AdvanceFiltersModal';
 
 function App() {
-  const isLoading = useSelector((state:RootState)=>state.LoaderSlice.value)
 
  
   return (
     <>
      <Navbar />
-     {isLoading===true?<>
-      <Loader loading={isLoading}/>
-     </>:<>
+    
      <div className="App">
     <div className='customContainer'>
     <div className='row justify-content-center'> 
@@ -87,7 +84,7 @@ function App() {
     </div>
    
     </div>
-     </>}
+    
    
     </>
   );

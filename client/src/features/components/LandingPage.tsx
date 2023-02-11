@@ -16,7 +16,8 @@ import { LoaderStatus } from '../LoaderReducer/LoaderSlice'
 
 export const LandingPage = () => {
     const [listings, setlistings] = useState <String []>([])
-  
+  const isLoading = useSelector((state:RootState)=>state.LoaderSlice.value)
+
 
     const dispatch = useDispatch()
     const [filterPresent, setFilterPresent] = useState(false)
@@ -77,7 +78,9 @@ export const LandingPage = () => {
       setFilterPresent(true)
     }
   return (<>
-
+ {isLoading===true?<>
+      <Loader loading={isLoading}/>
+     </>:<>
                <div className='container d-flex'>
   <div className='m-1'>
  <AdvanceFiltersModal filterStateSetter={filterStateSetter} />
@@ -102,7 +105,7 @@ export const LandingPage = () => {
     
     <Pagination dataFrom="getAll" page={listingsData.page}/>
               
-
+</>}
 
   
  

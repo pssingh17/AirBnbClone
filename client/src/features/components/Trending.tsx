@@ -13,6 +13,7 @@ import { LoaderStatus } from '../LoaderReducer/LoaderSlice'
 export const Trending = () => {
     const [listings, setlistings] = useState <String []>([])
     
+    const isLoading = useSelector((state:RootState)=>state.LoaderSlice.value)
 
     const dispatch = useDispatch()
   let listingsData : any = useSelector((state: RootState) => state.AllListingsSlice.value)
@@ -27,7 +28,9 @@ export const Trending = () => {
         }).catch(err=>{console.log(err)})
     },[])
   return (<>
- 
+  {isLoading===true?<>
+      <Loader loading={isLoading}/>
+     </>:<>
                {listingsData.newData?listingsData.newData.map((item : any)=>{
         return (
             
@@ -40,7 +43,7 @@ export const Trending = () => {
     <Pagination dataFrom="popular" page={listingsData.page}/>
               
  
-    
+    </>}
     </>
   )
 }

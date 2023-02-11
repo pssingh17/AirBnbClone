@@ -16,6 +16,7 @@ export const ViewDetails = () => {
   const [addedToFavourites, setAddedToFavourites] = useState(false)
 
   const [userTypeUser, setUserTypeUser] = useState(false);
+  const isLoading = useSelector((state:RootState)=>state.LoaderSlice.value)
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
