@@ -154,3 +154,23 @@
     color: aqua !important;
     background-color: transparent !important;
   }
+  .customResp{
+    padding: 3rem 3rem !important;
+  }
+  @media screen and (max-width:600px){
+    .customContainer{
+      padding: 0 2rem;
+    }
+    .customResp{
+      padding: 1.5rem 1.2rem !important;
+    }
+  }
+
+  @media screen and (max-width:400px){
+    .customContainer{
+      padding: 0 0.8rem;
+    }
+    .customHover{
+      width: 20rem !important;
+    }
+  }
