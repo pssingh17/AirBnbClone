@@ -78,23 +78,26 @@ export const LandingPage = () => {
             localStorage.removeItem("SelectedPrice") 
         }).catch(err=>{console.log(err)})
     }
-    if(listingsDataPRange && listingsDataPRange === 1001){
-      setSelectedPriceState("Above $1000")
-     }
-   else if(listingsDataPRange && listingsDataPRange === 1000)  {
-    setSelectedPriceState("$501 to $1000")
-   }
-   else if(listingsDataPRange && listingsDataPRange === 500)  {
-    setSelectedPriceState("$101 to $500")
-   }
-   else if(listingsDataPRange && listingsDataPRange === 100){
-    setSelectedPriceState("Under $100")
-   }
+   
     },[])
     const filterStateSetter= ()=>{
       // console.log("finction called")
       setFilterPresent(true)
     }
+    useEffect(()=>{
+      if(listingsDataPRange && listingsDataPRange === 1001){
+        setSelectedPriceState("Above $1000")
+       }
+     else if(listingsDataPRange && listingsDataPRange === 1000)  {
+      setSelectedPriceState("$501 to $1000")
+     }
+     else if(listingsDataPRange && listingsDataPRange === 500)  {
+      setSelectedPriceState("$101 to $500")
+     }
+     else if(listingsDataPRange && listingsDataPRange === 100){
+      setSelectedPriceState("Under $100")
+     }
+    },[listingsDataPRange])
   return (<>
  {isLoading===true?<>
       <Loader loading={isLoading}/>
