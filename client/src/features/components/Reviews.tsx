@@ -119,7 +119,7 @@ const deleteReview = (Id:String)=>{
   
  
 }}
-   },[ReviewsRedux])
+   },[viewDetailsRedux])
   // console.log("Reviews:", ReviewsRedux)
   return (
     <>
