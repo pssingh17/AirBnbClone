@@ -108,7 +108,7 @@ const deleteReview = (Id:String)=>{
           // console.log("responi", res?.data?.newData?.email)
         // dispatch(FavouritesData(res.data?.newData));
         let data = viewDetailsRedux?.reviews.filter((email:any)=>{ return email.email === res.data.newData.email})
-        // console.log(data)
+        console.log("Data chaeck:",data)
         if(data[0]){
          setReviewerExist(true)
          setReviewerEmail(data[0].email)

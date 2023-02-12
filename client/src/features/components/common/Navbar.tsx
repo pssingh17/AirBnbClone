@@ -108,10 +108,7 @@ export const Navbar = () => {
     
     <nav className="navbar navbar-dark navbar-expand-lg bg-dark" style={{paddingTop:"0.7rem", paddingBottom:"0.7rem"}}>
     <div className="container-fluid">
-    <li className="nav-item " role="presentation">
-    <button onClick={()=>{navigate('/')
-            
-          }} className='navbar-brand' data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Demo Site</button></li>
+    <Link to="/" className='navbar-brand' data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Demo Site</Link>
       <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
       </button>
