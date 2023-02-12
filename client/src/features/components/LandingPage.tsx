@@ -87,7 +87,7 @@ export const LandingPage = () => {
    else if(listingsDataPRange && listingsDataPRange === 500)  {
     setSelectedPriceState("$101 to $500")
    }
-   else{
+   else if(listingsDataPRange && listingsDataPRange === 100){
     setSelectedPriceState("Under $100")
    }
     },[])
