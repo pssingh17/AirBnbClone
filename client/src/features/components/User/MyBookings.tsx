@@ -79,9 +79,9 @@ export const MyBookings = () => {
     MyBookingsReduxState?.length>0? 
     <>
      <h3 className='text-start mb-5 ml-2 mt-2'><i>MyBookings</i></h3>
-     {/* {isLoading===true?<>
+     {isLoading===true?<>
       <Loader loading={isLoading}/>
-     </>:<> </>} */}
+     </>:<> </>}
     {MyBookingsReduxState?.map((booking:any)=>{
       return(
         <div key={booking?.date} className="custom-booking-child-container mb-3">
@@ -116,7 +116,7 @@ export const MyBookings = () => {
           View Listing
         </button>
         </div>
-        </>:" "
+        </>:<><h5>No bookings yet</h5></>
         }
        
         </div>
@@ -127,6 +127,6 @@ export const MyBookings = () => {
    
    
     </>
-    :<h5>No bookings yet</h5>
+    :<></>
   )
 }
