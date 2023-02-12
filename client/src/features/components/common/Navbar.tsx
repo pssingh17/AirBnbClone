@@ -158,11 +158,11 @@ export const Navbar = () => {
 
         <li><hr className="dropdown-divider" /></li> 
         <li><button onClick={()=>{
-          dispatch(LoaderStatus(true)) 
+          
           navigate('/user/bookings')} }className="dropdown-item" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"  >My Bookings</button></li>
           <li><hr className="dropdown-divider" /></li>
           <li><button onClick={()=>{
-            dispatch(LoaderStatus(true))
+           
             navigate('/user/favourites')}} data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" className="dropdown-item" >My Favourites</button></li>
           <li><hr className="dropdown-divider" /></li>
           
@@ -179,7 +179,7 @@ export const Navbar = () => {
         <li><button data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" onClick={()=>navigate('/host/myHostProfile')} className="dropdown-item" >My Profile</button></li>
         <li><hr className="dropdown-divider" /></li> 
         <li><button onClick={()=>{
-          dispatch(LoaderStatus(true))
+          
           navigate('/host/MyListing')} }className="dropdown-item" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">My Listing</button></li>
           <li><hr className="dropdown-divider" /></li>    
           <button className="btn btn-dark btn-outline-primary mx-2" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" onClick={logout}>Sign Out</button> 

@@ -11,6 +11,8 @@ import { DatePicker } from "./User/DatePicker";
 import { DatePickerModal } from "./User/DatePickerModal";
 import { Reviews } from "./Reviews";
 import { AddReview } from "./User/AddReview";
+import { Loader } from "./Loader";
+import { LoaderStatus } from "../LoaderReducer/LoaderSlice";
 export const ViewDetails = () => {
   const [userDataState, setUserDataState] = useState<String[]>([]);
   const [addedToFavourites, setAddedToFavourites] = useState(false)
@@ -104,6 +106,7 @@ export const ViewDetails = () => {
  
 
   useEffect(() => {
+    dispatch(LoaderStatus(true))
     let token = cookies.get("token");
     // @ts-ignore
     let LastViewDetailPage = JSON.parse(localStorage.getItem("LastViewDetailPage"));
@@ -123,6 +126,7 @@ export const ViewDetails = () => {
         },
       }).then((res) => {
         // console.log("rrsponse from favourites", res.data);
+        dispatch(LoaderStatus(false))
         setUserDataState(res.data);
         dispatch(FavouritesData(res.data?.newData));
        
@@ -162,7 +166,9 @@ export const ViewDetails = () => {
   
   return viewDetailsRedux ? (
     <>
-     
+      {isLoading===true?<>
+      <Loader loading={isLoading}/>
+     </>:<></>}
         <>
           <div className="custom-viewDetailsContainer ">
             {viewDetailsRedux?.images?.picture_url?

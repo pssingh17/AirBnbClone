@@ -53,7 +53,7 @@ export const MyBookings = () => {
   }
   useEffect(()=>{
     let token = cookies.get('token')
-    dispatch(LoaderStatus(false))
+    dispatch(LoaderStatus(true))
     // console.log("token in useEfect:", token)
     axios({
       method:'post',
@@ -64,6 +64,7 @@ export const MyBookings = () => {
       }
     }).then(res=>{
       // console.log("rrsponse from booking",res.data)
+      dispatch(LoaderStatus(false)) 
       dispatch(userData(res.data))
       
     })

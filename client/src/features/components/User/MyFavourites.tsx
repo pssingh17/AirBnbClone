@@ -59,6 +59,7 @@ export const MyFavourites = () => {
     }
   ;
   const goToListing = (Id:any)=>{
+    
     let token = cookies.get('token')
     
     // console.log("token in useEfect:", token)
@@ -82,9 +83,10 @@ export const MyFavourites = () => {
   }
 
   useEffect(() => {
+    dispatch(LoaderStatus(true)) 
     let token = cookies.get("token");
     // console.log("token in useEfect:", token)
-    dispatch(LoaderStatus(false))
+    
     axios({
       method: "post",
       url: "/user/MyUserProfile",
@@ -94,6 +96,7 @@ export const MyFavourites = () => {
       },
     }).then((res) => {
       // console.log("rrsponse from favourites", res.data);
+      dispatch(LoaderStatus(false)) 
       setUserFavouritesState(res.data?.newData?.favourites);
       dispatch(FavouritesData(res.data.newData));
       // console.log("User state data" , userDataState)
