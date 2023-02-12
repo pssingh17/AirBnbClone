@@ -31,7 +31,7 @@ export const LandingPage = () => {
   // console.log("lisyin data page no::", listingsData.page)
   
   const clearFilters = ()=>{
-    axios.post("http://localhost:8000/api/getAll").then(res=>{
+    axios.post("/api/getAll").then(res=>{
             // console.log(res.data)
             LoaderStatus(false)
             setlistings(res.data.newData)
@@ -52,7 +52,7 @@ export const LandingPage = () => {
   
           method: 'post',
           
-          url: 'http://localhost:8000/api/getAll',
+          url: '/api/getAll',
           
           data:{amenities:SelectedAmenity,priceRange:SelectedPrice}, 
 
@@ -70,7 +70,7 @@ export const LandingPage = () => {
       }).catch(err=>{console.log(err)})
     }
     else{
-       axios.post("http://localhost:8000/api/getAll").then(res=>{
+       axios.post("/api/getAll").then(res=>{
             dispatch(LoaderStatus(false))
             setlistings(res.data.newData)
             dispatch(allListingsData(res.data))
