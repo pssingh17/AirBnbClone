@@ -109,9 +109,9 @@ export const MyFavourites = () => {
       <h3 className="text-start mb-5 ml-2 mt-2">
         <i>My Favourites</i>
       </h3>
-      {isLoading===true?<>
+      {/* {isLoading===true?<>
       <Loader loading={isLoading}/>
-     </>:<> </>}
+     </>:<> </>} */}
       { userFavouritesState
         ? userFavouritesState?.map((fav: any) => {
             return (

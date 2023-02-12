@@ -166,9 +166,9 @@ export const ViewDetails = () => {
   
   return viewDetailsRedux ? (
     <>
-      {isLoading===true?<>
+      {/* {isLoading===true?<>
       <Loader loading={isLoading}/>
-     </>:<></>}
+     </>:<></>} */}
         <>
           <div className="custom-viewDetailsContainer ">
             {viewDetailsRedux?.images?.picture_url?
