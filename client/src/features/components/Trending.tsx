@@ -30,6 +30,9 @@ export const Trending = () => {
     },[])
   return (<>
   {isLoading===true?<>
+    <div className='mt-2 text-start'>
+    <p style={{fontSize:"1.2rem",color:"white", display:"inline-block", padding:"0.3rem", backgroundColor:"#212529", borderRadius:"13px" ,marginBottom:"0"}}><i>Most Popular</i></p>
+  </div>
       <Loader loading={isLoading}/>
      </>:<> </>}
                {listingsData.newData?listingsData.newData.map((item : any)=>{

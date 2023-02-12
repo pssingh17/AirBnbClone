@@ -116,7 +116,7 @@ export const MyListing = () => {
      </>:<>
     {listingExist?
     <>
-<div className='listing-details d-flex'>
+<div className='listing-details  d-flex flex-column flex-xl-row mt-1'>
 {UserDataRedux?.images?.picture_url ? <>
   <img
                       style={{
