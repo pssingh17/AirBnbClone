@@ -22,6 +22,7 @@ export const TopPicks = () => {
     
 
     useEffect(()=>{
+      dispatch(LoaderStatus(true))
         axios.post("/api/topPicks").then(res=>{
             // console.log(res.data)
             dispatch(LoaderStatus(false))

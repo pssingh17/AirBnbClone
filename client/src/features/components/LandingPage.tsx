@@ -43,6 +43,7 @@ export const LandingPage = () => {
   }
     
     useEffect(()=>{
+      dispatch(LoaderStatus(true))
       let SelectedAmenity = JSON.parse(localStorage.getItem("SelectedAmenity") || '{}')
       let SelectedPrice = JSON.parse(localStorage.getItem("SelectedPrice") || '{}')
       if(SelectedAmenity.length>0 || SelectedPrice.length>0){

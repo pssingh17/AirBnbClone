@@ -20,6 +20,7 @@ export const Trending = () => {
 
 
     useEffect(()=>{
+      dispatch(LoaderStatus(true))
         axios.post("/api/Popular").then(res=>{
             // console.log(res.data)
             dispatch(LoaderStatus(false))

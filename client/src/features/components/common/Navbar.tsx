@@ -77,6 +77,19 @@ export const Navbar = () => {
       setLogin({login:false,userType:""})
     }
   },[])
+  useEffect(()=>{
+    let token = cookie.token
+   
+     // @ts-ignore
+     lstorageUType = JSON.parse(localStorage.getItem("UserType"))
+     if(token && lstorageUType){
+       setLogin({login:true,userType:lstorageUType})
+       // setUserDataState(lstorageUData)
+     }
+     else{
+       setLogin({login:false,userType:""})
+     }
+  },[userData])
   // console.log("User Data", userData)
   const logout = ()=>{
   
@@ -95,7 +108,7 @@ export const Navbar = () => {
     
     <nav className="navbar navbar-dark navbar-expand-lg bg-dark" style={{paddingTop:"0.7rem", paddingBottom:"0.7rem"}}>
     <div className="container-fluid">
-      
+    <Link to="/" className='navbar-brand'>Demo Site</Link>
       <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
       </button>
@@ -103,24 +116,24 @@ export const Navbar = () => {
         <ul className="navbar-nav nav-pills custom-color me-auto mb-2 mb-lg-0" id="pills-tab" role="tablist">
           <li className="nav-item " role="presentation">
             <button  className="nav-link px-2" aria-current="page" id="pills-home-tab" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" type="button" role="tab" aria-controls="pills-home" aria-selected="true" onClick={()=>{navigate('/')
-            dispatch(LoaderStatus(true))
+            
           }}>Home</button>
              {/* data-bs-toggle="pill" data-bs-target="#pills-home" */}
           </li>
           <li className="nav-item " role="presentation">
             <button  className="nav-link px-2" aria-current="page" id="pills-trending-tab" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" type="button" role="tab" aria-controls="pills-trending" aria-selected="true" onClick={()=>{navigate('/trending')
-            dispatch(LoaderStatus(true))
+           
           }}>Trending</button>
           </li>
           <li className="nav-item" role="presentation">
             <button  className="nav-link px-2" id="pill-topPicks-tab" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"type="button" role="tab" aria-controls="pills-topPicks" aria-selected="true" onClick={()=>{navigate('/topPicks')
-            dispatch(LoaderStatus(true))
+           
           }}>Top Picks</button>
           </li>
           <li className="nav-item" role="presentation">
             <button className="nav-link px-2" id="pills-topRated-tab" 
             data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" type="button" role="tab" aria-controls="pills-topRated" aria-selected="true" onClick={()=>{
-              dispatch(LoaderStatus(true))
+              
               navigate('/topRated')}}>Top Rated</button>
           </li>
           {/* <li className="nav-item">

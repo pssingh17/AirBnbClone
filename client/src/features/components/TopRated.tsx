@@ -21,6 +21,7 @@ export const TopRated = () => {
 
 
     useEffect(()=>{
+      dispatch(LoaderStatus(true))
         axios.post("/api/topRated").then(res=>{
             // console.log(res.data)
             dispatch(LoaderStatus(false))

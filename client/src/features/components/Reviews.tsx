@@ -91,6 +91,34 @@ const deleteReview = (Id:String)=>{
    },[])
    useEffect(()=>{
     SetReviewsReduxState([...ReviewsRedux].reverse())
+    // @ts-ignore
+    let userType = JSON.parse(localStorage.getItem("UserType"));
+    if (userType === "User") {
+      let token = cookies.get("token");
+    if (userType === "User") {
+      if(token){
+        axios({
+        method: "post",
+        url: "http://localhost:8000/user/MyUserProfile",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "content-type": "application/x-www-form-urlencoded;charset=utf-8",
+        },
+      }).then((res) => {
+          // console.log("responi", res?.data?.newData?.email)
+        // dispatch(FavouritesData(res.data?.newData));
+        let data = viewDetailsRedux?.reviews.filter((email:any)=>{ return email.email === res.data.newData.email})
+        // console.log(data)
+        if(data[0]){
+         setReviewerExist(true)
+         setReviewerEmail(data[0].email)
+        }
+        else{setReviewerExist(false)}
+      });
+      }
+  
+ 
+}}
    },[ReviewsRedux])
   // console.log("Reviews:", ReviewsRedux)
   return (
