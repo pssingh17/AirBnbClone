@@ -51,7 +51,7 @@ export const StripePayment = () => {
       };
       axios({
         method: "post",
-        url: "http://localhost:8000/user/booking",
+        url: "/user/booking",
         data: newData,
         headers: {
           Authorization: `Bearer ${token}`,

@@ -58,7 +58,7 @@ export const AddReview = () => {
           
           method: 'post',
           
-          url: 'http://localhost:8000/user/addReview',
+          url: '/user/addReview',
           
           data:body, 
           headers: {
