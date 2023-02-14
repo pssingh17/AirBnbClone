@@ -16,18 +16,26 @@ router.post("/deleteReview", async (req, res) => {
   // console.log(req.body)
   let host_id = req.body.host_id
   let date = req.body.date
-  console.log("date", date)
+  // console.log("date", date)
   if (req.body.userType === "User") {
     const { authorization } = req.headers;
     if (authorization && authorization.startsWith("Bearer")) {
       // Get Token from header
       let token = authorization.split(" ")[1];
 
-      // Verify Token
+      
+      try{
+        // console.log("inside try")
+            // Verify Token
       const { userID } = jwt.verify(token, process.env.SECRET_KEY);
-      console.log("userID", userID);
-
+      // console.log("userID", userID);
       var o_id = new mongo.ObjectID(userID);
+      }
+      catch(e){
+        console.log("inside catch")
+        return  res.status(400).json({message:"Invalid Token", loggedIn:false, userType:"User"})
+      }
+  
 
       const userData = await User.findOne({ _id: o_id });
       

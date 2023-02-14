@@ -119,7 +119,7 @@ export const VerifyHostEmail = () => {
       <div className="row d-flex justify-content-center">
         <div className="col-12 col-md-8 col-lg-6">
           <div className="card bg-white">
-            <div className="card-body customResp">
+            <div className="card-body  customResp">
               <form className="mb-3 mt-md-4" onSubmit={handleSubmit(onSubmit)}>
                 <h5 className="fw-bold mb-2 text-uppercase text-s">
                   Enter the verification Code

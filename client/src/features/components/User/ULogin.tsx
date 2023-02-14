@@ -78,6 +78,12 @@ export const ULogin = () => {
     if(token){
      return navigate('/')
     }
+   // @ts-ignore
+   let AlertMessage = JSON.parse(localStorage.getItem("AlertMessageLogin"));
+   if(AlertMessage){
+     setAlertValue(AlertMessage)
+     setShowRed(true)
+   }
   },[])
   return (
     <>
@@ -107,7 +113,7 @@ export const ULogin = () => {
         <div className="row d-flex justify-content-center">
           <div className="col-12 col-md-8 col-lg-6">
             <div className="card bg-white">
-              <div className="card-body customResp">
+              <div className="card-body  customResp">
                 <form className="mb-3 mt-md-4 " onSubmit={handleSubmit(onSubmit)}>
                   <h5 className="fw-bold mb-2 text-uppercase text-s">
                     Login into your User Account

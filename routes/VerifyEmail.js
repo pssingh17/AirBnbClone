@@ -20,7 +20,7 @@ require("dotenv").config();
 router.post("/", async (req, res) => {
 //   console.log(req.body.host);
     let randomVerifyCode = Math.floor(100000 + Math.random() * 900000)
-    console.log("Random Code:",randomVerifyCode)
+    // console.log("Random Code:",randomVerifyCode)
   var data = {
     userType: req.body.userType,
     email: req.body.email,
@@ -28,7 +28,7 @@ router.post("/", async (req, res) => {
     verified:false,
     verifyToken: randomVerifyCode
   };
-  console.log(data)
+  // console.log(data)
   if (
     data.userType &&
     data.email &&
@@ -107,7 +107,7 @@ router.post("/", async (req, res) => {
       const emailExist = await Model.findOne({ email: data.email });
       if (data.password === req.body.confirmPassword) {
         if (emailExist) {
-        console.log("inside email exist", emailExist.verifyToken)
+        // console.log("inside email exist", emailExist.verifyToken)
           var transporter = nodemailer.createTransport({
             service: "gmail",
             auth: {

@@ -20,9 +20,7 @@ router.post("/updateHostListing", async (req, res) => {
           // Get Token from header
           let token = authorization.split(' ')[1]
     
-          // Verify Token
-          const { userID } = jwt.verify(token, process.env.SECRET_KEY)
-          console.log("userID", userID)
+     
          
           
           // console.log(amenities1,"amenities from body:", req.body.amenities)
@@ -30,10 +28,19 @@ router.post("/updateHostListing", async (req, res) => {
           if(amenities){
             amenities = req.body.amenities.split(",")
             amenities1= Array.from(new Set(amenities))
-            console.log("amenities1 -",amenities1)
+            // console.log("amenities1 -",amenities1)
           }
-          //   var ObjectId = require('mongodb').ObjectId;
+          try{
+            // console.log("inside try")
+                // Verify Token
+          const { userID } = jwt.verify(token, process.env.SECRET_KEY);
+          // console.log("userID", userID);
           var o_id = new mongo.ObjectID(userID);
+          }
+          catch(e){
+            console.log("inside catch")
+            return  res.status(400).json({message:"Invalid Token", loggedIn:false, userType:"Host"})
+          }
       
             const userData = await Model.findOne({_id:o_id})
             // console.log("user data retriece check", userData)

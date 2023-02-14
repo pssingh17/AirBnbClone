@@ -49,11 +49,20 @@ export const MyBookings = () => {
       // console.log("data response for Lvd", data)
       localStorage.setItem("LastViewDetailPage",JSON.stringify(data))
       navigate('/viewDetails')
+    }).catch(err=>{
+      console.log("Error-",err)
+      if (err?.response?.data?.loggedIn === false){
+        console.log("Token expired.Please Verify- ", err?.response?.data.message)
+        cookies.remove("token")
+        localStorage.clear()
+        localStorage.setItem("AlertMessageLogin", JSON.stringify("Please verify your identity again"))
+        navigate('/user/login')
+      }
     })
   }
   useEffect(()=>{
     let token = cookies.get('token')
-    dispatch(LoaderStatus(true))
+    dispatch(LoaderStatus(false))
     // console.log("token in useEfect:", token)
     axios({
       method:'post',
@@ -64,9 +73,17 @@ export const MyBookings = () => {
       }
     }).then(res=>{
       // console.log("rrsponse from booking",res.data)
-      dispatch(LoaderStatus(false)) 
       dispatch(userData(res.data))
       
+    }).catch(err=>{
+      console.log("Error-",err)
+      if (err?.response?.data?.loggedIn === false){
+        console.log("Token expired.Please Verify- ", err?.response?.data.message)
+        cookies.remove("token")
+        localStorage.clear()
+        localStorage.setItem("AlertMessageLogin", JSON.stringify("Please verify your identity again"))
+        navigate('/user/login')
+      }
     })
   },[])
   useEffect(()=>{
@@ -116,7 +133,7 @@ export const MyBookings = () => {
           View Listing
         </button>
         </div>
-        </>:<><h5>No bookings yet</h5></>
+        </>:" "
         }
        
         </div>
@@ -127,6 +144,6 @@ export const MyBookings = () => {
    
    
     </>
-    :<></>
+    :<h5>No bookings yet</h5>
   )
 }

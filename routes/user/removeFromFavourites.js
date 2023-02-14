@@ -22,13 +22,19 @@ router.post("/removeFromFavourites", async (req, res) => {
           let fav_id = req.body.fav_id
           console.log("fav id: ",fav_id)
     
-          // Verify Token
-          const { userID } = jwt.verify(token, process.env.SECRET_KEY)
-        //   console.log("userID", userID)
           
-          //   var ObjectId = require('mongodb').ObjectId;
-          var o_id = new mongo.ObjectID(userID);
-      
+      try{
+        // console.log("inside try")
+            // Verify Token
+      const { userID } = jwt.verify(token, process.env.SECRET_KEY);
+      // console.log("userID", userID);
+      var o_id = new mongo.ObjectID(userID);
+      }
+      catch(e){
+        console.log("inside catch")
+        return  res.status(400).json({message:"Invalid Token", loggedIn:false, userType:"User"})
+      }
+  
             const userData = await User.findOne({_id:o_id})
             // console.log("UserData", userData)
 

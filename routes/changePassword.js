@@ -26,7 +26,7 @@ router.post("/",async (req,res)=>{
                 if(userData){
                     
                     const match = await bcrypt.compare(data.oldPassword,userData.password)
-                    console.log("Database Password", userData.password, "Old Password", data.oldPassword , match)
+                    // console.log("Database Password", userData.password, "Old Password", data.oldPassword , match)
                     if(match){
                         newHashPassword = await bcrypt.hash(data.newPassword, 12)
                         await User.findOneAndUpdate(userData._id, { $set: { password: newHashPassword } },{password:0,verifyToken:0}).then(response=>{res.json({"message":"Password Change Success"})}).

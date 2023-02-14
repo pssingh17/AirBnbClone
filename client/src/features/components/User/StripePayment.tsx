@@ -51,7 +51,7 @@ export const StripePayment = () => {
       };
       axios({
         method: "post",
-        url: "/user/booking",
+        url: "http://localhost:8000/user/booking",
         data: newData,
         headers: {
           Authorization: `Bearer ${token}`,
@@ -62,6 +62,15 @@ export const StripePayment = () => {
         setShowGreen(true)
         setAlertValue(res.data.message)
         // navRef.current('/user/bookings')
+      }).catch(err=>{
+        console.log("Error-",err)
+        if (err?.response?.data?.loggedIn === false){
+          console.log("Token expired.Please Verify- ", err?.response?.data.message)
+          removeCookie("token")
+          localStorage.clear()
+          localStorage.setItem("AlertMessageLogin", JSON.stringify("Please verify your identity again"))
+          navigate('/user/login')
+        }
       });
             }
            });

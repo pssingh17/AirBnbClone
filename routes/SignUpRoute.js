@@ -16,8 +16,8 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 require('dotenv').config();
 
 router.post("/",async (req,res)=>{
-    console.log("check if", data)
-    console.log(req.body.host)
+    // console.log("check if", data)
+    // console.log(req.body.host)
     var data = {
         userType: req.body.userType,
         email : req.body.email,
@@ -28,7 +28,7 @@ router.post("/",async (req,res)=>{
         if(data.userType === "User"){
             
                 const emailExist = await User.findOne({email:data.email})
-                console.log("emailExist", emailExist)
+                // console.log("emailExist", emailExist)
                 if(emailExist?.verifyToken === data.verificationCode){
                     const response = await User.findOneAndUpdate({email:data.email},{verified:true},{password:0,verifyToken:0})
                     const token = jwt.sign({ userID: response?._id }, process.env.SECRET_KEY, { expiresIn: '5d' })

@@ -2,6 +2,7 @@ import axios from 'axios';
 import React,{useState,useEffect} from 'react'
 import { Cookies, useCookies } from 'react-cookie';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { RootState } from '../../app/store';
 import { viewDetailsData } from '../ViewDetailsReducer/ViewDetailsSlice';
 
@@ -18,7 +19,7 @@ export const Reviews = () => {
     const viewDetailsRedux: any = useSelector(
       (state: RootState) => state.ViewDetailsSlice.value
     );
-  
+      const navigate = useNavigate()
     // @ts-ignore
     const MyFavouritesReduxEmail = useSelector( (state: RootState) => state.FavouritesSlice?.value?.email
     );
@@ -51,7 +52,15 @@ const deleteReview = (Id:String)=>{
     // console.log("response from delted reviews:",res.data)
     localStorage.setItem("LastViewDetailPage",JSON.stringify(res?.data?.credentials))
     dispatch(viewDetailsData(res?.data?.credentials));
-    }).catch(err=>{console.log(err)})
+    }).catch(err=>{
+      console.log("Error-",err)
+      if (err?.response?.data?.loggedIn === false){
+        console.log("Token expired.Please Verify- ", err?.response?.data.message)
+        cookies.remove("token")
+        localStorage.clear()
+        navigate('/user/login')
+      }
+    })
 }
   useEffect(()=>{
     // @ts-ignore
@@ -83,6 +92,14 @@ const deleteReview = (Id:String)=>{
            setReviewerEmail(data[0].email)
           }
           else{setReviewerExist(false)}
+        }).catch(err=>{
+          console.log("Error-",err)
+          if (err?.response?.data?.loggedIn === false){
+            console.log("Token expired.Please Verify- ", err?.response?.data.message)
+            cookies.remove("token")
+            localStorage.clear()
+            navigate('/user/login')
+          }
         });
         }
     
@@ -108,12 +125,21 @@ const deleteReview = (Id:String)=>{
           // console.log("responi", res?.data?.newData?.email)
         // dispatch(FavouritesData(res.data?.newData));
         let data = viewDetailsRedux?.reviews.filter((email:any)=>{ return email.email === res.data.newData.email})
-        // console.log("Data chaeck:",data)
+        console.log("Data chaeck: ",data)
+        
         if(data[0]){
          setReviewerExist(true)
          setReviewerEmail(data[0].email)
         }
         else{setReviewerExist(false)}
+      }).catch(err=>{
+        console.log("Error-",err)
+        if (err?.response?.data?.loggedIn === false){
+          console.log("Token expired.Please Verify- ", err?.response?.data.message)
+          cookies.remove("token")
+          localStorage.clear()
+          navigate('/user/login')
+        }
       });
       }
   

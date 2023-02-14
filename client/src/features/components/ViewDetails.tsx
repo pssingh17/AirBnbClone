@@ -11,8 +11,6 @@ import { DatePicker } from "./User/DatePicker";
 import { DatePickerModal } from "./User/DatePickerModal";
 import { Reviews } from "./Reviews";
 import { AddReview } from "./User/AddReview";
-import { Loader } from "./Loader";
-import { LoaderStatus } from "../LoaderReducer/LoaderSlice";
 export const ViewDetails = () => {
   const [userDataState, setUserDataState] = useState<String[]>([]);
   const [addedToFavourites, setAddedToFavourites] = useState(false)
@@ -69,6 +67,15 @@ export const ViewDetails = () => {
         // console.log("rrsponse from favourites", res.data);
         // dispatch(FavouritesData(res.data?.credentials?.favourites));
         setAddedToFavourites(true)
+      }).catch(err=>{
+        console.log("Error-",err)
+        if (err?.response?.data?.loggedIn === false){
+          console.log("Token expired.Please Verify- ", err?.response?.data.message)
+          cookies.remove("token")
+          localStorage.clear()
+          localStorage.setItem("AlertMessageLogin", JSON.stringify("Please verify your identity again"))
+          navigate('/user/login')
+        }
       });
     }
   };
@@ -96,7 +103,16 @@ export const ViewDetails = () => {
         dispatch(FavouritesData(res.data?.credentials?.favourites));
 
         // dispatch(addFavouritesData(viewDetailsRedux))
-      });
+      }).catch(err=>{
+        console.log("Error-",err)
+        if (err?.response?.data?.loggedIn === false){
+          console.log("Token expired.Please Verify- ", err?.response?.data.message)
+          cookies.remove("token")
+          localStorage.clear()
+          localStorage.setItem("AlertMessageLogin", JSON.stringify("Please verify your identity again"))
+          navigate('/user/login')
+        }
+      });;
     }
   };
   
@@ -106,7 +122,6 @@ export const ViewDetails = () => {
  
 
   useEffect(() => {
-    dispatch(LoaderStatus(true))
     let token = cookies.get("token");
     // @ts-ignore
     let LastViewDetailPage = JSON.parse(localStorage.getItem("LastViewDetailPage"));
@@ -126,11 +141,19 @@ export const ViewDetails = () => {
         },
       }).then((res) => {
         // console.log("rrsponse from favourites", res.data);
-        dispatch(LoaderStatus(false))
         setUserDataState(res.data);
         dispatch(FavouritesData(res.data?.newData));
        
-      });
+      }).catch(err=>{
+        console.log("Error-",err)
+        if (err?.response?.data?.loggedIn === false){
+          console.log("Token expired.Please Verify- ", err?.response?.data.message)
+          cookies.remove("token")
+          localStorage.clear()
+          localStorage.setItem("AlertMessageLogin", JSON.stringify("Please verify your identity again"))
+          navigate('/user/login')
+        }
+      });;
       }
     }
      else {
@@ -166,9 +189,7 @@ export const ViewDetails = () => {
   
   return viewDetailsRedux ? (
     <>
-      {/* {isLoading===true?<>
-      <Loader loading={isLoading}/>
-     </>:<></>} */}
+     
         <>
           <div className="custom-viewDetailsContainer ">
             {viewDetailsRedux?.images?.picture_url?

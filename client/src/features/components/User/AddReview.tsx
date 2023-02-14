@@ -32,6 +32,7 @@ export const AddReview = () => {
   const viewDetailsRedux: any = useSelector(
     (state: RootState) => state.ViewDetailsSlice.value
   );
+  const navigate = useNavigate()
   // @ts-ignore
   const MyFavouritesRedux = useSelector( (state: RootState) => state.FavouritesSlice?.value)
   // @ts-ignore
@@ -57,7 +58,7 @@ export const AddReview = () => {
           
           method: 'post',
           
-          url: '/user/addReview',
+          url: 'http://localhost:8000/user/addReview',
           
           data:body, 
           headers: {
@@ -68,7 +69,15 @@ export const AddReview = () => {
           // console.log("response from reviews:",res.data)
           localStorage.setItem("LastViewDetailPage",JSON.stringify(res?.data?.credentials))
           dispatch(viewDetailsData(res?.data?.credentials));
-          }).catch(err=>{console.log(err)})
+          }).catch(err=>{
+            console.log("Error-",err)
+            if (err?.response?.data?.loggedIn === false){
+              console.log("Token expired.Please Verify- ", err?.response?.data.message)
+              cookies.remove("token")
+              localStorage.clear()
+              navigate('/user/login')
+            }
+          })
         
       });
       useEffect(()=>{
@@ -101,6 +110,15 @@ export const AddReview = () => {
                setReviewerEmail(data[0].email)
               }
               else{setReviewerExist(false)}
+            }).catch(err=>{
+              console.log("Error-",err)
+              if (err?.response?.data?.loggedIn === false){
+                console.log("Token expired.Please Verify- ", err?.response?.data.message)
+                cookies.remove("token")
+                localStorage.clear()
+                localStorage.setItem("AlertMessageLogin", JSON.stringify("Please verify your identity again"))
+                navigate('/user/login')
+              }
             });
             }
         
@@ -111,7 +129,7 @@ export const AddReview = () => {
   <div className="text-start">
     {!reviewerExist?<>
       <button
-    className=" w-auto btn btn-dark mt-auto m-1  customBtnHover px-4" onClick={displayBox} > Add Review</button>
+    className=" w-auto btn btn-dark mt-auto m-1  customBtnHover  px-4" onClick={displayBox} > Add Review</button>
     {displayCommentBox?<>
     <form className="mb-3 mt-md-4 " onSubmit={handleSubmit(onSubmit)}>
         <textarea
@@ -125,7 +143,7 @@ export const AddReview = () => {
                     />
         {errors.comment && <span style={{color:"red"}}>This field requires minimum 10 characters</span>}
         
-<button className="btn btn-outline-dark d-block mt-1 px-4 customBtnHover" type="submit">Post</button>
+<button className="btn btn-outline-dark d-block mt-1 px-4  customBtnHover" type="submit">Post</button>
 </form>
 
     </>:""}

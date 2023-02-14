@@ -42,7 +42,7 @@ export const UpdateListingPage = () => {
       
       method: 'post',
       
-      url: '/host/updateHostListing',
+      url: 'http://localhost:8000/host/updateHostListing',
       
       data:body, 
       headers: {
@@ -73,7 +73,16 @@ export const UpdateListingPage = () => {
       // console.log(res.data)
       
     }
-      ).catch(err=>{console.log(err)})
+      ).catch(err=>{
+        console.log("Error-",err)
+        if (err?.response?.data?.loggedIn === false){
+          console.log("Token expired.Please Verify- ", err?.response?.data.message)
+          removeCookie("token")
+          localStorage.clear()
+          localStorage.setItem("AlertMessageLogin", JSON.stringify("Please verify your identity again"))
+          navigate('/host/login')
+        }
+      })
     
   });
   useEffect(()=>{
@@ -89,6 +98,15 @@ export const UpdateListingPage = () => {
       // console.log("rrsponse from myHostProfile",res.data)
       setUserDataState(res.data)
       dispatch(userData(res.data))
+    }).catch(err=>{
+      console.log("Error-",err)
+      if (err?.response?.data?.loggedIn === false){
+        console.log("Token expired.Please Verify- ", err?.response?.data.message)
+        removeCookie("token")
+        localStorage.clear()
+        localStorage.setItem("AlertMessageLogin", JSON.stringify("Please verify your identity again"))
+        navigate('/host/login')
+      }
     })
   },[])
 
@@ -98,7 +116,7 @@ export const UpdateListingPage = () => {
             <div className="row d-flex justify-content-center">
               <div className="col-12 col-md-8 col-lg-6">
                 <div className="card bg-white">
-                  <div className="card-body p-5">
+                  <div className="card-body  customResp">
                     <form className="mb-3 mt-md-4 " onSubmit={handleSubmit(onSubmit)}>
                       <h5 className="fw-bold mb-2 text-uppercase text-s">
                         Enter Details

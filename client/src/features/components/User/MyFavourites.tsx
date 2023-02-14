@@ -55,11 +55,19 @@ export const MyFavourites = () => {
         dispatch(FavouritesData(res.data?.credentials?.favourites));
 
         // dispatch(addFavouritesData(viewDetailsRedux))
+      }).catch(err=>{
+        console.log("Error-",err)
+        if (err?.response?.data?.loggedIn === false){
+          console.log("Token expired.Please Verify- ", err?.response?.data.message)
+          cookies.remove("token")
+          localStorage.clear()
+          localStorage.setItem("AlertMessageLogin", JSON.stringify("Please verify your identity again"))
+          navigate('/user/login')
+        }
       });
     }
   ;
   const goToListing = (Id:any)=>{
-    
     let token = cookies.get('token')
     
     // console.log("token in useEfect:", token)
@@ -79,14 +87,22 @@ export const MyFavourites = () => {
       // console.log("data response for Lvd", data)
       localStorage.setItem("LastViewDetailPage",JSON.stringify(data))
       navigate('/viewDetails')
+    }).catch(err=>{
+      console.log("Error-",err)
+      if (err?.response?.data?.loggedIn === false){
+        console.log("Token expired.Please Verify- ", err?.response?.data.message)
+        cookies.remove("token")
+        localStorage.clear()
+        localStorage.setItem("AlertMessageLogin", JSON.stringify("Please verify your identity again"))
+        navigate('/user/login')
+      }
     })
   }
 
   useEffect(() => {
-    dispatch(LoaderStatus(true)) 
     let token = cookies.get("token");
     // console.log("token in useEfect:", token)
-    
+    dispatch(LoaderStatus(false))
     axios({
       method: "post",
       url: "/user/MyUserProfile",
@@ -96,10 +112,18 @@ export const MyFavourites = () => {
       },
     }).then((res) => {
       // console.log("rrsponse from favourites", res.data);
-      dispatch(LoaderStatus(false)) 
       setUserFavouritesState(res.data?.newData?.favourites);
       dispatch(FavouritesData(res.data.newData));
       // console.log("User state data" , userDataState)
+    }).catch(err=>{
+      console.log("Error-",err)
+      if (err?.response?.data?.loggedIn === false){
+        console.log("Token expired.Please Verify- ", err?.response?.data.message)
+        cookies.remove("token")
+        localStorage.clear()
+        localStorage.setItem("AlertMessageLogin", JSON.stringify("Please verify your identity again"))
+        navigate('/user/login')
+      }
     });
   }, []);
   

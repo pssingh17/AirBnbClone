@@ -30,6 +30,15 @@ export const MyUserProfile = () => {
       // console.log("rrsponse from Uprofile",res.data)
       setUserDataState(res.data)
       dispatch(FavouritesData(res.data.newData))
+    }).catch(err=>{
+      console.log("Error-",err)
+      if (err?.response?.data?.loggedIn === false){
+        console.log("Token expired.Please Verify- ", err?.response?.data.message)
+        cookies.remove("token")
+        localStorage.clear()
+        localStorage.setItem("AlertMessageLogin", JSON.stringify("Please verify your identity again"))
+        navigate('/user/login')
+      }
     })
   },[])
  

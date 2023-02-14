@@ -27,7 +27,7 @@ router.post('/',async (req,res)=>{
                 
                 if(match){
                     const response = await User.findOne({email:data.email},{password:0,verifyToken:0}) 
-                    const token = jwt.sign({ userID: response._id }, process.env.SECRET_KEY, { expiresIn: '2d' })
+                    const token = jwt.sign({ userID: response._id }, process.env.SECRET_KEY, { expiresIn: '5d' })
                     // res.cookie('token',token)
                     res.json({"message":"Login Successful", "credentials":response,"token":token})
                     

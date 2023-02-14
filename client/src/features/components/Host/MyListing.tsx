@@ -61,12 +61,20 @@ export const MyListing = () => {
         setListingExist(true)
       }
       dispatch(userData(res.data))
+    }).catch(err=>{
+      console.log("Error-",err)
+      if (err?.response?.data?.loggedIn === false){
+        console.log("Token expired.Please Verify- ", err?.response?.data.message)
+        removeCookie("token")
+        localStorage.clear()
+        localStorage.setItem("AlertMessageLogin", JSON.stringify("Please verify your identity again"))
+        navigate('/host/login')
+      }
     })
 
   }
 
   useEffect(()=>{
-    dispatch(LoaderStatus(true)) 
     let token = cookie.token
     axios({
       method:'post',
@@ -87,6 +95,15 @@ export const MyListing = () => {
         setListingExist(false)
       }
       dispatch(userData(res.data))
+    }).catch(err=>{
+      console.log("Error-",err)
+      if (err?.response?.data?.loggedIn === false){
+        console.log("Token expired.Please Verify- ", err?.response?.data.message)
+        removeCookie("token")
+        localStorage.clear()
+        localStorage.setItem("AlertMessageLogin", JSON.stringify("Please verify your identity again"))
+        navigate('/host/login')
+      }
     })
   },[])
  
@@ -117,7 +134,7 @@ export const MyListing = () => {
      </>:<>
     {listingExist?
     <>
-<div className='listing-details  d-flex flex-column flex-xl-row mt-1'>
+<div className='listing-details d-flex flex-column flex-xl-row mt-1'>
 {UserDataRedux?.images?.picture_url ? <>
   <img
                       style={{

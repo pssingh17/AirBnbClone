@@ -60,7 +60,16 @@ export const CreateNewListingPage = () => {
       // console.log(res.data)
       
     }
-      ).catch(err=>{console.log(err)})
+      ).catch(err=>{
+        console.log("Error-",err)
+        if (err?.response?.data?.loggedIn === false){
+          console.log("Token expired.Please Verify- ", err?.response?.data.message)
+          removeCookie("token")
+          localStorage.clear()
+          localStorage.setItem("AlertMessageLogin", JSON.stringify("Please verify your identity again"))
+          navigate('/host/login')
+        }
+      })
     
   });
 
