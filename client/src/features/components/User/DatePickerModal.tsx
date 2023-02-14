@@ -29,7 +29,7 @@ export function DatePickerModal() {
 
   return (
     <>
-      <Button className='mt-auto m-1 px-5' variant="dark" onClick={handleShow}>
+      <Button className='mt-auto m-1 px-5 customBtnHover' variant="dark" onClick={handleShow}>
         Reserve this place
       </Button>
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import {Link} from 'react-router-dom'
+import {Link, NavLink} from 'react-router-dom'
 import { AdvanceFiltersModal } from '../AdvanceFiltersModal'
-
+import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import type { RootState } from '../../../app/store'
 import { useSelector } from 'react-redux'
 import { Cookies } from 'react-cookie';
@@ -26,8 +26,9 @@ interface UserType{
 }
 
 
-export const Navbar = () => {
+export const CNavbar = () => {
   const [color,setColor] = useState(false)
+  const [expanded, setExpanded] = useState(false);
   // const cookies = new Cookies();
   const { register, handleSubmit } = useForm<SearchInput>();
   const [userDataState, setUserDataState] = useState<String>()
@@ -103,116 +104,144 @@ export const Navbar = () => {
     // console.log("Success logout")
     navigate('/')
   }
+  let activeStyle = {
+    color:"aqua",
+    backgroundColor:"rgb(50 48 48)",
+    borderRadius:"13px",
+    fontWeight:"600"
+  };
+
+  let activeClassName = "customColor";
  
   return (
-    
-    <nav className="navbar navbar-dark navbar-expand-lg bg-dark" style={{paddingTop:"0.7rem", paddingBottom:"0.7rem"}}>
-    <div className="container-fluid">
-    <Link to="/" className='navbar-brand' data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Demo Site</Link>
-      <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span className="navbar-toggler-icon"></span>
-      </button>
-      <div className="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul className="navbar-nav nav-pills custom-color me-auto mb-2 mb-lg-0" id="pills-tab" role="tablist">
-          <li className="nav-item " role="presentation">
-            <button  className="nav-link px-2" aria-current="page" id="pills-home-tab" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" type="button" role="tab" aria-controls="pills-home" aria-selected="true" onClick={()=>{navigate('/')
+    <>
+   
+    <Navbar expanded={expanded} bg="light" variant='light' expand="lg" style={{paddingTop:"0.7rem", paddingBottom:"0.7rem",borderBottom:"1px solid #979797"}}>
+    <Container fluid>
+    <NavLink style={{textDecoration:"none"}}
+              to="/"><Navbar.Brand>Demo Site</Navbar.Brand>
+    </NavLink>
+        <Navbar.Toggle
+          aria-controls="navbarScroll"
+          onClick={() => setExpanded(!expanded)}
+        />
+        <Navbar.Collapse id="navbarScroll">
+          <Nav className="me-auto my-2 my-lg-0" style={{alignItems:"flex-start"}} navbarScroll>
+            <NavLink
+              to="/"
+              className="nav-link px-2"
+              onClick={() => setExpanded(false)}
+              style={({ isActive }) =>
+              isActive ? activeStyle : undefined
+            } 
+            >
+              Home
+            </NavLink>
+            <NavLink
+              to="/trending"
+              className="nav-link px-2"
+              onClick={() => setExpanded(false)}
+              style={({ isActive }) =>
+              isActive ? activeStyle : undefined
+            }
+            >
+              Trending
+            </NavLink>
+            <NavLink
+              to="topPicks"
+              className="nav-link px-2"
+              onClick={() => setExpanded(false)}
+              style={({ isActive }) =>
+              isActive ? activeStyle : undefined
+            }
+            >
+              TopPicks
+            </NavLink>
+            <NavLink
+              to="topRated"
+              className="nav-link px-2"
+              onClick={() => setExpanded(false)}
+              style={({ isActive }) =>
+              isActive ? activeStyle : undefined
+            }
+            >
+              TopRated
+            </NavLink>
+            <form className="d-flex" role="search" onSubmit={handleSubmit(onSubmit)}>
             
-          }}>Home</button>
-             {/* data-bs-toggle="pill" data-bs-target="#pills-home" */}
-          </li>
-          <li className="nav-item " role="presentation">
-            <button  className="nav-link px-2" aria-current="page" id="pills-trending-tab" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" type="button" role="tab" aria-controls="pills-trending" aria-selected="true" onClick={()=>{navigate('/trending')
-           
-          }}>Trending</button>
-          </li>
-          <li className="nav-item" role="presentation">
-            <button  className="nav-link px-2" id="pill-topPicks-tab" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"type="button" role="tab" aria-controls="pills-topPicks" aria-selected="true" onClick={()=>{navigate('/topPicks')
-           
-          }}>Top Picks</button>
-          </li>
-          <li className="nav-item" role="presentation">
-            <button className="nav-link px-2" id="pills-topRated-tab" 
-            data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" type="button" role="tab" aria-controls="pills-topRated" aria-selected="true" onClick={()=>{
+            <input className="form-control me-2" type="search" autoComplete="off" placeholder="Search" aria-label="Search"  id='searchField'  {...register("searchString")} />
+            <button className="btn btn-dark btn-outline-primary px-3" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" type="submit">Search</button>
+            
+            
+          </form>
               
-              navigate('/topRated')}}>Top Rated</button>
-          </li>
-          {/* <li className="nav-item">
-            <AdvanceFiltersModal />
-          </li> */}
-          <form className="d-flex" role="search" onSubmit={handleSubmit(onSubmit)}>
-            
-          <input className="form-control me-2" type="search" autoComplete="off" placeholder="Search" aria-label="Search"  id='searchField'  {...register("searchString")} />
-          <button className="btn btn-dark btn-outline-primary px-3" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" type="submit">Search</button>
-          
-          
-        </form>
         {userData?.token || login?.login ?
         
          userData?.credentials?.userType=="User" || login?.userType=="User"?
-          <li className="nav-item dropdown " id='signInEnd'>
-        <a className="nav-link px-2 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Manage
-        </a>
-        <ul className="dropdown-menu dropdown-menu-end dropdown-menu-dark">
-        <li><button onClick={()=>{navigate('/user/myUserProfile')}} data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" className="dropdown-item" >My Profile</button></li>
-
-        <li><hr className="dropdown-divider" /></li> 
-        <li><button onClick={()=>{
-          
-          navigate('/user/bookings')} }className="dropdown-item" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"  >My Bookings</button></li>
-          <li><hr className="dropdown-divider" /></li>
-          <li><button onClick={()=>{
-           
-            navigate('/user/favourites')}} data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" className="dropdown-item" >My Favourites</button></li>
-          <li><hr className="dropdown-divider" /></li>
-          
-          <button className="btn btn-dark btn-outline-primary mx-2 px-3" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" onClick={logout}>Sign Out</button>
-         
-         
-         
-        </ul>
-      </li>: <li className="nav-item dropdown " id='signInEnd'>
-        <a className="nav-link px-2 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Manage
-        </a>
-        <ul className="dropdown-menu dropdown-menu-end dropdown-menu-dark">
-        <li><button data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" onClick={()=>navigate('/host/myHostProfile')} className="dropdown-item" >My Profile</button></li>
-        <li><hr className="dropdown-divider" /></li> 
-        <li><button onClick={()=>{
-          
-          navigate('/host/MyListing')} }className="dropdown-item" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">My Listing</button></li>
-          <li><hr className="dropdown-divider" /></li>    
-          <button className="btn btn-dark btn-outline-primary mx-2" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" onClick={logout}>Sign Out</button> 
-        </ul>
-      </li>
-         
+         <>
+         <NavDropdown className='customDrop' align="end" title="Manage" id="basic-nav-dropdown">
+          <NavDropdown.Item href="#action/3.1" onClick={()=>{
+            setExpanded(false)
+            navigate('/user/myUserProfile')}} >My Profile</NavDropdown.Item>
+          <NavDropdown.Item href="#action/3.2" onClick={()=>{
+            setExpanded(false)
+          dispatch(LoaderStatus(true)) 
+          navigate('/user/bookings')} }>My Bookings</NavDropdown.Item>
+          <NavDropdown.Item href="#action/3.3" onClick={()=>{
+            setExpanded(false)
+            dispatch(LoaderStatus(true))
+            navigate('/user/favourites')}}>My Favourites</NavDropdown.Item>
+          <NavDropdown.Divider />
+          <NavDropdown.Item href="#action/3.4" onClick={()=>{
+            setExpanded(false)
+            logout()}}>Sign Out</NavDropdown.Item>
+        </NavDropdown>
+         </>: 
+         <>
+          <NavDropdown  className='customDrop 'align="end"  title="Manage" id="basic-nav-dropdown">
+          <NavDropdown.Item href="#action/3.1" onClick={()=>{
+            setExpanded(false)
+            navigate('/host/myHostProfile')} } >My Profile</NavDropdown.Item>
+          <NavDropdown.Item href="#action/3.2" onClick={()=>{
+            setExpanded(false)
+          dispatch(LoaderStatus(true))
+          navigate('/host/MyListing')} }>My Listings</NavDropdown.Item>
+          <NavDropdown.Divider />
+          <NavDropdown.Item href="#action/3.4" onClick={()=>{
+            setExpanded(false)
+            logout()}}>Sign Out</NavDropdown.Item>
+        </NavDropdown>
+        
+         </>
          
        
       :
-        <li className="nav-item dropdown " id='signInEnd'>
-        <a className="nav-link px-2 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Sign In
-        </a>
-        <ul className="dropdown-menu dropdown-menu-end dropdown-menu-dark">
-          <li><button data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" onClick={()=>navigate('/user/login')} className="dropdown-item" >Sign In as User</button ></li>
-          <li><hr className="dropdown-divider" /></li>
-          <li><button onClick={()=>navigate('/host/login')} data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" className="dropdown-item" >Host an experience</button></li>
+      <>
+       <NavDropdown  className='customDrop ' align="end" title="SignIn" id="basic-nav-dropdown">
+          <NavDropdown.Item href="#action/3.1" onClick={()=>{
+            setExpanded(false)
+            navigate('/user/login')} }>Sign In As User</NavDropdown.Item>
+          <NavDropdown.Divider />
+          <NavDropdown.Item href="#action/3.2" onClick={()=>{
+            setExpanded(false)
+            navigate('/host/login')} }>Host An Experience</NavDropdown.Item>
          
-         
-        </ul>
-      </li>
+        </NavDropdown>
+       
+      </>
         }
           
         
-        </ul>
-        <div className="tab-content" id="pills-tabContent">
-  <div className="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">...</div>
-  <div className="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">...</div>
-  <div className="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
-</div>
         
-      </div>
-    </div>
-  </nav>
+      
+      
+    
+      </Nav>
+        </Navbar.Collapse> 
+    </Container>
+    </Navbar>
+  
+
+  </>
   )
 }

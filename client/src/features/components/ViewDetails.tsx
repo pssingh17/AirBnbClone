@@ -212,7 +212,7 @@ export const ViewDetails = () => {
                   <>
                   {addedToFavourites?<>
                     <button
-                  className="slign-self-end btn btn-dark mt-auto m-1 customBtnPosition px-5"
+                  className="slign-self-end btn btn-dark mt-auto m-1 customBtnHover px-5"
                   onClick={removeFromFavourites}
                 >
                   Remove from Favourites
@@ -221,7 +221,7 @@ export const ViewDetails = () => {
                   </>:
                   <>
                    <button
-                    className="slign-self-end btn btn-dark mt-auto m-1 customBtnPosition px-5"
+                    className="slign-self-end btn btn-dark mt-auto m-1 customBtnHover px-5"
                     onClick={addToFavourites}
                   >
                     Add to Favourites

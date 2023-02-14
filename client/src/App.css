@@ -61,7 +61,9 @@
   width: 40% !important;
   height: 80% !important;
 }
-
+.customResp{
+  padding: 3rem 3rem !important;
+}
   @media screen and (max-width:992px){
     .custom-viewDetailsContainer{
       grid-template-columns: auto !important;
@@ -79,7 +81,13 @@
     .custom-booking-child-container{
       flex-direction: column;
     }
-
+    #searchField{
+      width: 70vw;
+    }
+    .customDrop{
+      position: relative !important;
+      
+    }
   }
   @media screen and (min-width:992px) {
     #signInEnd{
@@ -132,31 +140,16 @@
   
 
     
-     @media screen and (max-width:600px){
-      .customContainer{
-        padding: 0 2rem;
-      }
-    }
 
-    @media screen and (max-width:400px){
-      .customContainer{
-        padding: 0 0.8rem;
-      }
-      .customHover{
-        width: 20rem !important;
-      }
-    }
  .navbar-expand-lg .navbar-nav .dropdown-menu {
       
       border-radius: 13px !important;
   }
   .dropdown-item:hover{
-    color: aqua !important;
-    background-color: transparent !important;
+    color: rgb(20, 110, 110);
+    
   }
-  .customResp{
-    padding: 3rem 3rem !important;
-  }
+
   @media screen and (max-width:600px){
     .customContainer{
       padding: 0 2rem;
@@ -174,3 +167,36 @@
       width: 20rem !important;
     }
   }
+  .navbar-color{
+    background-color: red !important;
+  }
+  .container-fluid{
+    font-weight: 600;
+  }
+
+  .customDrop:hover>a{
+      /* background-color: black; */
+      color:aqua;
+     
+      border-radius: 13px;
+      
+     
+  }
+  .customDrop{
+    padding-left: 0;
+    position: absolute !important;
+    right: 13px;
+  }
+  #basic-nav-dropdown{
+    padding: 7px 10px;
+  }
+  @media screen and (max-width:992px){
+    .customDrop{
+    
+      position: relative !important;
+      left: 3px;
+    }}
+
+    .customBtnHover:hover{
+      color: aqua !important;
+    }

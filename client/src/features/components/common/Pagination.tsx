@@ -247,11 +247,11 @@ axios({
     <>
     <div className='container d-flex justify-content-between'>
     <div className='m-1'>
-    <button type='button' className='btn btn-dark px-3' onClick={previousPage}>Previous Page</button>
+    <button type='button' className='btn btn-dark px-3 customBtnHover' onClick={previousPage}>Previous Page</button>
    
    </div>
    <div className='m-1'>
-   <button type='button' className='btn btn-dark px-3' onClick={nextPage}>Next Page  </button>
+   <button type='button' className='btn btn-dark px-3 customBtnHover' onClick={nextPage}>Next Page  </button>
    </div>
    </div>
    

@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { Routes, Route } from "react-router-dom";
 import { LandingPage } from './features/components/LandingPage';
-import {Navbar}  from './features/components/common/Navbar'
+import {CNavbar}  from './features/components/common/Navbar'
 import { Pagination } from './features/components/common/Pagination';
 import { Trending } from './features/components/Trending';
 import { TopPicks } from './features/components/TopPicks';
@@ -43,7 +43,7 @@ function App() {
  
   return (
     <>
-     <Navbar />
+     <CNavbar />
     
      <div className="App">
     <div className='customContainer'>
