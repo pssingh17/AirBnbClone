@@ -87,20 +87,21 @@ router.post("/", async (req, res) => {
               pass: process.env.NodeMailerPass,
             },
           });
-
+  
           var mailOptions = {
             from: "t39200309@gmail.com",
             to: data.email,
             subject: "Verify Your Email",
             text: `Verification code is - ${randomVerifyCode}`,
           };
-
+  
           transporter.sendMail(mailOptions, function (error, info) {
             if (error) {
               console.log(error);
             } else {
                
               console.log("Email sent: " + info.response);
+              
               res.json({message:"Verify Your email", response:response.verified})
             }
           });
