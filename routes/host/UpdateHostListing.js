@@ -32,7 +32,7 @@ router.post("/updateHostListing",upload, async (req, res) => {
           }
           if(req.file){
             const path = req.file.path.replace(/\\/g, "/")
-            data = {...data, "images.picture_url":"https://ps-airbnb-clone.cyclic.app/" + path}
+            data = {...data, "images.picture_url":"https://github.com/pssingh17/AirBnbClone/tree/main/" + path}
           }
          
           try{
