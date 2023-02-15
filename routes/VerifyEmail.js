@@ -42,7 +42,7 @@ router.post("/", async (req, res) => {
         var transporter = nodemailer.createTransport({
           service: "gmail",
           port: 465,
-          secure: true,
+          secureConnection: true,
           auth: {
             user: "t39200309@gmail.com",
             pass: process.env.NodeMailerPass,
@@ -77,7 +77,7 @@ router.post("/", async (req, res) => {
         var transporter = nodemailer.createTransport({
           service: "gmail",
           port: 465,
-          secure: true,
+          secureConnection: true,
           auth: {
             user: "t39200309@gmail.com",
             pass: process.env.NodeMailerPass,
@@ -115,7 +115,7 @@ router.post("/", async (req, res) => {
           var transporter = nodemailer.createTransport({
             service: "gmail",
             port: 465,
-            secure: true,
+            secureConnection: true,
             auth: {
               user: "t39200309@gmail.com",
               pass: "mgoh yewc ufly mduz",
@@ -151,7 +151,7 @@ router.post("/", async (req, res) => {
           var transporter = nodemailer.createTransport({
             service: "gmail",
             port: 465,
-            secure: true,
+            secureConnection: true,
             auth: {
               user: "t39200309@gmail.com",
               pass: "mgoh yewc ufly mduz",
