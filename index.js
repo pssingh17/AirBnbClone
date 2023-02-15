@@ -62,6 +62,8 @@ app.get("*", function (_, res) {
     }
   );
 });
+app.use(express.static('./public'));
+app.use('/uploads', express.static('uploads'));
 // Unprotected routes
 app.use("/api/", commonRoutes);
 // Common routes for user and host signup/login

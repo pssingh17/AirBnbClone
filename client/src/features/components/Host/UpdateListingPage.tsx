@@ -22,29 +22,53 @@ export const UpdateListingPage = () => {
   const { register, handleSubmit , formState: { errors }} = useForm<FormValues>();
   const [field,setField] = useState("hello")
   const onSubmit: SubmitHandler<FormValues> = ((data) => {
+    let formData = new FormData()
+    formData.append("name",data.name)
+    formData.append("description", data.description)
+    // @ts-ignore
+    formData.append("summary", data.summary)
+    // @ts-ignore
+    formData.append("address", data.address)
+    // @ts-ignore
+    formData.append("rooms", data.bedrooms)
+    // @ts-ignore
+    formData.append("bathrooms", data.bathrooms)
+    // @ts-ignore
+    formData.append("price", data.price)
+    // @ts-ignore
+    formData.append( "cancellation_policy", data.cancellation_policy)
+    // @ts-ignore
+    formData.append("userType", "Host")
+    // @ts-ignore
+    formData.append("listing_url",data.name+data.description)
+   
+    // @ts-ignore
+    formData.append("host_id",Date.now())
+    // @ts-ignore
+    formData.append("picture_url",data.images[0])
     let token = cookie.token
-    var body ={
-      "name": data.name,
-      "description": data.description,
-      "summary": data.summary,
-      "address": data.address,
-      "rooms": data.bedrooms,
-      "bathrooms": data.bathrooms,
-      "price": data.price,
-      "cancellation_policy": data.cancellation_policy,
-      "userType": "Host",
-      "listing_url":data.name+data.description,
-      "images.picture_url": data?.images?.picture_url,
-      "host":{"host_id":Date.now()},
-    }
+    // var body ={
+    //   "name": data.name,
+    //   "description": data.description,
+    //   "summary": data.summary,
+    //   "address": data.address,
+    //   "rooms": data.bedrooms,
+    //   "bathrooms": data.bathrooms,
+    //   "price": data.price,
+    //   "cancellation_policy": data.cancellation_policy,
+    //   "userType": "Host",
+    //   "listing_url":data.name+data.description,
+    //   "images.picture_url": data?.images?.picture_url,
+    //   "host":{"host_id":Date.now()},
+    // }
     // console.log(data)
     axios({
       
       method: 'post',
       
-      url: 'http://localhost:8000/host/updateHostListing',
+      url: '/host/updateHostListing',
       
-      data:body, 
+      data:formData, 
       headers: {
         Authorization: `Bearer ${token}`,
         'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
@@ -198,7 +222,7 @@ export const UpdateListingPage = () => {
                         {errors.price && <p style={{color:"red"}}>Price should be valid number more than 50</p>}
 
                       </div>
-                      <div className="mb-3">
+                      {/* <div className="mb-3">
                         <p className="form-label text-start">Image Link</p>
                         <input
                           type="text"
@@ -209,7 +233,9 @@ export const UpdateListingPage = () => {
                         />
                         {errors.price && <p style={{color:"red"}}>Enter valid link</p>}
 
-                      </div>
+                      </div> */}
+                       <input type="file" {...register("images")} />
+
                       <div className="mb-3">
                         <p className="form-label text-start">Cancellaton Policy</p>
                         <input

@@ -1,7 +1,7 @@
 const express = require("express");
 const Model = require("../../models/model");
 var mongo = require('mongodb');
-
+const upload = require('../../upload')
 const app = express();
 const jwt = require("jsonwebtoken")
 
@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 const router = express.Router();
 
 
-router.post("/updateHostListing", async (req, res) => {
+router.post("/updateHostListing",upload, async (req, res) => {
     
       const { authorization } = req.headers
       if (authorization && authorization.startsWith('Bearer')) {
@@ -22,7 +22,7 @@ router.post("/updateHostListing", async (req, res) => {
     
      
          
-          
+         
           // console.log(amenities1,"amenities from body:", req.body.amenities)
           let {amenities,...data} = req.body;
           if(amenities){
@@ -30,6 +30,11 @@ router.post("/updateHostListing", async (req, res) => {
             amenities1= Array.from(new Set(amenities))
             // console.log("amenities1 -",amenities1)
           }
+          if(req.file){
+            const path = req.file.path.replace(/\\/g, "/")
+            data = {...data, "images.picture_url":"https://ps-airbnb-clone.cyclic.app/" + path}
+          }
+         
           try{
             // console.log("inside try")
                 // Verify Token
