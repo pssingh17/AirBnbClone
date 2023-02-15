@@ -55,7 +55,7 @@ verified: Boolean,
   images: {
     thumbnail_url: String,
     medium_url: String,
-    picture_url: String,
+    picture_url: {type:String},
     xl_picture_url: String,
   },
   host: {
