@@ -41,6 +41,7 @@ router.post("/", async (req, res) => {
         
         var transporter = nodemailer.createTransport({
           service: "gmail",
+          secure: true,
           auth: {
             user: "t39200309@gmail.com",
             pass: process.env.NodeMailerPass,
@@ -74,6 +75,7 @@ router.post("/", async (req, res) => {
         
         var transporter = nodemailer.createTransport({
           service: "gmail",
+          secure: true,
           auth: {
             user: "t39200309@gmail.com",
             pass: process.env.NodeMailerPass,
@@ -110,6 +112,7 @@ router.post("/", async (req, res) => {
         // console.log("inside email exist", emailExist.verifyToken)
           var transporter = nodemailer.createTransport({
             service: "gmail",
+            secure: true,
             auth: {
               user: "t39200309@gmail.com",
               pass: "mgoh yewc ufly mduz",
@@ -144,6 +147,7 @@ router.post("/", async (req, res) => {
           
           var transporter = nodemailer.createTransport({
             service: "gmail",
+            secure: true,
             auth: {
               user: "t39200309@gmail.com",
               pass: "mgoh yewc ufly mduz",
