@@ -25,6 +25,7 @@ export const AddReview = () => {
 
   const [reviewerExist, setReviewerExist] = useState(false)
   const[reviewerEmail, setReviewerEmail] = useState()
+  const[bookingExist, setBookingExist] = useState(false)
     const [displayCommentBox, setDisplayCommentBox] = useState(false)
     const dispatch = useDispatch()
   const [cookie, setCookie, removeCookie] = useCookies(['token']);
@@ -104,6 +105,12 @@ export const AddReview = () => {
                 // console.log("responi", res?.data?.newData?.email)
               // dispatch(FavouritesData(res.data?.newData));
               let data = viewDetailsRedux?.reviews.filter((email:any)=>{ return email.email === res.data.newData.email})
+              let data1 = res.data.newData.bookings.filter((booking:any)=>{ return booking.host.host_id === viewDetailsRedux.host.host_id})
+              // console.log("resbook", res.data.newData, "hostid", viewDetailsRedux.host.host_id)
+              // console.log("Data chaeck: ",data, "data1", data1)
+              if(data1.length>0){
+                setBookingExist(true)
+              }else{setBookingExist(false)}
               // console.log(data)
               if(data[0]){
                setReviewerExist(true)
@@ -124,12 +131,12 @@ export const AddReview = () => {
         
        
       }}
-       },[ReviewsRedux])
+       },[ReviewsRedux,viewDetailsRedux])
   return (
   <div className="text-start">
-    {!reviewerExist?<>
+    {!reviewerExist && bookingExist ? <>
       <button
-    className=" w-auto btn btn-dark mt-auto m-1  customBtnHover  px-4" onClick={displayBox} > Add Review</button>
+    className=" w-auto btn btn-dark mt-auto m-1  customBtnHover  px-4" onClick={displayBox} > Add Your Experience</button>
     {displayCommentBox?<>
     <form className="mb-3 mt-md-4 " onSubmit={handleSubmit(onSubmit)}>
         <textarea
