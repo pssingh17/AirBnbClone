@@ -72,10 +72,10 @@ router.post("/", async (req, res) => {
      }
         
       
-    } else {
+    } else if (data.userType==="Host"){
       
         const emailExist = await Model.findOne({ email: data.email });
-        // console.log("emailExist", emailExist)
+        console.log("emailExist", emailExist)
         if (emailExist) {
           const response = await Model.findOneAndUpdate({email:data.email},{verifyToken:randomVerifyCode},{password:0,verifyToken:0})
           var transporter = nodemailer.createTransport({
