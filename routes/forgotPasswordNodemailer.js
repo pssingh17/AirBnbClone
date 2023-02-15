@@ -39,6 +39,7 @@ router.post("/", async (req, res) => {
         const response = await User.findOneAndUpdate({email:data.email},{verifyToken:randomVerifyCode},{password:0,verifyToken:0})
         var transporter = nodemailer.createTransport({
           service: "gmail",
+          port: 465,
           secure: true,
           auth: {
             user: "t39200309@gmail.com",
@@ -79,6 +80,7 @@ router.post("/", async (req, res) => {
           const response = await Model.findOneAndUpdate({email:data.email},{verifyToken:randomVerifyCode},{password:0,verifyToken:0})
           var transporter = nodemailer.createTransport({
             service: "gmail",
+            port: 465,
             secure: true,
             auth: {
               user: "t39200309@gmail.com",
