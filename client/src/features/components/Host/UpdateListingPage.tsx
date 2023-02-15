@@ -222,19 +222,13 @@ export const UpdateListingPage = () => {
                         {errors.price && <p style={{color:"red"}}>Price should be valid number more than 50</p>}
 
                       </div>
-                      {/* <div className="mb-3">
-                        <p className="form-label text-start">Image Link</p>
-                        <input
-                          type="text"
-                          className="form-control"
-                          {...register("images.picture_url",{
-                            
-                          })} defaultValue={UserDataRedux?.images?.picture_url}
-                        />
-                        {errors.price && <p style={{color:"red"}}>Enter valid link</p>}
+                    
+                      <div className="mb-3 text-start">
+                        <p className="form-label text-start">Upload Image</p>
+                       <input  type="file" {...register("images",{required: true})} />
+                       {errors.images && <p style={{color:"red"}}>Upload A valid image</p>}
 
-                      </div> */}
-                       <input type="file" {...register("images")} />
+</div>
 
                       <div className="mb-3">
                         <p className="form-label text-start">Cancellaton Policy</p>

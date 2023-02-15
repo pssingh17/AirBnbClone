@@ -1,6 +1,7 @@
 const express = require("express");
 const Model = require("../../models/model");
 var mongo = require('mongodb');
+const uploadToCloudinary = require('../../cloudinary')
 const upload = require('../../upload')
 const app = express();
 const jwt = require("jsonwebtoken")
@@ -12,7 +13,8 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 const router = express.Router();
 
 
-router.post("/updateHostListing",upload, async (req, res) => {
+router.post("/updateHostListing",upload.single("picture_url"), async (req, res) => {
+ 
     
       const { authorization } = req.headers
       if (authorization && authorization.startsWith('Bearer')) {
@@ -31,8 +33,13 @@ router.post("/updateHostListing",upload, async (req, res) => {
             // console.log("amenities1 -",amenities1)
           }
           if(req.file){
-            const path = req.file.path.replace(/\\/g, "/")
-            data = {...data, "images.picture_url":"https://github.com/pssingh17/AirBnbClone/tree/main/" + path}
+            try{
+              const result = await uploadToCloudinary(req.file.path,"Images") 
+              data= {...data, "images.picture_url":result.url}
+            }
+            catch(error){
+              console.log(error)
+            }
           }
          
           try{
@@ -51,6 +58,7 @@ router.post("/updateHostListing",upload, async (req, res) => {
             // console.log("user data retriece check", userData)
             let response;
               if(userData){
+                
                 await Model.findOneAndUpdate({_id:o_id}, data )
                 if(amenities){
                  
