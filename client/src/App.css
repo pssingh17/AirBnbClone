@@ -200,3 +200,15 @@
     .customBtnHover:hover{
       color: aqua !important;
     }
+    .navbar-toggler{
+      color:transparent !important
+    }
+
+    @media screen and (max-width:768px){
+      .custom-head{
+        flex-direction: column;
+      }
+      .customImgBook{
+        width: 100% ;
+      }
+    }

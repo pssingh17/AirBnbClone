@@ -8,7 +8,6 @@ import { viewDetailsData } from '../../ViewDetailsReducer/ViewDetailsSlice';
 import { useCookies } from 'react-cookie';
 import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
-import { LoaderStatus } from '../../LoaderReducer/LoaderSlice';
 
 
 export const StripePayment = () => {
@@ -33,8 +32,6 @@ export const StripePayment = () => {
     error.target.src = errorImage;
   };
     const handleToken = (totalAmount:any,token:any) =>{
-    dispatch(LoaderStatus(true))
-
         try{
           axios.post("/user/payment",{
             stripeToken:token.id,
@@ -50,6 +47,7 @@ export const StripePayment = () => {
         booking_id: viewDetailsRedux.listing_url.substring(
           viewDetailsRedux.listing_url.lastIndexOf("/") + 1
         ),
+        listing_id: viewDetailsRedux?.host?.host_id,
         date: Date.now()
       };
       axios({
@@ -62,8 +60,6 @@ export const StripePayment = () => {
         },
       }).then((res) => {
         // console.log("rrsponse from booking", res.data);
-    dispatch(LoaderStatus(false))
-
         setShowGreen(true)
         setAlertValue(res.data.message)
         // navRef.current('/user/bookings')
@@ -99,7 +95,6 @@ export const StripePayment = () => {
         // @ts-ignore
         let DateTo = JSON.parse(localStorage.getItem("DateTo"))
         DateTo = d.toLocaleDateString();
-    dispatch(LoaderStatus(false))
       
     
     // console.log("hi", LastViewDetailPage)
@@ -138,17 +133,17 @@ export const StripePayment = () => {
       <div className='custom-head'>
       {viewDetailsRedux?.images?.picture_url ? <>
         <img
-              style={{ width: "20%", height: "20%",borderRadius:"20px" }}
+              style={{ height: "21rem",borderRadius:"20px" }}
               src={viewDetailsRedux?.images?.picture_url}
-              className="card-img-top"
+              className="customImgBook"
               alt="No image found"
               onError={replaceImage}
             />
       </>:
        <img
-       style={{ width: "20%", height: "20%",borderRadius:"20px" }}
+       style={{ height: "21rem",borderRadius:"20px" }}
        src="https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-       className="card-img-top"
+       className="customImgBook"
        alt="No image found"
        onError={replaceImage}
      />
@@ -156,12 +151,17 @@ export const StripePayment = () => {
    
     <div className='custom-details text-start p-2'>
     <div><h4>{viewDetailsRedux?.name}</h4></div>
-    <div><b>{viewDetailsRedux?.address.street},{viewDetailsRedux?.address.suburb},{viewDetailsRedux?.address.country}</b></div>
-    <div><b>From {viewDetailsRedux?.DateFrom} to {viewDetailsRedux?.DateTo} - {viewDetailsRedux?.NumberOFDays} Days</b></div>
+    {viewDetailsRedux?.address.street ? <>
+    <div>Address : <b><i>{viewDetailsRedux?.address.street},{viewDetailsRedux?.address.suburb},{viewDetailsRedux?.address.country}</i></b></div>
+    </>:<>Address : {viewDetailsRedux?.address.street}</>}
+    <p className='mb-0'>Rating : <b><i> {viewDetailsRedux.newData?.review_scores?.review_scores_rating || "No Ratings Yet"} </i></b></p>
+    <div>Cancellation Policy : <b><i>{viewDetailsRedux?.cancellation_policy}</i></b></div>
+    <div>Price Per Night : <b><i>{viewDetailsRedux?.price}</i></b></div>
+    <div>Dates Selected : <b><i>From {viewDetailsRedux?.DateFrom} to {viewDetailsRedux?.DateTo} - {viewDetailsRedux?.NumberOFDays} Days</i></b></div>
     </div>
    
    </div>
-   <div><b>Continue to pay : ${viewDetailsRedux?.price* (viewDetailsRedux?.NumberOFDays)}</b></div>
+   <div><b><i>Continue to pay : ${viewDetailsRedux?.price* (viewDetailsRedux?.NumberOFDays)}</i></b></div>
     <Stripe stripeKey='pk_test_51MUqu0K16nSfUndiDYDDQwKwc7ODG00g2inFW5YZdGgYVdCZVGtWnelJw5uUQbOCavzOStGQGR18JM7R8am5Xm2R004ZZV1Kps' token={tokenHandler} 
     shippingAddress
     billingAddress
