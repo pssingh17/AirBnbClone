@@ -32,48 +32,7 @@ router.post("/", async (req, res) => {
     data.userType &&
     data.email 
   ) {
-    if (data.userType === "Host") {
-     
-      const emailExist = await Model.findOne({ email: data.email });
-      console.log("emailExist", emailExist)
-      if (emailExist) {
-        const response = await Model.findOneAndUpdate({email:data.email},{verifyToken:randomVerifyCode},{password:0,verifyToken:0})
-        var transporter = nodemailer.createTransport({
-          service: "gmail",
-          port: 587,
-          secure: true,
-          auth: {
-            user: "t39200309@gmail.com",
-            pass: process.env.NodeMailerPass,
-          },
-        });
-
-        var mailOptions = {
-          from: "t39200309@gmail.com",
-          to: data.email,
-          subject: "Verify Your Email",
-          text: `Verification code is - ${randomVerifyCode}`,
-        };
-
-        transporter.sendMail(mailOptions, function (error, info) {
-          if (error) {
-            console.log(error);
-          } else {
-             
-            console.log("Email sent: " + info.response);
-            
-            res.json({message:"Verify Your email", response:response.verified})
-          }
-        });
-       
-        res.json({message:"Verify Your email", response:response.verified})
-      } 
-      else{
-        res.json({message:"Email Dont Exist"});
-      }
-      
-    } else if (data.userType==="User"){
-      
+    if (data.userType === "User") {
       const emailExist = await User.findOne({ email: data.email });
       // console.log("emailExist", emailExist)
       if (emailExist) {
@@ -87,14 +46,14 @@ router.post("/", async (req, res) => {
             pass: process.env.NodeMailerPass,
           },
         });
-      
+
         var mailOptions = {
           from: "t39200309@gmail.com",
           to: data.email,
           subject: "Verify Your Email",
           text: `Verification code is - ${randomVerifyCode}`,
         };
-      
+
         transporter.sendMail(mailOptions, function (error, info) {
           if (error) {
             console.log(error);
@@ -108,9 +67,50 @@ router.post("/", async (req, res) => {
         
        
       }
-      else{
+     else{
       res.json({message:"Email Dont Exist"});
-      }
+     }
+        
+      
+    } else if (data.userType==="Host"){
+      
+        const emailExist = await Model.findOne({ email: data.email });
+        console.log("emailExist", emailExist)
+        if (emailExist) {
+          const response = await Model.findOneAndUpdate({email:data.email},{verifyToken:randomVerifyCode},{password:0,verifyToken:0})
+          var transporter = nodemailer.createTransport({
+            service: "gmail",
+            port: 587,
+            secure: true,
+            auth: {
+              user: "t39200309@gmail.com",
+              pass: process.env.NodeMailerPass,
+            },
+          });
+  
+          var mailOptions = {
+            from: "t39200309@gmail.com",
+            to: data.email,
+            subject: "Verify Your Email",
+            text: `Verification code is - ${randomVerifyCode}`,
+          };
+  
+          transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+              console.log(error);
+            } else {
+               
+              console.log("Email sent: " + info.response);
+              
+              res.json({message:"Verify Your email", response:response.verified})
+            }
+          });
+         
+          res.json({message:"Verify Your email", response:response.verified})
+        } 
+        else{
+          res.json({message:"Email Dont Exist"});
+        }
       } 
     }
   }
@@ -119,5 +119,3 @@ router.post("/", async (req, res) => {
 );
 
 module.exports = router;
-
-
