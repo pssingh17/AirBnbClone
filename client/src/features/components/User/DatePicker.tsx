@@ -6,7 +6,7 @@ import 'react-day-picker/dist/style.css';
 import { userData } from '../../UserDataReducer/UserDataSlice';
 import { useDispatch } from 'react-redux';
 
-const pastMonth = new Date(2023, 10, 15);
+const today = new Date();
 
 
 export const DatePicker = () => {
@@ -26,10 +26,13 @@ const dispatch = useDispatch()
   };
    
     const defaultSelected: DateRange = {
-        from: pastMonth,
-        to: addDays(pastMonth, 4)
+        from: today,
+        to: addDays(today, 4)
       };
-      const [range, setRange] = useState<DateRange | undefined>(defaultSelected);
+      const disabledDays = [
+        { from: new Date(1996, 10, 13), to: new Date() }
+      ];
+      const [range, setRange] = useState<DateRange | undefined>();
       useEffect(()=>{
         // console.log("elsected:", range)
         let date1 = range?.from;
@@ -73,9 +76,8 @@ const dispatch = useDispatch()
         <>
         
         <DayPicker
-        
+          disabled={disabledDays}
           mode="range"
-          defaultMonth={pastMonth}
           selected={range}
           footer={footer}
           onSelect={setRange}

@@ -42,11 +42,11 @@ export function DatePickerModal() {
         <DatePicker />
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button className='customBtnHover' variant="dark" onClick={handleClose}>
             Close
           </Button>
           <button
-                  className="slign-self-end float-end btn btn-dark mt-auto m-1 customBtnPosition"
+                  className="slign-self-end float-end btn btn-dark mt-auto m-1 customBtnPosition customBtnHover"
                   onClick={Payment}
                 >
                   Book Now

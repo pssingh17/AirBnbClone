@@ -99,10 +99,10 @@ export function AdvanceFiltersModal(filterStateSetter:any) {
     </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button className='customBtnHover' variant="dark" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="dark" onClick={applyFilters}>
+          <Button className='customBtnHover' variant="dark" onClick={applyFilters}>
             Apply Filter
           </Button>
         </Modal.Footer>
