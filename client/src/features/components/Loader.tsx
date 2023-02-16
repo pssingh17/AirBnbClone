@@ -4,9 +4,11 @@ import RingLoader from "react-spinners/RingLoader";
 
 const override: CSSProperties = {
   display: "block",
-  position:"absolute",
-  top:"39vh",
-  margin: "auto",
+ position:"fixed",
+ top:"50%",
+ left:"50%",
+ transform: "translate(-50%, -50%)",
+  // margin: "auto",
   borderColor: "black",
   zIndex:9
 };
