@@ -21,13 +21,13 @@ export const Pagination = ({dataFrom,page}:Page) => {
     const searchlistingsDataCheck = useSelector((state: RootState) => state.SearchListingSlice.value.newData)
     // console.log("Paginated gets page no. : ", dataFrom,page)
     const nextPage = ()=>{
-      dispatch(LoaderStatus(true))
       window.scrollTo({
         top: 0,
         behavior: 'smooth',
     });
       if(dataFrom == "getAll" ){
-        if(listingsDataCheck?.length>0){
+        if(listingsDataCheck?.length>1){
+      dispatch(LoaderStatus(true))
           
              // @ts-ignore
       page = page+1
@@ -48,11 +48,14 @@ export const Pagination = ({dataFrom,page}:Page) => {
               }
             }).then(res=>{
               // console.log(res.data)
-              dispatch(LoaderStatus(false))
+              if(res?.data?.newData?.length>0){
               setlistings(res.data.newData)
               dispatch(allListingsData(res.data))
               localStorage.setItem("SelectedAmenity",JSON.stringify(SelectedAmenity))
               localStorage.setItem("SelectedPrice",JSON.stringify(SelectedPrice))
+              }
+              dispatch(LoaderStatus(false))
+
               
           }).catch(err=>{console.log(err)})
           }
@@ -68,10 +71,13 @@ export const Pagination = ({dataFrom,page}:Page) => {
           }
         }).then(res=>{
           // console.log(res.data)
-          dispatch(LoaderStatus(false))
+          if(res?.data?.newData?.length>0){
           setlistings(res.data.newData)
           dispatch(allListingsData(res.data))
           // console.log(res.data)
+          }
+          dispatch(LoaderStatus(false))
+
         }).catch(err=>{console.log(err)})
       }
       
@@ -80,7 +86,9 @@ export const Pagination = ({dataFrom,page}:Page) => {
       else if(dataFrom=== "search"){
         // console.log("searchlistingsDataCheck:",searchlistingsDataCheck)
         if(searchlistingsDataCheck){
-          if(searchlistingsDataCheck?.length>0){
+          if(searchlistingsDataCheck?.length>1){
+          dispatch(LoaderStatus(true))
+
             // @ts-ignore
 page = page+1
 axios({
@@ -94,9 +102,12 @@ axios({
   }
 }).then(res=>{
   // console.log(res.data)
+  if(res?.data?.newData?.length>0){
+    setlistings(res.data.newData)
+    dispatch(searchListingData(res.data))
+  }
   dispatch(LoaderStatus(false))
-  setlistings(res.data.newData)
-  dispatch(searchListingData(res.data))
+ 
   // console.log(res.data)
 }).catch(err=>{console.log(err)})
 
@@ -107,6 +118,8 @@ axios({
       }
       else{
         if(listingsDataCheck?.length>0){
+    dispatch(LoaderStatus(true))
+
          // @ts-ignore
       page = page+1
       axios({
@@ -118,9 +131,12 @@ axios({
         
       }).then(res=>{
         // console.log(res.data)
-        dispatch(LoaderStatus(false))
+        if(res?.data?.newData?.length>0){
         setlistings(res.data.newData)
         dispatch(allListingsData(res.data))
+        }
+    dispatch(LoaderStatus(false))
+
         // console.log(res.data)
       }).catch(err=>{console.log(err)})
       }
@@ -128,7 +144,6 @@ axios({
      
     }
     const previousPage = ()=>{
-      dispatch(LoaderStatus(true))
       window.scrollTo({
         top: 0,
         behavior: 'smooth',
@@ -142,6 +157,7 @@ axios({
       else{
        page=1
       }
+      dispatch(LoaderStatus(true))
       
       let SelectedAmenity = JSON.parse(localStorage.getItem("SelectedAmenity") || '{}')
       let SelectedPrice = JSON.parse(localStorage.getItem("SelectedPrice") || '{}')
@@ -159,12 +175,15 @@ axios({
             'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
           }
         }).then(res=>{
+          if(res?.data?.newData?.length>0){
           // console.log(res.data)
-          dispatch(LoaderStatus(false))
           setlistings(res.data.newData)
           dispatch(allListingsData(res.data))
           localStorage.setItem("SelectedAmenity",JSON.stringify(SelectedAmenity))
           localStorage.setItem("SelectedPrice",JSON.stringify(SelectedPrice))
+          }
+          dispatch(LoaderStatus(false))
+
       }).catch(err=>{console.log(err)})
       }
       else{
@@ -181,9 +200,12 @@ axios({
         }).then(res=>{
         //  console.log(res.data)
          // console.log(res.data)
-         dispatch(LoaderStatus(false))
+         if(res?.data?.newData?.length>0){
          setlistings(res.data.newData)
          dispatch(allListingsData(res.data))
+         }
+         dispatch(LoaderStatus(false))
+
        }).catch(err=>{console.log(err)})
       }
      
@@ -210,10 +232,13 @@ axios({
         
       }).then(res=>{
       //  console.log(res.data)
-      dispatch(LoaderStatus(false))
+      if(res?.data?.newData?.length>0){
        // console.log(res.data)
        setlistings(res.data.newData)
        dispatch(searchListingData(res.data))
+      }
+      dispatch(LoaderStatus(false))
+
      }).catch(err=>{console.log(err)})
       }
       else{
@@ -236,9 +261,12 @@ axios({
       }).then(res=>{
       //  console.log(res.data)
        // console.log(res.data)
-       dispatch(LoaderStatus(false))
+       if(res?.data?.newData?.length>0){
        setlistings(res.data.newData)
        dispatch(allListingsData(res.data))
+       }
+       dispatch(LoaderStatus(false))
+
      }).catch(err=>{console.log(err)})
       }
      

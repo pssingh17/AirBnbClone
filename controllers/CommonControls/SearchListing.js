@@ -2,7 +2,7 @@ const Model = require("../../models/model");
 
 async function SearchListing(data) {
   const page = parseInt(data.page) - 1 || 0;
-  const limit = parseInt(data.limit) || 16;
+  const limit = parseInt(data.limit) || 12;
   // console.log("Req body:", data.name)
   const newData = await Model.find({
     $or: [

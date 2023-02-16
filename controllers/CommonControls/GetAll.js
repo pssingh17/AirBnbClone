@@ -2,7 +2,7 @@ const Model = require("../../models/model");
 
 async function GetAll(req) {
   const page = parseInt(req.body.page) - 1 || 0;
-  const limit = parseInt(req.body.limit) || 16;
+  const limit = parseInt(req.body.limit) || 12;
   let sort = req.body.sort || "price";
   let amenities = req.body.amenities || "All";
   let priceRange = undefined || req.body.priceRange
