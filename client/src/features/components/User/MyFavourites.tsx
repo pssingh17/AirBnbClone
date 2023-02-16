@@ -33,7 +33,8 @@ export const MyFavourites = () => {
     error.target.src = errorImage;
   };
   const removeFromFavourites = (favId:any) => {
-   
+    dispatch(LoaderStatus(true))
+
       let token = cookies.get("token");
       let newData = {
       
@@ -51,6 +52,8 @@ export const MyFavourites = () => {
         },
       }).then((res) => {
         // console.log("rrsponse from myfavourites page", res.data);
+      dispatch(LoaderStatus(false))
+
         setUserFavouritesState(res.data?.credentials?.favourites)
         dispatch(FavouritesData(res.data?.credentials?.favourites));
 
@@ -102,7 +105,7 @@ export const MyFavourites = () => {
   useEffect(() => {
     let token = cookies.get("token");
     // console.log("token in useEfect:", token)
-    dispatch(LoaderStatus(false))
+   
     axios({
       method: "post",
       url: "/user/MyUserProfile",
@@ -112,6 +115,7 @@ export const MyFavourites = () => {
       },
     }).then((res) => {
       // console.log("rrsponse from favourites", res.data);
+      dispatch(LoaderStatus(false))
       setUserFavouritesState(res.data?.newData?.favourites);
       dispatch(FavouritesData(res.data.newData));
       // console.log("User state data" , userDataState)

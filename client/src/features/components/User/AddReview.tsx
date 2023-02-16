@@ -7,6 +7,7 @@ import { Cookies } from 'react-cookie'
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import { viewDetailsData } from "../../ViewDetailsReducer/ViewDetailsSlice";
+import { LoaderStatus } from "../../LoaderReducer/LoaderSlice";
 
 // import Cookies from 'js-cookie'
 
@@ -44,6 +45,8 @@ export const AddReview = () => {
     }
 
     const onSubmit: SubmitHandler<FormValues> = ((data) => {
+    dispatch(LoaderStatus(true))
+
         let token = cookie.token
         let date = new Date()
         var body ={
@@ -68,6 +71,8 @@ export const AddReview = () => {
           }
         }).then(res=>{
           // console.log("response from reviews:",res.data)
+         dispatch(LoaderStatus(false))
+
           localStorage.setItem("LastViewDetailPage",JSON.stringify(res?.data?.credentials))
           dispatch(viewDetailsData(res?.data?.credentials));
           }).catch(err=>{
@@ -82,6 +87,8 @@ export const AddReview = () => {
         
       });
       useEffect(()=>{
+    dispatch(LoaderStatus(true))
+
         // @ts-ignore
         let userType = JSON.parse(localStorage.getItem("UserType"));
         if (userType === "User") {
@@ -102,6 +109,8 @@ export const AddReview = () => {
                 "content-type": "application/x-www-form-urlencoded;charset=utf-8",
               },
             }).then((res) => {
+    dispatch(LoaderStatus(false))
+
                 // console.log("responi", res?.data?.newData?.email)
               // dispatch(FavouritesData(res.data?.newData));
               let data = viewDetailsRedux?.reviews.filter((email:any)=>{ return email.email === res.data.newData.email})

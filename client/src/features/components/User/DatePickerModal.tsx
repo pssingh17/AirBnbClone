@@ -8,6 +8,7 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux'
 import { DatePicker } from './DatePicker';
 import { useNavigate } from 'react-router-dom';
+import { LoaderStatus } from '../../LoaderReducer/LoaderSlice';
 
 
 
@@ -24,6 +25,7 @@ export function DatePickerModal() {
   const handleClose = ()=>{setShow(false)}
   const handleShow = () => setShow(true);
   const Payment = () => {
+    dispatch(LoaderStatus(true))
     return navigate("/user/payment");
   };
 

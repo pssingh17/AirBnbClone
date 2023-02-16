@@ -11,6 +11,7 @@ import { DatePicker } from "./User/DatePicker";
 import { DatePickerModal } from "./User/DatePickerModal";
 import { Reviews } from "./Reviews";
 import { AddReview } from "./User/AddReview";
+import { LoaderStatus } from "../LoaderReducer/LoaderSlice";
 export const ViewDetails = () => {
   const [userDataState, setUserDataState] = useState<String[]>([]);
   const [addedToFavourites, setAddedToFavourites] = useState(false)
@@ -45,6 +46,8 @@ export const ViewDetails = () => {
   };
 
   const addToFavourites = () => {
+    dispatch(LoaderStatus(true))
+
     if (userTypeUser) {
       // console.log("iside if:", userTypeUser)
       let token = cookies.get("token");
@@ -66,6 +69,8 @@ export const ViewDetails = () => {
       }).then((res) => {
         // console.log("rrsponse from favourites", res.data);
         // dispatch(FavouritesData(res.data?.credentials?.favourites));
+      dispatch(LoaderStatus(false))
+
         setAddedToFavourites(true)
       }).catch(err=>{
         console.log("Error-",err)
@@ -80,6 +85,7 @@ export const ViewDetails = () => {
     }
   };
   const removeFromFavourites = () => {
+    dispatch(LoaderStatus(true))
     if (userTypeUser) {
       let token = cookies.get("token");
       let newData = {
@@ -99,6 +105,8 @@ export const ViewDetails = () => {
         },
       }).then((res) => {
         // console.log("rrsponse from favourites", res.data);
+        dispatch(LoaderStatus(false))
+
         setAddedToFavourites(false)
         dispatch(FavouritesData(res.data?.credentials?.favourites));
 

@@ -8,6 +8,7 @@ import { viewDetailsData } from '../../ViewDetailsReducer/ViewDetailsSlice';
 import { useCookies } from 'react-cookie';
 import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
+import { LoaderStatus } from '../../LoaderReducer/LoaderSlice';
 
 
 export const StripePayment = () => {
@@ -32,6 +33,8 @@ export const StripePayment = () => {
     error.target.src = errorImage;
   };
     const handleToken = (totalAmount:any,token:any) =>{
+    dispatch(LoaderStatus(true))
+
         try{
           axios.post("/user/payment",{
             stripeToken:token.id,
@@ -59,6 +62,8 @@ export const StripePayment = () => {
         },
       }).then((res) => {
         // console.log("rrsponse from booking", res.data);
+    dispatch(LoaderStatus(false))
+
         setShowGreen(true)
         setAlertValue(res.data.message)
         // navRef.current('/user/bookings')
@@ -94,6 +99,7 @@ export const StripePayment = () => {
         // @ts-ignore
         let DateTo = JSON.parse(localStorage.getItem("DateTo"))
         DateTo = d.toLocaleDateString();
+    dispatch(LoaderStatus(false))
       
     
     // console.log("hi", LastViewDetailPage)
