@@ -5,7 +5,7 @@ import RingLoader from "react-spinners/RingLoader";
 const override: CSSProperties = {
   display: "block",
   position:"absolute",
-  top:"39%",
+  top:"39vh",
   margin: "auto",
   borderColor: "black",
   zIndex:9
