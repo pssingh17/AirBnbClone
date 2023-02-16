@@ -61,6 +61,7 @@ export const MyBookings = () => {
     })
   }
   useEffect(()=>{
+    dispatch(LoaderStatus(true))
     let token = cookies.get('token')
     // console.log("token in useEfect:", token)
     axios({
@@ -134,7 +135,7 @@ export const MyBookings = () => {
           View Listing
         </button>
         </div>
-        </>:" "
+        </>:<h5>No bookings yet</h5>
         }
        
         </div>
@@ -145,6 +146,6 @@ export const MyBookings = () => {
    
    
     </>
-    :<h5>No bookings yet</h5>
+    :<></>
   )
 }
