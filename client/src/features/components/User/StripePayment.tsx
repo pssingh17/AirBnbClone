@@ -104,6 +104,9 @@ export const StripePayment = () => {
       }
       dispatch(viewDetailsData(data));
     }
+    else{
+      navigate('/viewDetails')
+    }
       },[])
      
     
