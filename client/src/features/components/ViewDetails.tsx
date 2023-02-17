@@ -196,7 +196,7 @@ export const ViewDetails = () => {
     if (LastViewDetailPage) {
       dispatch(viewDetailsData(LastViewDetailPage));
     }
-    if(!userType){
+    if(userTypeUser==="none"){
 
       dispatch(LoaderStatus(false))
     }
