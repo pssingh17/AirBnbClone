@@ -19,7 +19,7 @@ export const ViewDetails = () => {
   const [userDataState, setUserDataState] = useState<String[]>([]);
   const [addedToFavourites, setAddedToFavourites] = useState(false)
   
-  const [userTypeUser, setUserTypeUser] = useState<String>();
+  const [userTypeUser, setUserTypeUser] = useState<String>("none");
   const isLoading = useSelector((state:RootState)=>state.LoaderSlice.value)
   // @ts-ignore
   const ULogged = useSelector((state:RootState)=>state.UserDataSlice.value?.userType)
@@ -293,7 +293,7 @@ export const ViewDetails = () => {
                 
                 
               </>):""}
-              {userTypeUser === "User" || userTypeUser===""?<DatePickerModal />:""}
+              {userTypeUser === "User" || userTypeUser==="none"?<DatePickerModal />:""}
                
               </div>
             </div>
