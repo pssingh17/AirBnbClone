@@ -47,8 +47,8 @@ const ListingCard = (props: listingsProp) => {
     <h6 className="card-title text-start">{props.listing.name.slice(0,30)}...</h6>
     
     {props.listing.summary?<p className=" text-start" style={{ marginBottom: "3px"}}>{props.listing.summary.slice(0,100)}...</p>:""}
-    {props.listing.review_scores?.review_scores_rating?<b className="card-text text-start mt-auto">Average Rating : {props.listing.review_scores.review_scores_rating}</b>:<b className="card-text text-start">Average Rating : NA</b>}
-    <b className='text-start mt-auto'>Price: ${props.listing.price} </b>
+    {props.listing.review_scores?.review_scores_rating?<b className="card-text text-start mt-auto">Average Rating : {props.listing.review_scores.review_scores_rating}</b>:<b className="card-text text-start mt-auto">Average Rating : NA</b>}
+    <b className='text-start'>Price: ${props.listing.price} </b>
    
     {/* <button  className="slign-self-end btn btn-dark mt-auto m-1 customBtnPosition" onClick={()=>{ViewDetails(props.listing)}}>View Details</button> */}
     
