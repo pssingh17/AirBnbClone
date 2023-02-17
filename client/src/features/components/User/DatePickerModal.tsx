@@ -8,7 +8,7 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux'
 import { DatePicker } from './DatePicker';
 import { useNavigate } from 'react-router-dom';
-import { RootState } from '../../../app/store';
+import { LoaderStatus } from '../../LoaderReducer/LoaderSlice';
 
 
 
@@ -20,27 +20,18 @@ export function DatePickerModal() {
   const [selectedAmenity, setSelectedAmenity] = useState<any[]>([]);
   const [listings, setlistings] = useState <String []>([])
     const dispatch = useDispatch()
-    // @ts-ignore
-    const Ulogged:any = useSelector((state: RootState) => state.UserDataSlice.value.credentials)
   const navigate = useNavigate()
 
   const handleClose = ()=>{setShow(false)}
   const handleShow = () => setShow(true);
   const Payment = () => {
-    if(Ulogged?.userType === "User"){
-
-      return navigate("/user/payment");
-    }
-    else{
-      // console.log("Login required , you are not logged in")
-      localStorage.setItem("AlertMessageLogin",JSON.stringify("Please Login First"))
-      return navigate("/user/login")
-    }
+    dispatch(LoaderStatus(true))
+    return navigate("/user/payment");
   };
 
   return (
     <>
-      <Button className='m-1 px-5 customBtnHover' variant="dark" onClick={handleShow}>
+      <Button className='mt-auto m-1 px-5 customBtnHover' variant="dark" onClick={handleShow}>
         Reserve this place
       </Button>
 

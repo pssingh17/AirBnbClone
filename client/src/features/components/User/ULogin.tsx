@@ -65,11 +65,7 @@ export const ULogin = () => {
         setShowRed(true)
         setAlertValue(res.data)
       }
-      // @ts-ignore
-      let lastView = JSON.parse(localStorage.getItem("LastViewDetailPage"))
-      if(lastView?.name){
-        return navigate('/viewDetails')
-      }
+      
       
       // console.log(res.data)
       }).catch(err=>{console.log(err)})
