@@ -196,10 +196,10 @@ export const ViewDetails = () => {
     if (LastViewDetailPage) {
       dispatch(viewDetailsData(LastViewDetailPage));
     }
-    if(userTypeUser==="none"){
+   
 
       dispatch(LoaderStatus(false))
-    }
+    
    
     // console.log("token in useEfect:", token)
     
