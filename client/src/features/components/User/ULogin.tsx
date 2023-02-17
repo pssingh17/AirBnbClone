@@ -59,6 +59,11 @@ export const ULogin = () => {
       }
       localStorage.setItem("UserType",JSON.stringify(res.data.credentials.userType))
         setCookie("token",res.data.token,{path:'/'})
+         // @ts-ignore
+     let LastViewDetailPage = JSON.parse(localStorage.getItem("LastViewDetailPage"));
+     if(LastViewDetailPage){
+       navigate('/viewDetails')
+     }
         // return navigate('/')
       }
       else{
@@ -78,6 +83,7 @@ export const ULogin = () => {
     if(token){
      return navigate('/')
     }
+    
    // @ts-ignore
    let AlertMessage = JSON.parse(localStorage.getItem("AlertMessageLogin"));
    if(AlertMessage){

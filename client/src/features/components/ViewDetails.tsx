@@ -11,14 +11,18 @@ import { DatePicker } from "./User/DatePicker";
 import { DatePickerModal } from "./User/DatePickerModal";
 import { Reviews } from "./Reviews";
 import { AddReview } from "./User/AddReview";
+import UserDataSlice from "../UserDataReducer/UserDataSlice";
+import { userData } from "../UserDataReducer/UserDataSlice";
 import { LoaderStatus } from "../LoaderReducer/LoaderSlice";
+import { Loader } from "./Loader";
 export const ViewDetails = () => {
   const [userDataState, setUserDataState] = useState<String[]>([]);
   const [addedToFavourites, setAddedToFavourites] = useState(false)
-
-  const [userTypeUser, setUserTypeUser] = useState(false);
+  
+  const [userTypeUser, setUserTypeUser] = useState<String>();
   const isLoading = useSelector((state:RootState)=>state.LoaderSlice.value)
-
+  // @ts-ignore
+  const ULogged = useSelector((state:RootState)=>state.UserDataSlice.value?.userType)
   const dispatch = useDispatch();
   const navigate = useNavigate();
  
@@ -46,8 +50,6 @@ export const ViewDetails = () => {
   };
 
   const addToFavourites = () => {
-    dispatch(LoaderStatus(true))
-
     if (userTypeUser) {
       // console.log("iside if:", userTypeUser)
       let token = cookies.get("token");
@@ -69,8 +71,6 @@ export const ViewDetails = () => {
       }).then((res) => {
         // console.log("rrsponse from favourites", res.data);
         // dispatch(FavouritesData(res.data?.credentials?.favourites));
-      dispatch(LoaderStatus(false))
-
         setAddedToFavourites(true)
       }).catch(err=>{
         console.log("Error-",err)
@@ -85,7 +85,6 @@ export const ViewDetails = () => {
     }
   };
   const removeFromFavourites = () => {
-    dispatch(LoaderStatus(true))
     if (userTypeUser) {
       let token = cookies.get("token");
       let newData = {
@@ -105,8 +104,6 @@ export const ViewDetails = () => {
         },
       }).then((res) => {
         // console.log("rrsponse from favourites", res.data);
-        dispatch(LoaderStatus(false))
-
         setAddedToFavourites(false)
         dispatch(FavouritesData(res.data?.credentials?.favourites));
 
@@ -130,6 +127,7 @@ export const ViewDetails = () => {
  
 
   useEffect(() => {
+    dispatch(LoaderStatus(true))
     let token = cookies.get("token");
     // @ts-ignore
     let LastViewDetailPage = JSON.parse(localStorage.getItem("LastViewDetailPage"));
@@ -138,7 +136,7 @@ export const ViewDetails = () => {
     // @ts-ignore
     let userType = JSON.parse(localStorage.getItem("UserType"));
     if (userType === "User") {
-      setUserTypeUser(true);
+      setUserTypeUser("User");
       if(token){
         axios({
         method: "post",
@@ -148,9 +146,11 @@ export const ViewDetails = () => {
           "content-type": "application/x-www-form-urlencoded;charset=utf-8",
         },
       }).then((res) => {
-        // console.log("rrsponse from favourites", res.data);
-        setUserDataState(res.data);
+        console.log("rrsponse from viewdetails", res.data);
+        dispatch(userData(res.data?.newData))
         dispatch(FavouritesData(res.data?.newData));
+    dispatch(LoaderStatus(false))
+
        
       }).catch(err=>{
         console.log("Error-",err)
@@ -164,15 +164,42 @@ export const ViewDetails = () => {
       });;
       }
     }
-     else {
-      setUserTypeUser(false);
+     else if(userType === "Host"){
+      setUserTypeUser("Host")
+      axios({
+        method: "post",
+        url: "/host/MyHostProfile",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "content-type": "application/x-www-form-urlencoded;charset=utf-8",
+        },
+      }).then((res) => {
+        console.log("rrsponse from viewdetails", res?.data);
+        dispatch(userData(res.data?.credentials))
+        dispatch(FavouritesData(res.data?.credentials));
+    dispatch(LoaderStatus(false))
+
+       
+      }).catch(err=>{
+        console.log("Error-",err)
+        if (err?.response?.data?.loggedIn === false){
+          console.log("Token expired.Please Verify- ", err?.response?.data.message)
+          cookies.remove("token")
+          localStorage.clear()
+          localStorage.setItem("AlertMessageLogin", JSON.stringify("Please verify your identity again"))
+          navigate('/user/login')
+        }
+      });;
     }
    
 
     if (LastViewDetailPage) {
       dispatch(viewDetailsData(LastViewDetailPage));
     }
-    
+    if(!userType){
+
+      dispatch(LoaderStatus(false))
+    }
    
     // console.log("token in useEfect:", token)
     
@@ -197,7 +224,9 @@ export const ViewDetails = () => {
   
   return viewDetailsRedux ? (
     <>
-     
+      {isLoading===true?<>
+      <Loader loading={isLoading}/>
+     </>:<> </>}
         <>
           <div className="custom-viewDetailsContainer ">
             {viewDetailsRedux?.images?.picture_url?
@@ -209,7 +238,7 @@ export const ViewDetails = () => {
               onError={replaceImage}
             />:
             <img
-              style={{ width: "100%", height: "21rem",borderRadius:"13px" }}
+              style={{ width: "100%", height: "20rem",borderRadius:"13px" }}
               src="https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
               className="card-img-top"
               alt="No image found"
@@ -237,7 +266,7 @@ export const ViewDetails = () => {
               {viewDetailsRedux?.property_type ? <div className="text-start m-1"> Propert Type: <b>{viewDetailsRedux?.property_type}</b></div>: ""}
               {viewDetailsRedux?.price? <div className="text-start m-1"><b>Price: ${viewDetailsRedux.price}</b></div>:""}
               <div className="custom-buttons text-start mt-3">
-                 {userTypeUser ? (
+                 {userTypeUser==="User" ? (
                   <>
                   {addedToFavourites?<>
                     <button
@@ -262,8 +291,9 @@ export const ViewDetails = () => {
                    
                 
                 
-                <DatePickerModal />
+                
               </>):""}
+              {userTypeUser === "Host"?"":<DatePickerModal />}
                
               </div>
             </div>
