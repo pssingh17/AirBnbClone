@@ -108,7 +108,7 @@ router.post("/", async (req, res) => {
       if (data.password === req.body.confirmPassword) {
         if (emailExist) {
         // console.log("inside email exist", emailExist.verifyToken)
-        const response = await User.findOneAndUpdate({email:data.email},{verifyToken:randomVerifyCode},{password:0,verifyToken:0})
+        const response = await Model.findOneAndUpdate({email:data.email},{verifyToken:randomVerifyCode},{password:0,verifyToken:0})
           var transporter = nodemailer.createTransport({
             service: "gmail",
             auth: {
