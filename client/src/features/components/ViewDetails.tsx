@@ -11,7 +11,6 @@ import { DatePicker } from "./User/DatePicker";
 import { DatePickerModal } from "./User/DatePickerModal";
 import { Reviews } from "./Reviews";
 import { AddReview } from "./User/AddReview";
-import { LoaderStatus } from "../LoaderReducer/LoaderSlice";
 export const ViewDetails = () => {
   const [userDataState, setUserDataState] = useState<String[]>([]);
   const [addedToFavourites, setAddedToFavourites] = useState(false)
@@ -46,8 +45,6 @@ export const ViewDetails = () => {
   };
 
   const addToFavourites = () => {
-    dispatch(LoaderStatus(true))
-
     if (userTypeUser) {
       // console.log("iside if:", userTypeUser)
       let token = cookies.get("token");
@@ -69,8 +66,6 @@ export const ViewDetails = () => {
       }).then((res) => {
         // console.log("rrsponse from favourites", res.data);
         // dispatch(FavouritesData(res.data?.credentials?.favourites));
-      dispatch(LoaderStatus(false))
-
         setAddedToFavourites(true)
       }).catch(err=>{
         console.log("Error-",err)
@@ -85,7 +80,6 @@ export const ViewDetails = () => {
     }
   };
   const removeFromFavourites = () => {
-    dispatch(LoaderStatus(true))
     if (userTypeUser) {
       let token = cookies.get("token");
       let newData = {
@@ -105,8 +99,6 @@ export const ViewDetails = () => {
         },
       }).then((res) => {
         // console.log("rrsponse from favourites", res.data);
-        dispatch(LoaderStatus(false))
-
         setAddedToFavourites(false)
         dispatch(FavouritesData(res.data?.credentials?.favourites));
 
@@ -148,7 +140,7 @@ export const ViewDetails = () => {
           "content-type": "application/x-www-form-urlencoded;charset=utf-8",
         },
       }).then((res) => {
-        // console.log("rrsponse from favourites", res.data);
+        console.log("rrsponse from favourites", res.data);
         setUserDataState(res.data);
         dispatch(FavouritesData(res.data?.newData));
        
@@ -209,7 +201,7 @@ export const ViewDetails = () => {
               onError={replaceImage}
             />:
             <img
-              style={{ width: "100%", height: "21rem",borderRadius:"13px" }}
+              style={{ width: "100%", height: "20rem",borderRadius:"13px" }}
               src="https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
               className="card-img-top"
               alt="No image found"
@@ -262,9 +254,9 @@ export const ViewDetails = () => {
                    
                 
                 
-                <DatePickerModal />
+                
               </>):""}
-               
+               <DatePickerModal />
               </div>
             </div>
           </div>
