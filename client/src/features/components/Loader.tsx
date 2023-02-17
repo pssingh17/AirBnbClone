@@ -1,23 +1,22 @@
 import React from 'react'
 import { useState, CSSProperties } from "react";
-import RingLoader from "react-spinners/RingLoader";
+import PulseLoader from "react-spinners/PulseLoader";
 
 const override: CSSProperties = {
   display: "block",
- position:"fixed",
- top:"50%",
- left:"50%",
- transform: "translate(-50%, -50%)",
-  // margin: "auto",
+  position:"absolute",
+  top:"42%",
+  margin: "auto",
   borderColor: "black",
-  zIndex:9
+  zIndex:9,
+  
 };
 
 export const Loader = (loading:any) => {
   return (
     <>
-    <RingLoader
-        color={"silver"}
+    <PulseLoader
+        color={"#eeeeee"}
         loading={loading}
         cssOverride={override}
         size={150}
