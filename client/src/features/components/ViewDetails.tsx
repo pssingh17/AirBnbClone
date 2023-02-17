@@ -192,14 +192,13 @@ export const ViewDetails = () => {
       });;
     }
    
-
+    dispatch(LoaderStatus(false))
+    
     if (LastViewDetailPage) {
       dispatch(viewDetailsData(LastViewDetailPage));
     }
-   
-
-      dispatch(LoaderStatus(false))
-    
+  
+      
    
     // console.log("token in useEfect:", token)
     
