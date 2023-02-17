@@ -191,9 +191,12 @@ export const ViewDetails = () => {
         }
       });;
     }
+    else{
+      dispatch(LoaderStatus(false))
+    }
    
     if (LastViewDetailPage) {
-      dispatch(LoaderStatus(false))
+      
       dispatch(viewDetailsData(LastViewDetailPage));
     }
   
@@ -222,9 +225,7 @@ export const ViewDetails = () => {
   
   return viewDetailsRedux ? (
     <>
-      {isLoading===true?<>
-      <Loader loading={isLoading}/>
-     </>:<> </>}
+      
         <>
           <div className="custom-viewDetailsContainer ">
             {viewDetailsRedux?.images?.picture_url?
