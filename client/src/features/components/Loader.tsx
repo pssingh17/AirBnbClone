@@ -19,7 +19,7 @@ export const Loader = (loading:any) => {
         color={"#eeeeee"}
         loading={loading}
         cssOverride={override}
-        size={150}
+        size={100}
         aria-label="Loading Spinner"
         data-testid="loader"
         
