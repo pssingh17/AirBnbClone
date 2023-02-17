@@ -293,7 +293,7 @@ export const ViewDetails = () => {
                 
                 
               </>):""}
-              {userTypeUser === "Host"?"":<DatePickerModal />}
+              {userTypeUser === "User" || userTypeUser===""?<DatePickerModal />:""}
                
               </div>
             </div>
