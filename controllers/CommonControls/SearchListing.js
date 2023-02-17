@@ -6,14 +6,14 @@ async function SearchListing(data) {
   // console.log("Req body:", data.name)
   const newData = await Model.find({
     $or: [
-      { name: { $regex: data.searchString, $options: "i" } },
-      { description: { $regex: data.searchString, $options: "i" } },
-      { property_type: { $regex: data.searchString, $options: "i" } },
-      { "address.street": { $regex: data.searchString, $options: "i" } },
-      { "address.country": { $regex: data.searchString, $options: "i" } },
-      { "address.suburb": { $regex: data.searchString, $options: "i" } },
-      { amenities: { $regex: data.searchString, $options: "i" } },
-      { summary: { $regex: data.searchString, $options: "i" } },
+      { name: { $regex: data.searchString, $options: "ix" } },
+      { description: { $regex: data.searchString, $options: "ix" } },
+      { property_type: { $regex: data.searchString, $options: "ix" } },
+      { "address.street": { $regex: data.searchString, $options: "ix" } },
+      { "address.country": { $regex: data.searchString, $options: "ix" } },
+      { "address.suburb": { $regex: data.searchString, $options: "ix" } },
+      { amenities: { $regex: data.searchString, $options: "ix" } },
+      { summary: { $regex: data.searchString, $options: "ix" } },
     ],
   },{password:0,verifyToken:0}).skip(page * limit)
   .limit(limit);
