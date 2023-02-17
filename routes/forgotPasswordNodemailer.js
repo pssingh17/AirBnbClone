@@ -80,7 +80,7 @@ router.post("/", async (req, res) => {
             service: "gmail",
             auth: {
               user: "t39200309@gmail.com",
-              pass: process.env.NodeMailerPass,
+              pass: "mgoh yewc ufly mduz",
             },
           });
 
@@ -97,7 +97,7 @@ router.post("/", async (req, res) => {
             } else {
                
               console.log("Email sent: " + info.response);
-              res.json({message:"Verify Your email", response:response.verified})
+              res.send("Verify Your Email")
             }
           });
          
