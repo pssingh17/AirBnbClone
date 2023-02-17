@@ -191,8 +191,10 @@ export const ViewDetails = () => {
         }
       });;
     }
-   
-    dispatch(LoaderStatus(false))
+   else{
+
+     dispatch(LoaderStatus(false))
+   }
     
     if (LastViewDetailPage) {
       dispatch(viewDetailsData(LastViewDetailPage));
