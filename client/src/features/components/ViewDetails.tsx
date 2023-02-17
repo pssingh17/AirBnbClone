@@ -132,7 +132,11 @@ export const ViewDetails = () => {
     // @ts-ignore
     let LastViewDetailPage = JSON.parse(localStorage.getItem("LastViewDetailPage"));
     
-    
+     
+    if (LastViewDetailPage) {
+      dispatch(viewDetailsData(LastViewDetailPage));
+    }
+  
     // @ts-ignore
     let userType = JSON.parse(localStorage.getItem("UserType"));
     if (userType === "User") {
@@ -191,15 +195,12 @@ export const ViewDetails = () => {
         }
       });;
     }
-    else{
-      dispatch(LoaderStatus(false))
-    }
-   
-    if (LastViewDetailPage) {
-      
-      dispatch(viewDetailsData(LastViewDetailPage));
-    }
-  
+   else{
+    dispatch(LoaderStatus(false))
+    setUserTypeUser("none")
+   }
+    
+    
       
    
     // console.log("token in useEfect:", token)
@@ -225,7 +226,9 @@ export const ViewDetails = () => {
   
   return viewDetailsRedux ? (
     <>
-      
+      {isLoading===true?<>
+      <Loader loading={isLoading}/>
+     </>:<> </>}
         <>
           <div className="custom-viewDetailsContainer ">
             {viewDetailsRedux?.images?.picture_url?
@@ -292,7 +295,8 @@ export const ViewDetails = () => {
                 
                 
               </>):""}
-              {userTypeUser === "User" || userTypeUser==="none"?<DatePickerModal />:""}
+              {userTypeUser === "User" || userTypeUser==="none"?
+              <><DatePickerModal /></>:""}
                
               </div>
             </div>
