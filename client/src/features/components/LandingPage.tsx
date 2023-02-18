@@ -7,7 +7,7 @@ import type { RootState } from '../../app/store'
 import { allListingsData } from '../AllListingsReducer/AllListingsSlice'
 import { AdvanceFiltersModal } from './AdvanceFiltersModal'
 import { Pagination } from './common/Pagination'
-import { Loader } from './Loader'
+
 import { LoaderStatus } from '../LoaderReducer/LoaderSlice'
 
 
@@ -100,9 +100,7 @@ export const LandingPage = () => {
      }
     },[listingsDataPRange])
   return (<>
- {isLoading===true?<>
-      <Loader loading={isLoading}/>
-     </>:<></>}
+ 
                <div className='container d-flex align-items-center flex-wrap'>
   <div className='m-1'>
  <AdvanceFiltersModal filterStateSetter={filterStateSetter} />

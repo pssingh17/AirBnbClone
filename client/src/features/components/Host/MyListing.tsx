@@ -10,7 +10,7 @@ import { userData } from '../../UserDataReducer/UserDataSlice'
 import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 import { LoaderStatus } from '../../LoaderReducer/LoaderSlice'
-import { Loader } from '../Loader'
+
 
 export const MyListing = () => {
   const [cookie, setCookie, removeCookie] = useCookies(['token']);
@@ -129,9 +129,7 @@ export const MyListing = () => {
       </Alert></>
     
     }
-  {isLoading===true?<>
-      <Loader loading={isLoading}/>
-     </>:<>
+
     {listingExist?
     <>
 <div className='listing-details d-flex flex-column flex-xl-row mt-1'>
@@ -188,7 +186,7 @@ export const MyListing = () => {
     <button  className=" btn btn-dark mt-auto m-1 w-auto" onClick={CreateNewListing}>Create New Listing</button>
     </div></>
     }
-    </>}
+    
     
     </>)
 }

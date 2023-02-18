@@ -104,7 +104,7 @@
         }
     #searchField{
       margin-left: 1rem;
-      width: 40vw;
+      width: 37vw;
       border-radius: 22px;
     }
     .custom-badge{margin: 0 !important;}
@@ -157,6 +157,7 @@
     .customResp{
       padding: 1.5rem 1.2rem !important;
     }
+    
   }
 
   @media screen and (max-width:400px){
@@ -200,15 +201,71 @@
     .customBtnHover:hover{
       color: aqua !important;
     }
+
     .navbar-toggler{
       color:transparent !important
     }
-
-    @media screen and (max-width:768px){
-      .custom-head{
-        flex-direction: column;
-      }
-      .customImgBook{
-        width: 100% ;
-      }
+    .customImgBook{
+      width: 50%;
     }
+    @media screen and (max-width:768px){
+    .custom-head{
+      flex-direction: column;
+    }
+    .customImgBook{
+      width: 100% ;
+    }
+  }
+  .parentSpinner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #cover-spin {
+    position:fixed;
+    width:100%;
+    left:0;right:0;top:0;bottom:0;
+    background-color: rgba(255,255,255,0.7);
+    z-index:9999;
+    /* display:none; */
+}
+
+@-webkit-keyframes spin {
+	from {-webkit-transform:rotate(0deg);}
+	to {-webkit-transform:rotate(360deg);}
+}
+
+@keyframes spin {
+	from {transform:rotate(0deg);}
+	to {transform:rotate(360deg);}
+}
+#cover-spin::after {
+  content:'';
+  display:block;
+  position:relative;
+  left:44%;top:40%;
+  width:113px;height:113px;
+  border-style:solid;
+  border-color:black;
+  border-top-color:transparent;
+  border-width: 4px;
+  border-radius:50%;
+  -webkit-animation: spin .8s linear infinite;
+  animation: spin .8s linear infinite;
+}
+@media screen and (max-width:600px){
+  #cover-spin::after {
+    content:'';
+    display:block;
+    position:relative;
+    left:32%;top:40%;
+    width:113px;height:113px;
+    border-style:solid;
+    border-color:black;
+    border-top-color:transparent;
+    border-width: 4px;
+    border-radius:50%;
+    -webkit-animation: spin .8s linear infinite;
+    animation: spin .8s linear infinite;
+}
+}

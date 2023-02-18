@@ -9,7 +9,6 @@ import { useSelector } from 'react-redux'
 import { Pagination } from './common/Pagination'
 import { searchListingData } from '../SearchListingReducer/SearchListingSlice'
 import { useNavigate } from 'react-router-dom'
-import { Loader } from './Loader'
 
 
 
@@ -38,9 +37,7 @@ export const SearchListing = () => {
  
   return (<>
  
- {isLoading===true?<>
-      <Loader loading={isLoading}/>
-     </>:<>
+
     {searchlistingsData?searchlistingsData.map((item : any)=>{
         return (
             
@@ -52,7 +49,7 @@ export const SearchListing = () => {
     <><h5>No Data found</h5>
     <button type='button' className='btn btn-dark w-auto' onClick={HomePage}>Go Back to Home Page</button></>}
     <Pagination dataFrom="search" page={searchlistingspage}/>
-    </>}
+    
     </>
 
   )

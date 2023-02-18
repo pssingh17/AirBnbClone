@@ -14,7 +14,7 @@ import { AddReview } from "./User/AddReview";
 import UserDataSlice from "../UserDataReducer/UserDataSlice";
 import { userData } from "../UserDataReducer/UserDataSlice";
 import { LoaderStatus } from "../LoaderReducer/LoaderSlice";
-import { Loader } from "./Loader";
+
 export const ViewDetails = () => {
   const [userDataState, setUserDataState] = useState<String[]>([]);
   const [addedToFavourites, setAddedToFavourites] = useState(false)

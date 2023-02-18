@@ -7,7 +7,7 @@ import ListingCard from "../ListingCard";
 import { FavouritesData } from "../../FavouritesReducer/FavouritesSlice";
 import { useNavigate } from "react-router-dom";
 import { LoaderStatus } from "../../LoaderReducer/LoaderSlice";
-import { Loader } from "../Loader";
+
 
 export const MyFavourites = () => {
   let cookies = new Cookies();
@@ -137,9 +137,7 @@ export const MyFavourites = () => {
       <h3 className="text-start mb-5 ml-2 mt-2">
         <i>My Favourites</i>
       </h3>
-      {isLoading===true?<>
-      <Loader loading={isLoading}/>
-     </>:<> </>}
+     
       { userFavouritesState
         ? userFavouritesState?.map((fav: any) => {
             return (

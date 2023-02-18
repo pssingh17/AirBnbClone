@@ -8,7 +8,7 @@ import { FavouritesData } from '../../FavouritesReducer/FavouritesSlice'
 import { userData } from '../../UserDataReducer/UserDataSlice'
 import { useNavigate } from 'react-router-dom'
 import { LoaderStatus } from '../../LoaderReducer/LoaderSlice'
-import { Loader } from '../Loader'
+
 
 
 export const MyBookings = () => {
@@ -98,9 +98,7 @@ export const MyBookings = () => {
     MyBookingsReduxState?.length>0? 
     <>
      <h3 className='text-start mb-5 ml-2 mt-2'><i>MyBookings</i></h3>
-     {isLoading===true?<>
-      <Loader loading={isLoading}/>
-     </>:<> </>}
+    
     {MyBookingsReduxState?.map((booking:any)=>{
       return(
         <div key={booking?.date} className="custom-booking-child-container mb-3">

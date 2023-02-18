@@ -33,16 +33,21 @@ import { HostFChangePassword } from './features/components/Host/HostFChangePassw
 import { VerifyUserEmail } from './features/components/User/VerifyUserEmail';
 import { useSelector } from 'react-redux';
 import type { RootState } from './app/store'
-import { Loader } from './features/components/Loader';
+
 
 
 // import { AdvanceFiltersModal } from './features/AdvanceFiltersModal';
 
 function App() {
-
+  const isLoading = useSelector((state:RootState)=>state.LoaderSlice.value)
+ 
  
   return (
     <>
+      {isLoading===true?
+    <div className='parentSpinner'>
+  <div id="cover-spin"></div></div>
+     :<></>}
      <CNavbar />
     
      <div className="App mt-2">
