@@ -45,7 +45,7 @@ function App() {
     <>
      <CNavbar />
     
-     <div className="App">
+     <div className="App mt-2">
     <div className='customContainer'>
     <div className='row justify-content-center'> 
     <Routes>
