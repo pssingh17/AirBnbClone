@@ -104,9 +104,6 @@ export const StripePayment = () => {
       }
       dispatch(viewDetailsData(data));
     }
-    else{
-      navigate('/viewDetails')
-    }
       },[])
      
     
@@ -157,7 +154,7 @@ export const StripePayment = () => {
     {viewDetailsRedux?.address.street ? <>
     <div>Address : <b><i>{viewDetailsRedux?.address.street},{viewDetailsRedux?.address.suburb},{viewDetailsRedux?.address.country}</i></b></div>
     </>:<>Address : {viewDetailsRedux?.address.street}</>}
-    <p className='mb-0'>Rating : <b><i> {viewDetailsRedux?.newData?.review_scores?.review_scores_rating || "No Ratings Yet"} </i></b></p>
+    <p className='mb-0'>Rating : <b><i> {viewDetailsRedux.newData?.review_scores?.review_scores_rating || "No Ratings Yet"} </i></b></p>
     <div>Cancellation Policy : <b><i>{viewDetailsRedux?.cancellation_policy}</i></b></div>
     <div>Price Per Night : <b><i>{viewDetailsRedux?.price}</i></b></div>
     <div>Dates Selected : <b><i>From {viewDetailsRedux?.DateFrom} to {viewDetailsRedux?.DateTo} - {viewDetailsRedux?.NumberOFDays} Days</i></b></div>

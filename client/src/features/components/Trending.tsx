@@ -5,7 +5,6 @@ import { RootState } from '../../app/store'
 import { useDispatch,useSelector } from 'react-redux'
 import { allListingsData } from '../AllListingsReducer/AllListingsSlice'
 import { Pagination } from './common/Pagination'
-
 import { LoaderStatus } from '../LoaderReducer/LoaderSlice'
 
 
@@ -30,9 +29,9 @@ export const Trending = () => {
     },[])
   return (<>
   <div className='mt-2 text-start'>
-    <p style={{fontSize:"1.2rem",color:"aqua", display:"inline-block", padding:"0.3rem", backgroundColor:"#212529", borderRadius:"13px" ,marginBottom:"0"}}><i>Most Popular</i></p>
+    <p style={{fontSize:"1.2rem",color:"white", display:"inline-block", padding:"0.3rem", backgroundColor:"#212529", borderRadius:"13px" ,marginBottom:"0"}}><i>Most Popular</i></p>
   </div>
-  
+ 
                {listingsData.newData?listingsData.newData.map((item : any)=>{
         return (
             

@@ -43,7 +43,7 @@ export const HForgotPassword = () => {
             'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
           }
         }).then(res=>{
-          console.log("Hostfpassowrd respose:", res.data)
+          // console.log("Hostfpassowrd respose:", res.data)
         
           if(res?.data?.response == true){
             setShowGreen(true)

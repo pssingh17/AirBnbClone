@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router-dom'
 
 
 
+
 export const SearchListing = () => {
     const [listings, setlistings] = useState <String []>([])
   const isLoading = useSelector((state:RootState)=>state.LoaderSlice.value)
@@ -28,7 +29,7 @@ export const SearchListing = () => {
      return navigate('/')
     }
   //   useEffect(()=>{
-  //     axios.post("http://localhost:8000/api/getAll").then(res=>{
+  //     axios.post("/api/getAll").then(res=>{
   //         // console.log(res.data)
   //         setlistings(res.data.newData)
   //         dispatch(searchListingData(res.data))

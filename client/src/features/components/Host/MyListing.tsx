@@ -129,7 +129,7 @@ export const MyListing = () => {
       </Alert></>
     
     }
-
+  
     {listingExist?
     <>
 <div className='listing-details d-flex flex-column flex-xl-row mt-1'>

@@ -61,8 +61,8 @@ export const MyBookings = () => {
     })
   }
   useEffect(()=>{
-    dispatch(LoaderStatus(true))
     let token = cookies.get('token')
+    dispatch(LoaderStatus(false))
     // console.log("token in useEfect:", token)
     axios({
       method:'post',
@@ -72,8 +72,6 @@ export const MyBookings = () => {
         'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
       }
     }).then(res=>{
-    dispatch(LoaderStatus(false))
-
       // console.log("rrsponse from booking",res.data)
       dispatch(userData(res.data))
       
@@ -133,7 +131,7 @@ export const MyBookings = () => {
           View Listing
         </button>
         </div>
-        </>:<h5>No bookings yet</h5>
+        </>:" "
         }
        
         </div>
@@ -144,6 +142,6 @@ export const MyBookings = () => {
    
    
     </>
-    :<></>
+    :<h5>No bookings yet</h5>
   )
 }

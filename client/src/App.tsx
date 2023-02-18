@@ -39,12 +39,12 @@ import type { RootState } from './app/store'
 // import { AdvanceFiltersModal } from './features/AdvanceFiltersModal';
 
 function App() {
+
   const isLoading = useSelector((state:RootState)=>state.LoaderSlice.value)
- 
  
   return (
     <>
-      {isLoading===true?
+    {isLoading===true?
     <div className='parentSpinner'>
   <div id="cover-spin"></div></div>
      :<></>}

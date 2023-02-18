@@ -119,7 +119,7 @@ export const CNavbar = () => {
     <Navbar expanded={expanded} bg="light" variant='light' expand="lg" style={{paddingTop:"0.5rem", paddingBottom:"0.5rem",borderBottom:"1px solid #979797"}}>
     <Container fluid>
     <NavLink style={{textDecoration:"none"}}
-              to="/" onClick={() => setExpanded(false)}><Navbar.Brand >Demo Site</Navbar.Brand>
+              to="/"><Navbar.Brand >Demo Site</Navbar.Brand>
     </NavLink>
         <Navbar.Toggle
           aria-controls="navbarScroll"
