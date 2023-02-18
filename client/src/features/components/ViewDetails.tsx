@@ -127,7 +127,7 @@ export const ViewDetails = () => {
  
 
   useEffect(() => {
-    dispatch(LoaderStatus(true))
+   
     let token = cookies.get("token");
     // @ts-ignore
     let LastViewDetailPage = JSON.parse(localStorage.getItem("LastViewDetailPage"));
@@ -140,6 +140,7 @@ export const ViewDetails = () => {
     // @ts-ignore
     let userType = JSON.parse(localStorage.getItem("UserType"));
     if (userType === "User") {
+      dispatch(LoaderStatus(true))
       setUserTypeUser("User");
       if(token){
         axios({
@@ -169,6 +170,7 @@ export const ViewDetails = () => {
       }
     }
      else if(userType === "Host"){
+      dispatch(LoaderStatus(true))
       setUserTypeUser("Host")
       axios({
         method: "post",
