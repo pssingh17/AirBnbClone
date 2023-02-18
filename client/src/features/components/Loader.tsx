@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, CSSProperties } from "react";
-import PulseLoader from "react-spinners/PulseLoader";
+import BeatLoader from "react-spinners/BeatLoader";
 
 const override: CSSProperties = {
   display: "block",
@@ -15,8 +15,8 @@ const override: CSSProperties = {
 export const Loader = (loading:any) => {
   return (
     <>
-    <PulseLoader
-        color={"#eeeeee"}
+    <BeatLoader
+        color={"#282828"}
         loading={loading}
         cssOverride={override}
         size={100}
