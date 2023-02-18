@@ -226,7 +226,9 @@ export const ViewDetails = () => {
   
   return viewDetailsRedux ? (
     <>
-     
+      {isLoading===true?<>
+      <Loader loading={isLoading}/>
+     </>:<> </>}
         <>
           <div className="custom-viewDetailsContainer ">
             {viewDetailsRedux?.images?.picture_url?
@@ -293,8 +295,8 @@ export const ViewDetails = () => {
                 
                 
               </>):""}
-              {ULogged !== "Host" || userTypeUser==="none"?
-              <><DatePickerModal /></>:""}
+              {userTypeUser === "Host" || ULogged ==="Host"?
+              "":<><DatePickerModal /></>}
                
               </div>
             </div>
