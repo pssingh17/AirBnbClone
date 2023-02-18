@@ -116,7 +116,7 @@ export const CNavbar = () => {
   return (
     <>
    
-    <Navbar expanded={expanded} bg="light" variant='light' expand="lg" style={{paddingTop:"0.7rem", paddingBottom:"0.7rem",borderBottom:"1px solid #979797"}}>
+    <Navbar expanded={expanded} bg="light" variant='light' expand="lg" style={{paddingTop:"0.4rem", paddingBottom:"0.4rem",borderBottom:"1px solid #979797"}}>
     <Container fluid>
     <NavLink style={{textDecoration:"none"}}
               to="/" onClick={() => setExpanded(false)}><Navbar.Brand >Demo Site</Navbar.Brand>
