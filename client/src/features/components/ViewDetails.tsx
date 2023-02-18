@@ -127,6 +127,7 @@ export const ViewDetails = () => {
  
 
   useEffect(() => {
+    dispatch(LoaderStatus(true))
     
     let token = cookies.get("token");
     // @ts-ignore
