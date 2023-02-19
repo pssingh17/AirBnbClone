@@ -188,7 +188,7 @@ export const MyListing = () => {
     :<>
     <h4>No Listing Yet</h4>
     <div className='d-flex justify-content-center'>
-      {UserDataRedux.length===0?<>
+      {UserDataRedux?.length===0?<>
         <Link to="/host/UpdateListing">
             <div className="card m-2 customHover" style={{ width: "19rem" }}>
               <img className="card-img-top" src="https://res.cloudinary.com/dpbhb8hqb/image/upload/v1676818406/Create_New_Listing-logos_ztddkl.jpg" alt="My Listing" />
