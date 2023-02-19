@@ -102,35 +102,29 @@ export const MyFavourites = () => {
   useEffect(() => {
     let token = cookies.get("token");
     // console.log("token in useEfect:", token)
-    if(token != undefined){
-      dispatch(LoaderStatus(true))
-      axios({
-        method: "post",
-        url: "/user/MyUserProfile",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "content-type": "application/x-www-form-urlencoded;charset=utf-8",
-        },
-      }).then((res) => {
-        // console.log("rrsponse from favourites", res.data);
-        setUserFavouritesState(res.data?.newData?.favourites);
-        dispatch(FavouritesData(res.data.newData));
-        dispatch(LoaderStatus(false))
-        // console.log("User state data" , userDataState)
-      }).catch(err=>{
-        console.log("Error-",err)
-        if (err?.response?.data?.loggedIn === false){
-          dispatch(LoaderStatus(false))
-          console.log("Token expired.Please Verify- ", err?.response?.data.message)
-          cookies.remove("token")
-          localStorage.clear()
-          localStorage.setItem("AlertMessageLogin", JSON.stringify("Please verify your identity again"))
-          navigate('/user/login')
-        }
-      });
-    }
-   
-  
+    dispatch(LoaderStatus(false))
+    axios({
+      method: "post",
+      url: "/user/MyUserProfile",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "content-type": "application/x-www-form-urlencoded;charset=utf-8",
+      },
+    }).then((res) => {
+      // console.log("rrsponse from favourites", res.data);
+      setUserFavouritesState(res.data?.newData?.favourites);
+      dispatch(FavouritesData(res.data.newData));
+      // console.log("User state data" , userDataState)
+    }).catch(err=>{
+      console.log("Error-",err)
+      if (err?.response?.data?.loggedIn === false){
+        console.log("Token expired.Please Verify- ", err?.response?.data.message)
+        cookies.remove("token")
+        localStorage.clear()
+        localStorage.setItem("AlertMessageLogin", JSON.stringify("Please verify your identity again"))
+        navigate('/user/login')
+      }
+    });
   }, []);
   
 
@@ -140,7 +134,7 @@ export const MyFavourites = () => {
         <i>My Favourites</i>
       </h3>
     
-      { userFavouritesState
+      { userFavouritesState?.length>0
         ? userFavouritesState?.map((fav: any) => {
             return (
               
@@ -190,14 +184,14 @@ export const MyFavourites = () => {
                       Price <b>${fav.price}</b>
                     </p>
                     <button
-                      className="btn btn-dark m-2 px-3 customBtnHover"
+                      className="btn btn-dark m-2 px-3 "
                       style={{ width: "fit-content" }}
                       onClick={()=>{removeFromFavourites(fav.fav_id)}}
                     >
                       Remove From Favourites
                     </button>
                     <button
-                      className="btn btn-dark m-2 px-3 customBtnHover"
+                      className="btn btn-dark m-2 px-3 "
                       style={{ width: "fit-content" }}
                       onClick = {()=>{goToListing(fav?.host?.host_id)}}
                     >
@@ -208,7 +202,7 @@ export const MyFavourites = () => {
               
             );
           })
-        : "Nothing in favourites"}
+        : <><h5>Nothing in Favourites</h5></>}
        
     </>
   );
