@@ -108,7 +108,7 @@ export const LandingPage = () => {
  {filterPresent?
  <>
  <div className='m-1'>
- <button type='button' className='btn btn-dark' onClick={clearFilters}>Clear Filters</button>
+ <button type='button' className='btn btn-dark customBtnHover' onClick={clearFilters}>Clear Filters</button>
  </div>
  <div className='amenityContainer px-2 d-flex align-items-center flex-wrap'>
   {listingsDataAmenities?.length>11 ? "":

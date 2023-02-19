@@ -170,7 +170,7 @@ export const CNavbar = () => {
             <form className="d-flex" role="search" onSubmit={handleSubmit(onSubmit)}>
             
             <input className="form-control me-2" type="search" autoComplete="off" placeholder="Search" aria-label="Search"  id='searchField'  {...register("searchString")} />
-            <button className="btn btn-dark btn-outline-primary px-3" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" type="submit">Search</button>
+            <button className="btn btn-dark btn-outline-primary px-3 customBtnHover" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" type="submit">Search</button>
             
             
           </form>

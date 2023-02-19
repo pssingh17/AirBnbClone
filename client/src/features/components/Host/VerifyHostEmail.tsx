@@ -142,7 +142,7 @@ export const VerifyHostEmail = () => {
               
                 <div className="d-grid">
                 
-                <button className="btn btn-outline-dark" type="submit">Verify</button>
+                <button className="btn btn-outline-dark customBtnHover" type="submit">Verify</button>
                 </div>
               </form>
               <div>

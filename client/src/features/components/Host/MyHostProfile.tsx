@@ -8,6 +8,7 @@ import ListingCard from '../ListingCard'
 import { FavouritesData } from '../../FavouritesReducer/FavouritesSlice'
 import { userData, UserDataSlice } from '../../UserDataReducer/UserDataSlice'
 import { Link, useNavigate } from 'react-router-dom'
+import { LoaderStatus } from '../../LoaderReducer/LoaderSlice'
 
 export const MyHostProfile = () => {
   // let cookies = new Cookies()
@@ -21,6 +22,7 @@ export const MyHostProfile = () => {
   // console.log("My fav redux in profile:", MyFavouritesRedux)
 
   useEffect(()=>{
+    dispatch(LoaderStatus(true))
     let token = cookie.token
     axios({
       method:'post',
@@ -31,7 +33,7 @@ export const MyHostProfile = () => {
       }
     }).then(res=>{
       // console.log("rrsponse from myHostProfile",res.data)
-
+      dispatch(LoaderStatus(false))
       localStorage.setItem("User Data",JSON.stringify(res.data))
       localStorage.setItem("User Listings",JSON.stringify(res.data.credentials))
       if(res.data.credentials.userType){
@@ -43,6 +45,7 @@ export const MyHostProfile = () => {
     }).catch(err=>{
       console.log("Error-",err)
       if (err?.response?.data?.loggedIn === false){
+    dispatch(LoaderStatus(true))
         console.log("Token expired.Please Verify- ", err?.response?.data.message)
         removeCookie("token")
         localStorage.clear()
@@ -70,7 +73,7 @@ export const MyHostProfile = () => {
    
    <div className='text-start mt-5'>
      <h5>Want to change your account's password???</h5>
-     <button className='btn btn-dark w-auto m-1 px-3' onClick={()=>{navigate("/host/changePassword")}}>Change Here</button>
+     <button className='btn btn-dark w-auto m-1 px-3 customBtnHover' onClick={()=>{navigate("/host/changePassword")}}>Change Here</button>
    </div>
   
 

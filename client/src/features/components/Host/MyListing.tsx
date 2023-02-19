@@ -75,6 +75,7 @@ export const MyListing = () => {
   }
 
   useEffect(()=>{
+    dispatch(LoaderStatus(true))
     let token = cookie.token
     axios({
       method:'post',
@@ -98,6 +99,7 @@ export const MyListing = () => {
     }).catch(err=>{
       console.log("Error-",err)
       if (err?.response?.data?.loggedIn === false){
+        dispatch(LoaderStatus(false))
         console.log("Token expired.Please Verify- ", err?.response?.data.message)
         removeCookie("token")
         localStorage.clear()
@@ -169,8 +171,8 @@ export const MyListing = () => {
     </div>
     </div>
         <div className='text-start'>
-        <button  className="btn btn-dark mt-auto m-1 w-auto" onClick={CreateNewListing}>Update Listing</button>
-        <button  className="btn btn-dark mt-auto m-1 w-auto" onClick={DeleteListing}>Delete Listing</button>
+        <button  className="btn btn-dark mt-auto m-1 w-auto customBtnHover" onClick={CreateNewListing}>Update Listing</button>
+        <button  className="btn btn-dark mt-auto m-1 w-auto customBtnHover"  onClick={DeleteListing}>Delete Listing</button>
         </div>
      </> 
        
@@ -183,7 +185,7 @@ export const MyListing = () => {
     :<>
     <h4>No Listing Yet</h4>
     <div className='text-start'>
-    <button  className=" btn btn-dark mt-auto m-1 w-auto" onClick={CreateNewListing}>Create New Listing</button>
+    <button  className=" btn btn-dark mt-auto m-1 w-auto customBtnHover" onClick={CreateNewListing}>Create New Listing</button>
     </div></>
     }
     

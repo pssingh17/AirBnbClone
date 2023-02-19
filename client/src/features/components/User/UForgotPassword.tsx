@@ -112,7 +112,7 @@ export const UForgotPassword = () => {
                 
                   <div className="d-grid">
                   
-                  <button className="btn btn-outline-dark" type="submit">Submit</button>
+                  <button className="btn btn-outline-dark customBtnHover" type="submit">Submit</button>
                   </div>
                 </form>
                 <div>

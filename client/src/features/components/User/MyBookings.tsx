@@ -62,7 +62,7 @@ export const MyBookings = () => {
   }
   useEffect(()=>{
     let token = cookies.get('token')
-    dispatch(LoaderStatus(false))
+    dispatch(LoaderStatus(true))
     // console.log("token in useEfect:", token)
     axios({
       method:'post',
@@ -74,10 +74,14 @@ export const MyBookings = () => {
     }).then(res=>{
       // console.log("rrsponse from booking",res.data)
       dispatch(userData(res.data))
+    dispatch(LoaderStatus(false))
+
       
     }).catch(err=>{
       console.log("Error-",err)
       if (err?.response?.data?.loggedIn === false){
+    dispatch(LoaderStatus(false))
+
         console.log("Token expired.Please Verify- ", err?.response?.data.message)
         cookies.remove("token")
         localStorage.clear()
@@ -124,7 +128,7 @@ export const MyBookings = () => {
         <p className='text-start m-2'>Total Days Booked : {booking.NumberOFDays}</p>
         <p className='text-start m-2'>Payment received: <b>${booking.paymentDone}</b></p>
         <button
-          className="btn btn-dark m-2 "
+          className="btn btn-dark m-2 customBtnHover"
           style={{width:"10rem"}}
           onClick={()=>{goToListing(booking?.host?.host_id)}}
         >

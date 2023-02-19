@@ -243,7 +243,7 @@ export const UpdateListingPage = () => {
                      
                       <div className="d-grid">
                       
-                      <button className="btn btn-outline-dark" type="submit">Update Listing</button>
+                      <button className="btn btn-outline-dark customBtnHover" type="submit">Update Listing</button>
                       </div>
                     </form>
                     

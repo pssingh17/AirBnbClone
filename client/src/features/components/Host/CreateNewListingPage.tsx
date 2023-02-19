@@ -120,7 +120,7 @@ export const CreateNewListingPage = () => {
                       </div>
                       <div className="d-grid">
                       
-                      <button className="btn btn-outline-dark" type="submit">Sign Up</button>
+                      <button className="btn btn-outline-dark customBtnHover" type="submit">Sign Up</button>
                       </div>
                     </form>
                     <div>

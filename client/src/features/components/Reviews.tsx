@@ -161,7 +161,7 @@ const deleteReview = (Id:String)=>{
             <p className="text-start m-1">{review?.comments}</p>
             <p className="text-start m-1 mb-4"><i style={{color:"grey"}}>Date Posted  :<span style={{color:"black"}}> {review?.date?.slice(0,10)}</span></i></p>
             {reviewerExist && review?.email===reviewerEmail ?<div className='text-start'>
-              <button className='btn btn-dark' onClick={()=>{deleteReview(review.date)}}>Delete</button>
+              <button className='btn btn-dark customBtnHover' onClick={()=>{deleteReview(review.date)}}>Delete</button>
             </div>:""
             
           }

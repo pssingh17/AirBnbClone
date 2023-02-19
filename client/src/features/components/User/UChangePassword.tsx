@@ -161,7 +161,7 @@ export const UChangePassword = () => {
                  
                   <div className="d-grid">
                   
-                  <button className="btn btn-outline-dark" type="submit">Change Password</button>
+                  <button className="btn btn-outline-dark customBtnHover" type="submit">Change Password</button>
                   </div>
                 </form>
                 

@@ -7,6 +7,7 @@ import { RootState } from '../../../app/store'
 import ListingCard from '../ListingCard'
 import { FavouritesData } from '../../FavouritesReducer/FavouritesSlice'
 import { Link, useNavigate } from 'react-router-dom'
+import { LoaderStatus } from '../../LoaderReducer/LoaderSlice'
 
 export const MyUserProfile = () => {
   let cookies = new Cookies()
@@ -19,6 +20,7 @@ export const MyUserProfile = () => {
 
   useEffect(()=>{
     let token = cookies.get('token')
+    dispatch(LoaderStatus(true))
     axios({
       method:'post',
       url: '/user/MyUserProfile',
@@ -28,11 +30,14 @@ export const MyUserProfile = () => {
       }
     }).then(res=>{
       // console.log("rrsponse from Uprofile",res.data)
+      dispatch(LoaderStatus(false))
       setUserDataState(res.data)
       dispatch(FavouritesData(res.data.newData))
     }).catch(err=>{
       console.log("Error-",err)
       if (err?.response?.data?.loggedIn === false){
+    dispatch(LoaderStatus(false))
+
         console.log("Token expired.Please Verify- ", err?.response?.data.message)
         cookies.remove("token")
         localStorage.clear()
@@ -59,7 +64,7 @@ export const MyUserProfile = () => {
         
         <div className='text-start mt-5'>
           <h5>Want to change your account's password???</h5>
-          <button className='btn btn-dark w-auto m-1 px-3' onClick={()=>{navigate("/user/changePassword")}}>Change Here</button>
+          <button className='btn btn-dark w-auto m-1 px-3 customBtnHover' onClick={()=>{navigate("/user/changePassword")}}>Change Here</button>
         </div>
        
     

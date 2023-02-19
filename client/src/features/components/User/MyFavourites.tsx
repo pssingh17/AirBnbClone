@@ -102,7 +102,7 @@ export const MyFavourites = () => {
   useEffect(() => {
     let token = cookies.get("token");
     // console.log("token in useEfect:", token)
-    dispatch(LoaderStatus(false))
+    dispatch(LoaderStatus(true))
     axios({
       method: "post",
       url: "/user/MyUserProfile",
@@ -114,10 +114,12 @@ export const MyFavourites = () => {
       // console.log("rrsponse from favourites", res.data);
       setUserFavouritesState(res.data?.newData?.favourites);
       dispatch(FavouritesData(res.data.newData));
+      dispatch(LoaderStatus(false))
       // console.log("User state data" , userDataState)
     }).catch(err=>{
       console.log("Error-",err)
       if (err?.response?.data?.loggedIn === false){
+        dispatch(LoaderStatus(false))
         console.log("Token expired.Please Verify- ", err?.response?.data.message)
         cookies.remove("token")
         localStorage.clear()
@@ -184,14 +186,14 @@ export const MyFavourites = () => {
                       Price <b>${fav.price}</b>
                     </p>
                     <button
-                      className="btn btn-dark m-2 px-3 "
+                      className="btn btn-dark m-2 px-3 customBtnHover"
                       style={{ width: "fit-content" }}
                       onClick={()=>{removeFromFavourites(fav.fav_id)}}
                     >
                       Remove From Favourites
                     </button>
                     <button
-                      className="btn btn-dark m-2 px-3 "
+                      className="btn btn-dark m-2 px-3 customBtnHover"
                       style={{ width: "fit-content" }}
                       onClick = {()=>{goToListing(fav?.host?.host_id)}}
                     >
