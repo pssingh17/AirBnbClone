@@ -36,6 +36,7 @@ export const CNavbar = () => {
   const [cookie, setCookie, removeCookie] = useCookies(['token']);
   const dispatch = useDispatch()
   const navigate = useNavigate();
+  const cookies = new Cookies(); 
 
 
   const onSubmit: SubmitHandler<SearchInput> = ((data) => {
@@ -94,10 +95,9 @@ export const CNavbar = () => {
   // console.log("User Data", userData)
   const logout = ()=>{
   
-    // cookies.remove('token',{ path: '/' })
+    cookies.remove('token',{ path: '/' })
     removeCookie("token");
-    // cookies.remove('token',{ path: '/host' })
-    // cookies.remove('token',{ path: '/user' })
+    
     setLogin({login:false,userType:""})
     dispatch(removeUserData([]))
     localStorage.clear();
@@ -185,11 +185,11 @@ export const CNavbar = () => {
             navigate('/user/myUserProfile')}} >My Profile</NavDropdown.Item>
           <NavDropdown.Item href="#action/3.2" onClick={()=>{
             setExpanded(false)
-          dispatch(LoaderStatus(true)) 
+        
           navigate('/user/bookings')} }>My Bookings</NavDropdown.Item>
           <NavDropdown.Item href="#action/3.3" onClick={()=>{
             setExpanded(false)
-            dispatch(LoaderStatus(true))
+          
             navigate('/user/favourites')}}>My Favourites</NavDropdown.Item>
           <NavDropdown.Divider />
           <NavDropdown.Item href="#action/3.4" onClick={()=>{
@@ -204,7 +204,7 @@ export const CNavbar = () => {
             navigate('/host/myHostProfile')} } >My Profile</NavDropdown.Item>
           <NavDropdown.Item href="#action/3.2" onClick={()=>{
             setExpanded(false)
-          dispatch(LoaderStatus(true))
+          
           navigate('/host/MyListing')} }>My Listings</NavDropdown.Item>
           <NavDropdown.Divider />
           <NavDropdown.Item href="#action/3.4" onClick={()=>{
