@@ -38,7 +38,7 @@ router.post("/", async (req, res) => {
       if (emailExist) {
         const response = await User.findOneAndUpdate({email:data.email},{verifyToken:randomVerifyCode},{password:0,verifyToken:0})
        const resp= NodeMailer(data,randomVerifyCode)
-       console.log("Nodemailer resp:", res)
+       console.log("Nodemailer resp:", resp)
        if(resp){
         res.json({message:"Verify Your email", response:response.verified})
        }
@@ -57,7 +57,7 @@ router.post("/", async (req, res) => {
         if (emailExist) {
           const response = await Model.findOneAndUpdate({email:data.email},{verifyToken:randomVerifyCode},{password:0,verifyToken:0})
           const resp= NodeMailer(data,randomVerifyCode)
-       console.log("Nodemailer resp:", res)
+       console.log("Nodemailer resp:", resp)
        if(resp){
         res.json({message:"Verify Your email", response:response.verified})
        }
