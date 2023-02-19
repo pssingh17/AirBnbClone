@@ -10,6 +10,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import { LoaderStatus } from '../../LoaderReducer/LoaderSlice'
 import FavImg from '../../../images/fav.jpeg'
 import BookImg from '../../../images/booking.jpeg'
+import CPImg from '../../../images/cp.jpeg'
+
 
 export const MyUserProfile = () => {
   let cookies = new Cookies()
@@ -61,7 +63,7 @@ export const MyUserProfile = () => {
             <i>Welcome {MyFavouritesRedux?.email}</i>
           </h2>
           <div className="text-start">
-            <h5 className="text-start">Shortcuts for your data</h5>
+            <h5 className="text-center">Shortcuts for your data</h5>
             <div className="d-flex justify-content-around mt-4 flex-wrap">
               <Link to="/user/favourites">
             <div className="card m-2 customHover" style={{ width: "19rem" }}>
@@ -78,13 +80,17 @@ export const MyUserProfile = () => {
             
             </div>
             </Link>
+            <Link to="/user/changePassword">
+            <div className="card m-2 customHover" style={{ width: "19rem" }}>
+              <img className="card-img-top" src={CPImg} alt="Card image cap" />
+             
+            
+            </div>
+            </Link>
             </div>
           </div>
         
-        <div className='text-start mt-5'>
-          <h5>Want to change your account's password???</h5>
-          <button className='btn btn-dark w-auto m-1 px-3 customBtnHover' onClick={()=>{navigate("/user/changePassword")}}>Change Here</button>
-        </div>
+     
        
     
       
