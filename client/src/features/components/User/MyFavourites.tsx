@@ -102,7 +102,7 @@ export const MyFavourites = () => {
   useEffect(() => {
     let token = cookies.get("token");
     // console.log("token in useEfect:", token)
-    dispatch(LoaderStatus(false))
+    dispatch(LoaderStatus(true))
     axios({
       method: "post",
       url: "/user/MyUserProfile",
@@ -111,6 +111,8 @@ export const MyFavourites = () => {
         "content-type": "application/x-www-form-urlencoded;charset=utf-8",
       },
     }).then((res) => {
+    dispatch(LoaderStatus(false))
+
       // console.log("rrsponse from favourites", res.data);
       setUserFavouritesState(res.data?.newData?.favourites);
       dispatch(FavouritesData(res.data.newData));
@@ -118,6 +120,7 @@ export const MyFavourites = () => {
     }).catch(err=>{
       console.log("Error-",err)
       if (err?.response?.data?.loggedIn === false){
+        dispatch(LoaderStatus(false))
         console.log("Token expired.Please Verify- ", err?.response?.data.message)
         cookies.remove("token")
         localStorage.clear()
