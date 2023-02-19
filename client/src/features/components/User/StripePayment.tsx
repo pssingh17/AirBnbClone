@@ -92,9 +92,12 @@ export const StripePayment = () => {
         let d = new Date(DateFrom)
         // console.log("Check kar day=",d.toLocaleDateString())
         DateFrom = d.toLocaleDateString()
+       
+
         // @ts-ignore
         let DateTo = JSON.parse(localStorage.getItem("DateTo"))
-        DateTo = d.toLocaleDateString();
+        let d1 = new Date(DateTo)
+        DateTo = d1.toLocaleDateString();
       
     
     // console.log("hi", LastViewDetailPage)
