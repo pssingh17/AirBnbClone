@@ -5,11 +5,12 @@ import { useDispatch,useSelector } from 'react-redux'
 import { RootState } from '../../../app/store'
 import ListingCard from '../ListingCard'
 import { FavouritesData } from '../../FavouritesReducer/FavouritesSlice'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { userData } from '../../UserDataReducer/UserDataSlice'
 import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 import { LoaderStatus } from '../../LoaderReducer/LoaderSlice'
+
 
 
 export const MyListing = () => {
@@ -36,9 +37,7 @@ export const MyListing = () => {
   
   // console.log("My fav redux in profile:", MyFavouritesRedux)
 
-  const CreateNewListing = ()=>{
-      navigate('/host/UpdateListing')
-  }
+  
   const DeleteListing= ()=>{
     let token = cookie.token
     axios({
@@ -174,7 +173,7 @@ export const MyListing = () => {
     </div>
     </div>
         <div className='text-start'>
-        <button  className="btn btn-dark mt-auto m-1 w-auto customBtnHover" onClick={CreateNewListing}>Update Listing</button>
+        <button  className="btn btn-dark mt-auto m-1 w-auto customBtnHover" onClick={()=>navigate('/host/UpdateListing')}>Update Listing</button>
         <button  className="btn btn-dark mt-auto m-1 w-auto customBtnHover"  onClick={DeleteListing}>Delete Listing</button>
         </div>
      </> 
@@ -187,8 +186,15 @@ export const MyListing = () => {
     
     :<>
     <h4>No Listing Yet</h4>
-    <div className='text-start'>
-    <button  className=" btn btn-dark mt-auto m-1 w-auto customBtnHover" onClick={CreateNewListing}>Create New Listing</button>
+    <div className='text-center'>
+    <Link to="/host/UpdateListing">
+            <div className="card m-2 customHover" style={{ width: "19rem" }}>
+              <img className="card-img-top" src="https://res.cloudinary.com/dpbhb8hqb/image/upload/v1676818406/Create_New_Listing-logos_ztddkl.jpg" alt="My Listing" />
+            
+             
+            
+            </div>
+            </Link>
     </div></>
     }
     
