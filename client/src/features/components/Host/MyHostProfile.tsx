@@ -9,6 +9,8 @@ import { FavouritesData } from '../../FavouritesReducer/FavouritesSlice'
 import { userData, UserDataSlice } from '../../UserDataReducer/UserDataSlice'
 import { Link, useNavigate } from 'react-router-dom'
 import { LoaderStatus } from '../../LoaderReducer/LoaderSlice'
+import MyListingImg from '../../../images/myListing.jpeg'
+
 
 export const MyHostProfile = () => {
   // let cookies = new Cookies()
@@ -64,12 +66,23 @@ export const MyHostProfile = () => {
    <>
    
     
-   <h1 className=' text-primary'><i>Welcome {UserDataRedux?.credentials?.email}</i></h1>
-   <div className='text-start'>
-   <h5 className='text-start'>Shortcuts for your data</h5>
-   <Link to="/host/MyListing" className="btn btn-dark mt-auto m-1 px-3" >My Listing</Link>
-
-   </div>
+   <h2 className=" text-danger">
+            <i>Welcome {UserDataRedux?.credentials?.email}</i>
+          </h2>
+          <div className="text-start">
+            <h5 className="text-start">Shortcuts for your data</h5>
+            <div className="d-flex justify-content-around mt-4 flex-wrap">
+              <Link to="/host/myListing">
+            <div className="card m-2 customHover" style={{ width: "19rem" }}>
+              <img className="card-img-top" src={MyListingImg} alt="Card image cap" />
+            
+             
+            
+            </div>
+            </Link>
+          
+            </div>
+          </div>
    
    <div className='text-start mt-5'>
      <h5>Want to change your account's password???</h5>
