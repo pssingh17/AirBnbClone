@@ -76,7 +76,7 @@ export const MyHostProfile = () => {
             <div className="d-flex justify-content-around mt-4 flex-wrap">
               <Link to="/host/myListing">
             <div className="card m-2 customHover" style={{ width: "19rem" }}>
-              <img className="card-img-top" src={MyListingImg} alt="Card image cap" />
+              <img className="card-img-top" src="https://res.cloudinary.com/dpbhb8hqb/image/upload/v1676811908/myListing_fyx9ju.jpg" alt="My Listing" />
             
              
             
@@ -84,7 +84,7 @@ export const MyHostProfile = () => {
             </Link>
             <Link to="/host/changePassword">
             <div className="card m-2 customHover" style={{ width: "19rem" }}>
-              <img className="card-img-top" src={CPImg} alt="Card image cap" />
+              <img className="card-img-top" src="https://res.cloudinary.com/dpbhb8hqb/image/upload/v1676811908/cp_pgd3yw.jpg" alt="Change Password" />
              
             
             </div>

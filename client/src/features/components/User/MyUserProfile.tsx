@@ -67,7 +67,7 @@ export const MyUserProfile = () => {
             <div className="d-flex justify-content-around mt-4 flex-wrap">
               <Link to="/user/favourites">
             <div className="card m-2 customHover" style={{ width: "19rem" }}>
-              <img className="card-img-top" src={FavImg} alt="Card image cap" />
+              <img className="card-img-top" src="https://res.cloudinary.com/dpbhb8hqb/image/upload/v1676811908/fav_eozffw.jpg" alt="My Favourites" />
             
              
             
@@ -75,14 +75,14 @@ export const MyUserProfile = () => {
             </Link>
             <Link to="/user/bookings">
             <div className="card m-2 customHover" style={{ width: "19rem" }}>
-              <img className="card-img-top" src={BookImg} alt="Card image cap" />
+              <img className="card-img-top" src="https://res.cloudinary.com/dpbhb8hqb/image/upload/v1676811908/booking_echwtr.jpg" alt="My Bookings" />
              
             
             </div>
             </Link>
             <Link to="/user/changePassword">
             <div className="card m-2 customHover" style={{ width: "19rem" }}>
-              <img className="card-img-top" src={CPImg} alt="Card image cap" />
+              <img className="card-img-top" src="https://res.cloudinary.com/dpbhb8hqb/image/upload/v1676811908/cp_pgd3yw.jpg" alt="Change Password" />
              
             
             </div>
