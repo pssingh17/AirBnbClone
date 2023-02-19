@@ -62,6 +62,9 @@ export const MyBookings = () => {
   }
   useEffect(()=>{
     let token = cookies.get('token')
+    if(token){
+
+    
     dispatch(LoaderStatus(true))
     // console.log("token in useEfect:", token)
     axios({
@@ -89,7 +92,7 @@ export const MyBookings = () => {
         navigate('/user/login')
       }
     })
-    dispatch(LoaderStatus(false))
+  }
   },[])
   useEffect(()=>{
     if(MyBookingsRedux?.length>1){

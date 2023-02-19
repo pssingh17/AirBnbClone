@@ -102,32 +102,35 @@ export const MyFavourites = () => {
   useEffect(() => {
     let token = cookies.get("token");
     // console.log("token in useEfect:", token)
-    dispatch(LoaderStatus(true))
-    axios({
-      method: "post",
-      url: "/user/MyUserProfile",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "content-type": "application/x-www-form-urlencoded;charset=utf-8",
-      },
-    }).then((res) => {
-      // console.log("rrsponse from favourites", res.data);
-      setUserFavouritesState(res.data?.newData?.favourites);
-      dispatch(FavouritesData(res.data.newData));
-      dispatch(LoaderStatus(false))
-      // console.log("User state data" , userDataState)
-    }).catch(err=>{
-      console.log("Error-",err)
-      if (err?.response?.data?.loggedIn === false){
+    if(token){
+      dispatch(LoaderStatus(true))
+      axios({
+        method: "post",
+        url: "/user/MyUserProfile",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "content-type": "application/x-www-form-urlencoded;charset=utf-8",
+        },
+      }).then((res) => {
+        // console.log("rrsponse from favourites", res.data);
+        setUserFavouritesState(res.data?.newData?.favourites);
+        dispatch(FavouritesData(res.data.newData));
         dispatch(LoaderStatus(false))
-        console.log("Token expired.Please Verify- ", err?.response?.data.message)
-        cookies.remove("token")
-        localStorage.clear()
-        localStorage.setItem("AlertMessageLogin", JSON.stringify("Please verify your identity again"))
-        navigate('/user/login')
-      }
-    });
-    dispatch(LoaderStatus(false))
+        // console.log("User state data" , userDataState)
+      }).catch(err=>{
+        console.log("Error-",err)
+        if (err?.response?.data?.loggedIn === false){
+          dispatch(LoaderStatus(false))
+          console.log("Token expired.Please Verify- ", err?.response?.data.message)
+          cookies.remove("token")
+          localStorage.clear()
+          localStorage.setItem("AlertMessageLogin", JSON.stringify("Please verify your identity again"))
+          navigate('/user/login')
+        }
+      });
+    }
+   
+  
   }, []);
   
 

@@ -75,39 +75,41 @@ export const MyListing = () => {
   }
 
   useEffect(()=>{
-    dispatch(LoaderStatus(true))
     let token = cookie.token
-    axios({
-      method:'post',
-      url: '/host/MyHostProfile',
-      headers: {
-        Authorization: `Bearer ${token}`,
-        'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
-      }
-    }).then(res=>{
-      // console.log("rrsponse from myHostProfile",res.data)
-      dispatch(LoaderStatus(false))
-      let name1= res.data.credentials.name
-      if(name1){
-
-        setListingExist(true)
-      }
-      else{
-        setListingExist(false)
-      }
-      dispatch(userData(res.data))
-    }).catch(err=>{
-      console.log("Error-",err)
-      if (err?.response?.data?.loggedIn === false){
+    if(token){
+      dispatch(LoaderStatus(true))
+      axios({
+        method:'post',
+        url: '/host/MyHostProfile',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+        }
+      }).then(res=>{
+        // console.log("rrsponse from myHostProfile",res.data)
         dispatch(LoaderStatus(false))
-        console.log("Token expired.Please Verify- ", err?.response?.data.message)
-        removeCookie("token")
-        localStorage.clear()
-        localStorage.setItem("AlertMessageLogin", JSON.stringify("Please verify your identity again"))
-        navigate('/host/login')
-      }
-    })
-    dispatch(LoaderStatus(false))
+        let name1= res.data.credentials.name
+        if(name1){
+  
+          setListingExist(true)
+        }
+        else{
+          setListingExist(false)
+        }
+        dispatch(userData(res.data))
+      }).catch(err=>{
+        console.log("Error-",err)
+        if (err?.response?.data?.loggedIn === false){
+          dispatch(LoaderStatus(false))
+          console.log("Token expired.Please Verify- ", err?.response?.data.message)
+          removeCookie("token")
+          localStorage.clear()
+          localStorage.setItem("AlertMessageLogin", JSON.stringify("Please verify your identity again"))
+          navigate('/host/login')
+        }
+      })
+    }
+
   },[])
  
   
