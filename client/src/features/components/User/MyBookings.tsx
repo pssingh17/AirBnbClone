@@ -62,7 +62,7 @@ export const MyBookings = () => {
   }
   useEffect(()=>{
     let token = cookies.get('token')
-    if(token){
+    if(token != undefined){
 
     
     dispatch(LoaderStatus(true))

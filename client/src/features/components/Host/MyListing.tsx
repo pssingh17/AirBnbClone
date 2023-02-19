@@ -76,7 +76,7 @@ export const MyListing = () => {
 
   useEffect(()=>{
     let token = cookie.token
-    if(token){
+    if(token != undefined){
       dispatch(LoaderStatus(true))
       axios({
         method:'post',

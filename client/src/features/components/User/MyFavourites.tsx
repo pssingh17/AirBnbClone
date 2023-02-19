@@ -102,7 +102,7 @@ export const MyFavourites = () => {
   useEffect(() => {
     let token = cookies.get("token");
     // console.log("token in useEfect:", token)
-    if(token){
+    if(token != undefined){
       dispatch(LoaderStatus(true))
       axios({
         method: "post",
