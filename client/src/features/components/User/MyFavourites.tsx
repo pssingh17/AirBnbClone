@@ -127,6 +127,7 @@ export const MyFavourites = () => {
         navigate('/user/login')
       }
     });
+    dispatch(LoaderStatus(false))
   }, []);
   
 

@@ -89,6 +89,7 @@ export const MyBookings = () => {
         navigate('/user/login')
       }
     })
+    dispatch(LoaderStatus(false))
   },[])
   useEffect(()=>{
     if(MyBookingsRedux?.length>1){
