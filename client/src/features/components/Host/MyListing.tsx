@@ -87,6 +87,8 @@ export const MyListing = () => {
       }).then(res=>{
         // console.log("rrsponse from myHostProfile",res.data)
         dispatch(LoaderStatus(false))
+        dispatch(userData(res.data))
+
         let name1= res.data.credentials.name
         if(name1){
   
@@ -95,7 +97,6 @@ export const MyListing = () => {
         else{
           setListingExist(false)
         }
-        dispatch(userData(res.data))
       }).catch(err=>{
         console.log("Error-",err)
         if (err?.response?.data?.loggedIn === false){
