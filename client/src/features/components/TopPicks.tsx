@@ -31,8 +31,8 @@ export const TopPicks = () => {
         }).catch(err=>{console.log(err)})
     },[])
   return (<>
-   <div className='mt-2 text-start'>
-    <p style={{fontSize:"1.2rem",color:"white", display:"inline-block", padding:"0.3rem", backgroundColor:"#212529", borderRadius:"13px" ,marginBottom:"0"}}><i>Top Picks For You</i></p>
+   <div className='mt-2 text-center'>
+    <p style={{fontSize:"1.2rem",color:"aqua", display:"inline-block", padding:"0.3rem", backgroundColor:"#212529", borderRadius:"13px" ,marginBottom:"0"}}><i>Top Picks For You</i></p>
   </div>
    
                
