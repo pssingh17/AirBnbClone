@@ -199,7 +199,7 @@ export const CNavbar = () => {
             setExpanded(false)
             
             navigate('/user/favourites')}}>My Favourites</NavDropdown.Item>
-          <NavDropdown.Divider />
+          {/* <NavDropdown.Divider /> */}
           <NavDropdown.Item href="" onClick={()=>{
             setExpanded(false)
             logout()}}>Sign Out</NavDropdown.Item>
@@ -214,7 +214,7 @@ export const CNavbar = () => {
             setExpanded(false)
         
           navigate('/host/MyListing')} }>My Listings</NavDropdown.Item>
-          <NavDropdown.Divider />
+          {/* <NavDropdown.Divider /> */}
           <NavDropdown.Item href="" onClick={()=>{
             setExpanded(false)
             logout()}}>Sign Out</NavDropdown.Item>
@@ -229,7 +229,7 @@ export const CNavbar = () => {
           <NavDropdown.Item href="" onClick={()=>{
             setExpanded(false)
             navigate('/user/login')} }>Sign In As User</NavDropdown.Item>
-          <NavDropdown.Divider />
+          {/* <NavDropdown.Divider /> */}
           <NavDropdown.Item href="" onClick={()=>{
             setExpanded(false)
             navigate('/host/login')} }>Host An Experience</NavDropdown.Item>
