@@ -41,7 +41,7 @@ export const SearchListing = () => {
       
           method: 'post',
           
-          url: 'http://localhost:8000/api/search',
+          url: '/api/search',
           
           data:body, 
           headers: {
