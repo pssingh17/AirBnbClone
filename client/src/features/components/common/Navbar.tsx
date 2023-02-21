@@ -119,9 +119,7 @@ export const CNavbar = () => {
   };
 
   let activeClassName = "customColor";
- useEffect(()=>{
-  console.log("login",login)
- },[login])
+
   return (
     <>
    

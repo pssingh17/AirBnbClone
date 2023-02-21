@@ -152,7 +152,7 @@ export const ViewDetails = () => {
           "content-type": "application/x-www-form-urlencoded;charset=utf-8",
         },
       }).then((res) => {
-        console.log("rrsponse from viewdetails", res.data);
+        // console.log("rrsponse from viewdetails", res.data);
         dispatch(userData(res.data?.newData))
         dispatch(FavouritesData(res.data?.newData));
     
@@ -181,7 +181,7 @@ export const ViewDetails = () => {
           "content-type": "application/x-www-form-urlencoded;charset=utf-8",
         },
       }).then((res) => {
-        console.log("rrsponse from viewdetails", res?.data);
+        // console.log("rrsponse from viewdetails", res?.data);
         dispatch(userData(res.data?.credentials))
         dispatch(FavouritesData(res.data?.credentials));
   
