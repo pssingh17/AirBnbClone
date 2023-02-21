@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux'
 import { Pagination } from './common/Pagination'
 import { searchListingData } from '../SearchListingReducer/SearchListingSlice'
 import { useNavigate } from 'react-router-dom'
+import { LoaderStatus } from '../LoaderReducer/LoaderSlice'
 
 
 
@@ -28,13 +29,36 @@ export const SearchListing = () => {
     const HomePage = ()=>{
      return navigate('/')
     }
-  //   useEffect(()=>{
-  //     axios.post("/api/getAll").then(res=>{
-  //         // console.log(res.data)
-  //         setlistings(res.data.newData)
-  //         dispatch(searchListingData(res.data))
-  //     }).catch(err=>{console.log(err)})
-  // },[])
+    useEffect(()=>{
+      // @ts-ignore
+      let searchString = JSON.parse(localStorage.getItem("SearchString"))
+      if(searchString != undefined){
+        var body ={
+          "searchString": searchString,
+        }
+       
+        axios({
+      
+          method: 'post',
+          
+          url: 'http://localhost:8000/api/search',
+          
+          data:body, 
+          headers: {
+            'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+          }
+        }).then(res=>{
+        //  console.log("Search data", res.data)
+         if(res.data){
+          dispatch(searchListingData(res.data))
+          dispatch(LoaderStatus(false))
+         }
+        }).catch(err=>{console.log(err)
+        navigate('/')
+        })
+      }
+
+    },[])
  
   return (<>
  

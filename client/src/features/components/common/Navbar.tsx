@@ -61,6 +61,7 @@ export const CNavbar = () => {
      if(res.data){
       dispatch(searchListingData(res.data))
       dispatch(LoaderStatus(false))
+      localStorage.setItem("SearchString", JSON.stringify(data.searchString))
       return navigate('/searchListing')
      }
      
