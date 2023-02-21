@@ -15,6 +15,7 @@ export const store = configureStore({
     FavouritesSlice: FavouritesSliceReducer,
     LoaderSlice:LoaderSliceReducer
   },
+  devTools: process.env.NODE_ENV !== 'production',
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
