@@ -22,7 +22,8 @@ type SearchInput = {
 };
 interface UserType{
   userType: String,
-  login: Boolean
+  login: Boolean,
+  userEmail: String
 }
 
 
@@ -36,8 +37,7 @@ export const CNavbar = () => {
   const [cookie, setCookie, removeCookie] = useCookies(['token']);
   const dispatch = useDispatch()
   const navigate = useNavigate();
-  const cookies = new Cookies(); 
-
+  let userData : any = useSelector((state: RootState) => state.UserDataSlice.value)
 
   const onSubmit: SubmitHandler<SearchInput> = ((data) => {
     dispatch(LoaderStatus(true))
@@ -65,18 +65,22 @@ export const CNavbar = () => {
      }
      
   });})
-  let lstorageUType;
-  let userData : any = useSelector((state: RootState) => state.UserDataSlice.value)
+  let lstorageUType, lstorageUEmail;
+
+
   useEffect(()=>{
     let token = cookie.token
     // @ts-ignore
     lstorageUType = JSON.parse(localStorage.getItem("UserType"))
+    // @ts-ignore
+    lstorageUEmail = JSON.parse(localStorage.getItem("User Date"))
+
     if(token && lstorageUType){
-      setLogin({login:true,userType:lstorageUType})
+      setLogin({login:true,userType:lstorageUType, userEmail: lstorageUEmail?.credentials?.email})
       // setUserDataState(lstorageUData)
     }
     else{
-      setLogin({login:false,userType:""})
+      setLogin({login:false,userType:"", userEmail:""})
     }
   },[])
   useEffect(()=>{
@@ -84,21 +88,24 @@ export const CNavbar = () => {
    
      // @ts-ignore
      lstorageUType = JSON.parse(localStorage.getItem("UserType"))
+      // @ts-ignore
+    lstorageUEmail = JSON.parse(localStorage.getItem("User Data"))
+  
      if(token && lstorageUType){
-       setLogin({login:true,userType:lstorageUType})
+       setLogin({login:true,userType:lstorageUType, userEmail: lstorageUEmail?.credentials?.email})
        // setUserDataState(lstorageUData)
      }
      else{
-       setLogin({login:false,userType:""})
+       setLogin({login:false,userType:"", userEmail:""})
      }
   },[userData])
   // console.log("User Data", userData)
   const logout = ()=>{
   
-    cookies.remove('token',{ path: '/' })
+    // cookies.remove('token',{ path: '/' })
     removeCookie("token");
-    
-    setLogin({login:false,userType:""})
+   
+    setLogin({login:false,userType:"", userEmail:""})
     dispatch(removeUserData([]))
     localStorage.clear();
     // console.log("Success logout")
@@ -112,14 +119,16 @@ export const CNavbar = () => {
   };
 
   let activeClassName = "customColor";
- 
+ useEffect(()=>{
+  console.log("login",login)
+ },[login])
   return (
     <>
    
     <Navbar expanded={expanded} bg="light" variant='light' expand="lg" style={{paddingTop:"0.5rem", paddingBottom:"0.5rem",borderBottom:"1px solid #979797"}}>
     <Container fluid>
     <NavLink style={{textDecoration:"none"}}
-              to="/" onClick={() => setExpanded(false)}><Navbar.Brand >Demo Site</Navbar.Brand>
+              to="/"><Navbar.Brand >Demo Site</Navbar.Brand>
     </NavLink>
         <Navbar.Toggle
           aria-controls="navbarScroll"
@@ -170,7 +179,7 @@ export const CNavbar = () => {
             <form className="d-flex" role="search" onSubmit={handleSubmit(onSubmit)}>
             
             <input className="form-control me-2" type="search" autoComplete="off" placeholder="Search" aria-label="Search"  id='searchField'  {...register("searchString")} />
-            <button className="btn btn-dark btn-outline-primary px-3 customBtnHover" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" type="submit">Search</button>
+            <button className="btn btn-dark btn-outline-primary px-3" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" type="submit">Search</button>
             
             
           </form>
@@ -179,35 +188,35 @@ export const CNavbar = () => {
         
          userData?.credentials?.userType=="User" || login?.userType=="User"?
          <>
-         <NavDropdown className='customDrop' align="end" title="Manage" id="basic-nav-dropdown">
-          <NavDropdown.Item  onClick={()=>{
+         <NavDropdown className='customDrop' align="end" title={login?.userEmail.slice(0,10) || userData?.credentials?.email.slice(0,10)} id="basic-nav-dropdown">
+          <NavDropdown.Item href="#action/3.1" onClick={()=>{
             setExpanded(false)
             navigate('/user/myUserProfile')}} >My Profile</NavDropdown.Item>
-          <NavDropdown.Item onClick={()=>{
+          <NavDropdown.Item href="#action/3.2" onClick={()=>{
             setExpanded(false)
-        
+           
           navigate('/user/bookings')} }>My Bookings</NavDropdown.Item>
-          <NavDropdown.Item  onClick={()=>{
+          <NavDropdown.Item href="#action/3.3" onClick={()=>{
             setExpanded(false)
-          
+            
             navigate('/user/favourites')}}>My Favourites</NavDropdown.Item>
           <NavDropdown.Divider />
-          <NavDropdown.Item  onClick={()=>{
+          <NavDropdown.Item href="#action/3.4" onClick={()=>{
             setExpanded(false)
             logout()}}>Sign Out</NavDropdown.Item>
         </NavDropdown>
          </>: 
          <>
-          <NavDropdown  className='customDrop 'align="end"  title="Manage" id="basic-nav-dropdown">
-          <NavDropdown.Item  onClick={()=>{
+          <NavDropdown  className='customDrop 'align="end"  title={login?.userEmail.slice(0,10) || userData?.credentials?.email.slice(0,10)} id="basic-nav-dropdown">
+          <NavDropdown.Item href="#action/3.1" onClick={()=>{
             setExpanded(false)
             navigate('/host/myHostProfile')} } >My Profile</NavDropdown.Item>
-          <NavDropdown.Item  onClick={()=>{
+          <NavDropdown.Item href="#action/3.2" onClick={()=>{
             setExpanded(false)
-          
+        
           navigate('/host/MyListing')} }>My Listings</NavDropdown.Item>
           <NavDropdown.Divider />
-          <NavDropdown.Item  onClick={()=>{
+          <NavDropdown.Item href="#action/3.4" onClick={()=>{
             setExpanded(false)
             logout()}}>Sign Out</NavDropdown.Item>
         </NavDropdown>
@@ -218,11 +227,11 @@ export const CNavbar = () => {
       :
       <>
        <NavDropdown  className='customDrop ' align="end" title="SignIn" id="basic-nav-dropdown">
-          <NavDropdown.Item onClick={()=>{
+          <NavDropdown.Item href="#action/3.1" onClick={()=>{
             setExpanded(false)
             navigate('/user/login')} }>Sign In As User</NavDropdown.Item>
           <NavDropdown.Divider />
-          <NavDropdown.Item  onClick={()=>{
+          <NavDropdown.Item href="#action/3.2" onClick={()=>{
             setExpanded(false)
             navigate('/host/login')} }>Host An Experience</NavDropdown.Item>
          
