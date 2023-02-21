@@ -30,7 +30,7 @@ interface UserType{
 export const CNavbar = () => {
   const [color,setColor] = useState(false)
   const [expanded, setExpanded] = useState(false);
-  // const cookies = new Cookies();
+  const cookies = new Cookies();
   const { register, handleSubmit } = useForm<SearchInput>();
   const [userDataState, setUserDataState] = useState<String>()
   const [login,setLogin] = useState <UserType>()
@@ -102,7 +102,7 @@ export const CNavbar = () => {
   // console.log("User Data", userData)
   const logout = ()=>{
   
-    // cookies.remove('token',{ path: '/' })
+    cookies.remove('token',{ path: '/' })
     removeCookie("token");
    
     setLogin({login:false,userType:"", userEmail:""})
