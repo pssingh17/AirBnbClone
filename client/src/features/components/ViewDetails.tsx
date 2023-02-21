@@ -127,7 +127,6 @@ export const ViewDetails = () => {
  
 
   useEffect(() => {
-
     
     let token = cookies.get("token");
     // @ts-ignore
@@ -141,7 +140,7 @@ export const ViewDetails = () => {
     // @ts-ignore
     let userType = JSON.parse(localStorage.getItem("UserType"));
     if (userType === "User") {
-      
+      dispatch(LoaderStatus(true))
       setUserTypeUser("User");
       if(token){
         axios({
@@ -152,10 +151,10 @@ export const ViewDetails = () => {
           "content-type": "application/x-www-form-urlencoded;charset=utf-8",
         },
       }).then((res) => {
-        // console.log("rrsponse from viewdetails", res.data);
+        console.log("rrsponse from viewdetails", res.data);
         dispatch(userData(res.data?.newData))
         dispatch(FavouritesData(res.data?.newData));
-    
+    dispatch(LoaderStatus(false))
 
        
       }).catch(err=>{
@@ -171,7 +170,7 @@ export const ViewDetails = () => {
       }
     }
      else if(userType === "Host"){
-  
+      dispatch(LoaderStatus(true))
       setUserTypeUser("Host")
       axios({
         method: "post",
@@ -181,10 +180,10 @@ export const ViewDetails = () => {
           "content-type": "application/x-www-form-urlencoded;charset=utf-8",
         },
       }).then((res) => {
-        // console.log("rrsponse from viewdetails", res?.data);
+        console.log("rrsponse from viewdetails", res?.data);
         dispatch(userData(res.data?.credentials))
         dispatch(FavouritesData(res.data?.credentials));
-  
+    dispatch(LoaderStatus(false))
 
        
       }).catch(err=>{
@@ -199,7 +198,7 @@ export const ViewDetails = () => {
       });;
     }
    else{
-  
+    dispatch(LoaderStatus(false))
     setUserTypeUser("none")
    }
     
