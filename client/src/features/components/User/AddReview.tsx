@@ -49,7 +49,7 @@ export const AddReview = () => {
         var body ={
           "comments": data.comment,
           "host_id":viewDetailsRedux?.host?.host_id ,
-          "name": MyFavouritesReduxEmail.slice(0,10),
+          "name": MyFavouritesReduxEmail.slice(0,MyFavouritesReduxEmail.indexOf('@')),
           "email": MyFavouritesReduxEmail,
           "date": date.toISOString(),
           "userType": "User"
