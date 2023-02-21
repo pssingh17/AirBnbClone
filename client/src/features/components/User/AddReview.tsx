@@ -134,7 +134,7 @@ export const AddReview = () => {
        },[ReviewsRedux,viewDetailsRedux])
   return (
   <div className="text-start">
-    {!reviewerExist && bookingExist ? <>
+    {!reviewerExist ? <>
       <button
     className=" w-auto btn btn-dark mt-auto m-1  customBtnHover  px-4" onClick={displayBox} > Add Your Experience</button>
     {displayCommentBox?<>

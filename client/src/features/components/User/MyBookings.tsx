@@ -95,7 +95,7 @@ export const MyBookings = () => {
   }
   },[])
   useEffect(()=>{
-    if(MyBookingsRedux?.length>1){
+    if(MyBookingsRedux?.length>0){
 
       SetMyBookingsReduxState([...MyBookingsRedux].reverse())
     }
