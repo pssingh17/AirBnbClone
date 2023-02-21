@@ -105,7 +105,8 @@ export const AddReview = () => {
                 // console.log("responi", res?.data?.newData?.email)
               // dispatch(FavouritesData(res.data?.newData));
               let data = viewDetailsRedux?.reviews.filter((email:any)=>{ return email.email === res.data.newData.email})
-              let data1 = res.data.newData.bookings.filter((booking:any)=>{ return booking.host.host_id === viewDetailsRedux.host.host_id})
+              let data1 = res.data.newData.bookings.filter((booking:any)=>{ return booking.name === viewDetailsRedux.name})
+              // console.log("resbook", res.data.newData, "hostid", viewDetailsRedux.name)
               // console.log("resbook", res.data.newData, "hostid", viewDetailsRedux.host.host_id)
               // console.log("Data chaeck: ",data, "data1", data1)
               if(data1.length>0){
@@ -134,7 +135,7 @@ export const AddReview = () => {
        },[ReviewsRedux,viewDetailsRedux])
   return (
   <div className="text-start">
-    {!reviewerExist ? <>
+    {!reviewerExist && bookingExist ? <>
       <button
     className=" w-auto btn btn-dark mt-auto m-1  customBtnHover  px-4" onClick={displayBox} > Add Your Experience</button>
     {displayCommentBox?<>
