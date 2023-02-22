@@ -112,14 +112,14 @@ export const MyBookings = () => {
         <>
        {booking?.images?.picture_url?
             <img
-            style={{ width: "20%", height: "20%",borderRadius:"20px" }}
+            style={{ width: "20%", height: "213px",borderRadius:"20px" }}
               src={booking?.images?.picture_url}
               className="card-img-top custom-booking-image"
               alt="No image found"
               onError={replaceImage}
             />:
             <img
-            style={{ width: "20%", height: "20%",borderRadius:"20px" }}
+            style={{ width: "20%", height: "213px%",borderRadius:"20px" }}
               src="https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
               className="card-img-top custom-booking-image"
               alt="No image found"
