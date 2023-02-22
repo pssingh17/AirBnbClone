@@ -73,7 +73,7 @@
     }
     .custom-booking-image{
       width: 100% !important;
-      height: 213px !important;
+      height: 351px !important;
     }
     .customTextArea{
       width: 100% !important;
@@ -228,6 +228,9 @@ background-color: #212529 !important;
     }
     .customImgBook{
       width: 100% ;
+    }
+    .custom-booking-image{
+      height: 213px !important;
     }
   }
   .parentSpinner{
