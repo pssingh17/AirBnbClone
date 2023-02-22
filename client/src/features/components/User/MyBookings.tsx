@@ -128,6 +128,17 @@ export const MyBookings = () => {
             }
          <div className='bDetails-Container'>
          <h4 className='text-start m-2'><i>{booking.name}</i></h4>
+         {booking?.address?.street ? (
+                      <>
+                        <p className="text-start m-2">
+                           Address : <b> {booking?.address?.street},
+                          {booking?.address?.government_area},
+                          {booking?.address?.country}</b>
+                        </p>
+                      </>
+                    ) : (
+                      <p className="text-start m-2"> Address <b> {booking?.address}</b></p>
+                    )}
          <p className='text-start m-2'>From <i> <b>{booking?.DateFrom} to {booking?.DateTo} </b></i></p>
         <p className='text-start m-2'>Total Days Booked : {booking.NumberOFDays}</p>
         <p className='text-start m-2'>Payment received: <b>${booking.paymentDone}</b></p>

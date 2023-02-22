@@ -59,7 +59,7 @@
 }
 .custom-booking-image{
   width: 40% !important;
-  height: 213% !important;
+  height: 80% !important;
 }
 .customResp{
   padding: 3rem 3rem !important;
@@ -73,7 +73,7 @@
     }
     .custom-booking-image{
       width: 100% !important;
-      height: 351px !important;
+      height: 55% !important;
     }
     .customTextArea{
       width: 100% !important;
@@ -228,9 +228,6 @@ background-color: #212529 !important;
     }
     .customImgBook{
       width: 100% ;
-    }
-    .custom-booking-image{
-      height: 213px !important;
     }
   }
   .parentSpinner{
