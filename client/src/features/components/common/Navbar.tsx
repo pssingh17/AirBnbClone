@@ -114,7 +114,7 @@ export const CNavbar = () => {
   }
   let activeStyle = {
     color:"aqua",
-    backgroundColor:"rgb(74, 74, 74)",
+    backgroundColor:"rgb(50 48 48)",
     borderRadius:"13px",
     fontWeight:"600"
   };
