@@ -283,9 +283,5 @@ background-color: #212529 !important;
     animation: spin .8s linear infinite;
 }
 }
-.nav-link:hover{
-  color: aqua !important;
-  border-radius: 13px;
-  background-color: rgb(74, 74, 74);
-}
+
 
