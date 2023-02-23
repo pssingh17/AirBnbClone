@@ -141,7 +141,7 @@ export const MyListing = () => {
 {UserDataRedux?.images?.picture_url ? <>
   <img
                       style={{
-
+                        height:"364px",
                         borderRadius: "13px",
                       }}
                       src={UserDataRedux?.images?.picture_url}
