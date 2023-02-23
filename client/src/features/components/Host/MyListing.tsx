@@ -137,16 +137,15 @@ export const MyListing = () => {
   
     {listingExist?
     <>
-<div className='listing-details d-flex flex-column flex-xl-row mt-1'>
+<div className='listing-details'>
 {UserDataRedux?.images?.picture_url ? <>
   <img
                       style={{
-                        width: "20%",
-                        height: "20%",
-                        borderRadius: "20px",
+
+                        borderRadius: "13px",
                       }}
                       src={UserDataRedux?.images?.picture_url}
-                      className="card-img-top custom-booking-image"
+                      className="card-img-top custom-listing-image"
                       alt="No image found"
                       onError={replaceImage}
                     />
@@ -161,7 +160,7 @@ export const MyListing = () => {
 </>}
 
 
-    <div className=' text-start m-4'>
+    <div className=' text-start custom-margin-listing'>
         <h6>Name : <i>{UserDataRedux.name}</i></h6>
         <h6>Summary : <i>{UserDataRedux.summary}</i></h6>
         <h6>Description : <i>{UserDataRedux.description}</i></h6>
@@ -173,7 +172,7 @@ export const MyListing = () => {
         <h6>Date Posted : <i>{UserDataRedux.date.slice(0,10)}</i></h6>
     </div>
     </div>
-        <div className='text-start'>
+        <div className='text-start mt-2'>
         <button  className="btn btn-dark mt-auto m-1 w-auto customBtnHover" onClick={()=>navigate('/host/UpdateListing')}>Update Listing</button>
         <button  className="btn btn-dark mt-auto m-1 w-auto customBtnHover"  onClick={DeleteListing}>Delete Listing</button>
         </div>

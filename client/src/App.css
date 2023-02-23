@@ -176,21 +176,17 @@ height: 265px !important;
     font-weight: 600;
   }
 
-  .customDrop:hover>a{
-    /* background-color: black; */
   
-    border-radius: 13px;
-    
-   
-}
 .customDrop{
   padding-left: 0;
   
   position: absolute !important;
   right: 13px;
+  border-radius: 13px;
 }
 #basic-nav-dropdown{
   padding: 7px 10px;
+  border-radius: 13px;
   
 }
 #basic-nav-dropdown:hover{
@@ -315,5 +311,33 @@ background-color: #212529 !important;
   .custom-booking-child-container{
     display: flex;
     flex-direction: column;
+  }
+}
+@media screen and (min-width:992px) {
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+}
+.listing-details{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.custom-listing-image{
+  width: 100%;
+  border-radius: 1.3rem;
+}
+}
+@media screen and (min-width:700px) and  (max-width:992px){
+  .listing-details{
+    display: flex !important;
+    flex-direction: column;
+  }
+}
+.custom-margin-listing{
+  margin: 1.5rem;
+}
+@media screen and (max-width:700px){
+
+  .custom-margin-listing{
+    margin: 1rem 0 !important;
   }
 }

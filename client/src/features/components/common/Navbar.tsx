@@ -44,6 +44,7 @@ export const CNavbar = () => {
     var body ={
       "searchString": data.searchString,
     }
+  
    
     // console.log(data)
     axios({
@@ -188,7 +189,7 @@ export const CNavbar = () => {
         
          userData?.credentials?.userType=="User" || login?.userType=="User"?
          <>
-         <NavDropdown className='customDrop' align="end" title={login?.userEmail.slice(0,login.userEmail.indexOf('@')) || userData?.credentials?.email.slice(0,userData?.credentials?.email.indexOf('@'))} id="basic-nav-dropdown">
+         <NavDropdown className='customDrop' align="end" title={login?.userEmail.slice(0,login.userEmail.indexOf('@')) || userData?.credentials?.email.slice(0,userData?.credentials?.email.indexOf('@'))} id="basic-nav-dropdown" renderMenuOnMount={true}>
           <NavDropdown.Item href="" onClick={()=>{
             setExpanded(false)
             navigate('/user/myUserProfile')}} >My Profile</NavDropdown.Item>
@@ -207,7 +208,7 @@ export const CNavbar = () => {
         </NavDropdown>
          </>: 
          <>
-          <NavDropdown  className='customDrop 'align="end"  title={login?.userEmail.slice(0,login.userEmail.indexOf('@')) || userData?.credentials?.email.slice(0,userData?.credentials?.email.indexOf('@'))}id="basic-nav-dropdown">
+          <NavDropdown  className='customDrop 'align="end"  title={login?.userEmail.slice(0,login.userEmail.indexOf('@')) || userData?.credentials?.email.slice(0,userData?.credentials?.email.indexOf('@'))}id="basic-nav-dropdown" renderMenuOnMount={true}>
           <NavDropdown.Item href="" onClick={()=>{
             setExpanded(false)
             navigate('/host/myHostProfile')} } >My Profile</NavDropdown.Item>
@@ -226,7 +227,7 @@ export const CNavbar = () => {
        
       :
       <>
-       <NavDropdown  className='customDrop ' align="end" title="SignIn" id="basic-nav-dropdown">
+       <NavDropdown  className='customDrop ' align="end" title="SignIn" id="basic-nav-dropdown" renderMenuOnMount={true}>
           <NavDropdown.Item href="" onClick={()=>{
             setExpanded(false)
             navigate('/user/login')} }>Sign In As User</NavDropdown.Item>
