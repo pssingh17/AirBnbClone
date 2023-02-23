@@ -27,8 +27,22 @@ export function DatePickerModal() {
   const handleShow = () => setShow(true);
   const Payment = () => {
     if(ULogged==="User"){
+      try{
+         // @ts-ignore
+       let NumberOFDays = JSON.parse(localStorage.getItem("NumberOFDays"))
+       if(NumberOFDays != null){
 
-      return navigate("/user/payment");
+         return navigate("/user/payment");
+       }
+       else{
+      
+      setShow(false)
+       }
+      }
+      catch(err){
+        console.log(err)
+      }
+      
     }
     else{
       // @ts-ignore

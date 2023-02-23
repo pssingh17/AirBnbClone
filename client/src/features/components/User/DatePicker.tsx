@@ -54,12 +54,13 @@ const dispatch = useDispatch()
     else{
       // console.log("two dates are required")
     }
-    localStorage.setItem("NumberOFDays",JSON.stringify(Difference_In_Days))
+    // @ts-ignore
+    localStorage.setItem("NumberOFDays",JSON.stringify(Difference_In_Days)|| null)
     localStorage.setItem("DateFrom",JSON.stringify(range?.from))
     localStorage.setItem("DateTo",JSON.stringify(range?.to))
 
       },[range])
-      let footer = <p>Please pick the first day.</p>;
+      let footer = <p>Please pick more than One day to Book</p>;
       if (range?.from) {
         if (!range.to) {
           footer = <p>{format(range.from, 'PPP')}</p>;
