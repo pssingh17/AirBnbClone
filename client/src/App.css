@@ -59,7 +59,7 @@
 }
 .custom-booking-image{
   width: 40% !important;
-  height: 80% !important;
+height: 265px !important;
 }
 .customResp{
   padding: 3rem 3rem !important;
@@ -73,13 +73,14 @@
     }
     .custom-booking-image{
       width: 100% !important;
-      height: 55% !important;
+      height: 100% !important;
     }
     .customTextArea{
       width: 100% !important;
     }
     .custom-booking-child-container{
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
     }
     #searchField{
       width: 70vw;
@@ -288,5 +289,31 @@ background-color: #212529 !important;
 @media screen and (min-width:700px) and  (max-width:992px){
   .modifiedContainer{
     padding: 1rem 5rem !important;
+  }
+  .fav-container-child{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.modifiedContainer2{
+  padding: 1rem;
+}
+.custom-overview{
+  margin-left: 1rem;
+}
+@media screen and (max-width:540px) {
+  .custom-viewDetailsContainer{
+    padding: 0;
+  }
+  .modifiedContainer2{
+    padding: 0
+  }
+  .custom-overview{
+    margin:0 !important;
+    margin-left: 0 !important;
+  }
+  .custom-booking-child-container{
+    display: flex;
+    flex-direction: column;
   }
 }

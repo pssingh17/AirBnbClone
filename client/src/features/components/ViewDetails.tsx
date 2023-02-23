@@ -248,7 +248,7 @@ export const ViewDetails = () => {
             />
             }
             
-            <div className="custom-overview m-2">
+            <div className="custom-overview mt-2">
               <h2 style={{ textAlign: "left" }}>{viewDetailsRedux.name}</h2>
               <h4 style={{ textAlign: "left" }}><i>Overview</i></h4>
               <div className="text-start m-1">{viewDetailsRedux.summary}</div>
@@ -301,7 +301,7 @@ export const ViewDetails = () => {
               </div>
             </div>
           </div>
-          <div className="modifiedContainer2 p-3">
+          <div className="modifiedContainer2">
           <h3 className="text-start mt-2"><i>Description</i></h3>
           <div className="text-start">{viewDetailsRedux.description}</div>
 
