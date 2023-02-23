@@ -149,7 +149,7 @@ const deleteReview = (Id:String)=>{
   // console.log("Reviews:", ReviewsRedux)
   return (
     <>
-    <div className="gap-y-4 flex flex-wrap justify-center" style={{    background: "#fafafa"}}>
+    <div className="gap-y-4 flex flex-wrap justify-center p-3" style={{    background: "#fafafa"}}>
       {ReviewsReduxState?.slice(0, next)?.map((review:any) => {
         return (
           <div

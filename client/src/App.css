@@ -285,3 +285,8 @@ background-color: #212529 !important;
 }
 
 
+@media screen and (min-width:700px) and  (max-width:992px){
+  .modifiedContainer{
+    padding: 1rem 5rem !important;
+  }
+}

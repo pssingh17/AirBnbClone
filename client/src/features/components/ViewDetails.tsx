@@ -229,7 +229,7 @@ export const ViewDetails = () => {
   return viewDetailsRedux ? (
     <>
      
-        <>
+        <div className="modifiedContainer">
           <div className="custom-viewDetailsContainer ">
             {viewDetailsRedux?.images?.picture_url?
             <img
@@ -248,22 +248,22 @@ export const ViewDetails = () => {
             />
             }
             
-            <div className="custom-overview p-2 m-1">
+            <div className="custom-overview m-2">
               <h2 style={{ textAlign: "left" }}>{viewDetailsRedux.name}</h2>
               <h4 style={{ textAlign: "left" }}><i>Overview</i></h4>
               <div className="text-start m-1">{viewDetailsRedux.summary}</div>
               {viewDetailsRedux?.address?.street ? (
                       <>
-                        <p className="text-start m-2">
+                        <p className="text-start m-1 my-2">
                           <i> Address : </i> <b>  {viewDetailsRedux?.address?.street},
                           {viewDetailsRedux?.address?.government_area},
                           {viewDetailsRedux?.address?.country}</b>
                         </p>
                       </>
                     ) : (
-                      <p className="text-start m-2"> Address {viewDetailsRedux?.address}</p>
+                      <p className="text-start my-2"> Address {viewDetailsRedux?.address}</p>
                     )}
-              {viewDetailsRedux?.review_scores?.review_scores_rating ? <div className="text-start m-1">Average Rating :<b> {viewDetailsRedux?.review_scores?.review_scores_rating}</b></div> :
+              {viewDetailsRedux?.review_scores?.review_scores_rating ? <div className="text-start m-1 my-1">Average Rating :<b> {viewDetailsRedux?.review_scores?.review_scores_rating}</b></div> :
               ""}
               {viewDetailsRedux?.property_type ? <div className="text-start m-1"> Propert Type: <b>{viewDetailsRedux?.property_type}</b></div>: ""}
               {viewDetailsRedux?.price? <div className="text-start m-1"><b>Price: ${viewDetailsRedux.price}</b></div>:""}
@@ -272,7 +272,7 @@ export const ViewDetails = () => {
                   <>
                   {addedToFavourites?<>
                     <button
-                  className="slign-self-end btn btn-dark mt-auto m-1 customBtnHover px-5"
+                  className="slign-self-end btn btn-dark mt-auto my-1 customBtnHover px-5"
                   onClick={removeFromFavourites}
                 >
                   Remove from Favourites
@@ -301,7 +301,7 @@ export const ViewDetails = () => {
               </div>
             </div>
           </div>
-
+          <div className="modifiedContainer2 p-3">
           <h3 className="text-start mt-2"><i>Description</i></h3>
           <div className="text-start">{viewDetailsRedux.description}</div>
 
@@ -327,8 +327,8 @@ export const ViewDetails = () => {
            <Reviews /></>:
           <p>No reviews yet</p>
         }
-         
-        </>
+      </div>
+        </div>
       
     </>
   ) : (
