@@ -92,8 +92,8 @@ export const VerifyUserEmail = () => {
   return (
     <>
       {showGreen?<>
-      <Alert className="col-12 col-md-8 col-lg-6 p-1" show={showGreen} variant="success" >
-        <p>{alertValue}</p>
+      <Alert className="col-12 col-md-8 col-lg-6 p-1 d-flex align-items-center justify-content-between" show={showGreen} variant="success" >
+        <p style={{marginBottom:"0"}}>{alertValue}</p>
         <Button style={{fontSize:"80%"}} onClick={() => 
           {setShowGreen(false)
           return navigate('/')}
@@ -102,8 +102,8 @@ export const VerifyUserEmail = () => {
             </Button>
       </Alert>
     </>:<>
-    <Alert className="col-12 col-md-8 col-lg-6 p-1" show={showRed} variant="danger" >
-        <p>{alertValue}</p>
+    <Alert className="col-12 col-md-8 col-lg-6 p-1 d-flex align-items-center justify-content-between" show={showRed} variant="danger" >
+        <p style={{marginBottom:"0"}}>{alertValue}</p>
         <Button style={{fontSize:"80%"}} onClick={() => setShowRed(false)} variant="outline-danger">
             Close
             </Button>

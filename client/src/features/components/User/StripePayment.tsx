@@ -113,8 +113,8 @@ export const StripePayment = () => {
   return (
     <>
      {showGreen?<>
-      <Alert className="col-12 col-md-8 col-lg-6 p-1" show={showGreen} variant="success" >
-        <p>{alertValue}</p>
+      <Alert className="col-12 col-md-8 col-lg-6 p-1 d-flex align-items-center justify-content-between" show={showGreen} variant="success" >
+        <p style={{marginBottom:"0"}}>{alertValue}</p>
         <Button style={{fontSize:"80%"}} onClick={() => 
           {setShowGreen(false)
           return navigate('/user/bookings')}
@@ -123,8 +123,8 @@ export const StripePayment = () => {
             </Button>
       </Alert>
     </>:<>
-    <Alert className="col-12 col-md-8 col-lg-6 p-1" show={showRed} variant="danger" >
-        <p>{alertValue}</p>
+    <Alert className="col-12 col-md-8 col-lg-6 p-1 d-flex align-items-center justify-content-between" show={showRed} variant="danger" >
+        <p style={{marginBottom:"0"}}>{alertValue}</p>
         <Button style={{fontSize:"80%"}} onClick={() => setShowRed(false)} variant="outline-danger">
             Close
             </Button>
@@ -161,7 +161,6 @@ export const StripePayment = () => {
     <div>Cancellation Policy : <b><i>{viewDetailsRedux?.cancellation_policy}</i></b></div>
     <div>Price Per Night : <b><i>{viewDetailsRedux?.price}</i></b></div>
     <div>Dates Selected : <b><i>From {viewDetailsRedux?.DateFrom} to {viewDetailsRedux?.DateTo} - {viewDetailsRedux?.NumberOFDays} Days</i></b></div>
-    <div style={{fontWeight:"700"}}>For Demo Purpose ,Only "4242 4242 4242 4242" card is accepted at the moment.</div>
     </div>
    
    </div>
