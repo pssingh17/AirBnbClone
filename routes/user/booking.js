@@ -45,7 +45,7 @@ router.post("/booking", async (req, res) => {
         response = await User.findOne({ _id: o_id },{password:0,verifyToken:0});
 
         res.json({
-          message: "Success",
+          message: "Payment Successful",
           credentials: response,
         });
       }

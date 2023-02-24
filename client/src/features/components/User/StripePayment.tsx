@@ -161,6 +161,7 @@ export const StripePayment = () => {
     <div>Cancellation Policy : <b><i>{viewDetailsRedux?.cancellation_policy}</i></b></div>
     <div>Price Per Night : <b><i>{viewDetailsRedux?.price}</i></b></div>
     <div>Dates Selected : <b><i>From {viewDetailsRedux?.DateFrom} to {viewDetailsRedux?.DateTo} - {viewDetailsRedux?.NumberOFDays} Days</i></b></div>
+    <div style={{fontWeight:"700"}}>For Demo Purpose ,Only "4242 4242 4242 4242" card is accepted at the moment.</div>
     </div>
    
    </div>
