@@ -5,21 +5,18 @@ import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import type { RootState } from '../../../app/store'
 import { useSelector } from 'react-redux'
 import { Cookies } from 'react-cookie';
-import { useForm, SubmitHandler } from "react-hook-form";
 import axios from "axios";
 import { useDispatch } from 'react-redux'
 import { useCookies } from 'react-cookie';
 import { userData } from "../../UserDataReducer/UserDataSlice";
 import { removeUserData } from '../../UserDataReducer/UserDataSlice'
 import { useNavigate } from 'react-router-dom';
-import { searchListingData } from '../../SearchListingReducer/SearchListingSlice'
+
 import { LoaderStatus } from '../../LoaderReducer/LoaderSlice'
 
 
 
-type SearchInput = {
-  searchString:String
-};
+
 interface UserType{
   userType: String,
   login: Boolean,
@@ -31,42 +28,15 @@ export const CNavbar = () => {
   const [color,setColor] = useState(false)
   const [expanded, setExpanded] = useState(false);
   const cookies = new Cookies();
-  const { register, handleSubmit } = useForm<SearchInput>();
   const [userDataState, setUserDataState] = useState<String>()
   const [login,setLogin] = useState <UserType>()
   const [cookie, setCookie, removeCookie] = useCookies(['token']);
   const dispatch = useDispatch()
   const navigate = useNavigate();
+
   let userData : any = useSelector((state: RootState) => state.UserDataSlice.value)
 
-  const onSubmit: SubmitHandler<SearchInput> = ((data) => {
-    dispatch(LoaderStatus(true))
-    var body ={
-      "searchString": data.searchString,
-    }
-  
-   
-    // console.log(data)
-    axios({
-      
-      method: 'post',
-      
-      url: '/api/search',
-      
-      data:body, 
-      headers: {
-        'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
-      }
-    }).then(res=>{
-    //  console.log("Search data", res.data)
-     if(res.data){
-      dispatch(searchListingData(res.data))
-      dispatch(LoaderStatus(false))
-      localStorage.setItem("SearchString", JSON.stringify(data.searchString))
-      return navigate('/searchListing')
-     }
-     
-  });})
+ 
   let lstorageUType, lstorageUEmail;
 
 
@@ -114,10 +84,11 @@ export const CNavbar = () => {
     navigate('/')
   }
   let activeStyle = {
-    color:"aqua",
-    backgroundColor:"rgb(50 48 48)",
+    color:"",
+    // backgroundColor:"grey",
     borderRadius:"13px",
-    fontWeight:"600"
+    
+    fontWeight:"700"
   };
 
   let activeClassName = "customColor";
@@ -177,13 +148,7 @@ export const CNavbar = () => {
             >
               TopRated
             </NavLink>
-            <form className="d-flex" role="search" onSubmit={handleSubmit(onSubmit)} style={{alignSelf:"normal"}}>
-            
-            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"  id='searchField'  {...register("searchString")} />
-            <button className="btn btn-dark btn-outline-primary px-3" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" type="submit">Search</button>
-            
-            
-          </form>
+           
               
         {userData?.token || login?.login ?
         

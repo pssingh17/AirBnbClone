@@ -82,9 +82,7 @@ height: 265px !important;
       display: grid;
       grid-template-columns: 1fr 1fr;
     }
-    #searchField{
-      width: 70vw;
-    }
+  
     .customDrop{
       position: relative !important;
       
@@ -103,11 +101,7 @@ height: 265px !important;
         .modal-content{
           height: 90% !important;
         }
-    #searchField{
-      margin-left: 1rem;
-      width: 25vw;
-      border-radius: 22px;
-    }
+   
     .custom-badge{margin: 0 !important;}
     
    .custom-overview{padding: 0 !important;}
@@ -297,22 +291,7 @@ background-color: #212529 !important;
 .custom-overview{
   margin-left: 1rem;
 }
-@media screen and (max-width:540px) {
-  .custom-viewDetailsContainer{
-    padding: 0;
-  }
-  .modifiedContainer2{
-    padding: 0
-  }
-  .custom-overview{
-    margin:0 !important;
-    margin-left: 0 !important;
-  }
-  .custom-booking-child-container{
-    display: flex;
-    flex-direction: column;
-  }
-}
+
 @media screen and (min-width:992px) {
 .nav-item.dropdown:hover .dropdown-menu {
   display: block;
@@ -339,5 +318,60 @@ background-color: #212529 !important;
 
   .custom-margin-listing{
     margin: 1rem 0 !important;
+  }
+}
+
+
+.searchResultsContainer{
+  position: relative;
+  width: 50%;
+}
+.searchResults{
+  position: absolute;
+
+  background-color: white;
+  border: 1px solid gray;
+  z-index: 9;
+  width: 100%;
+  
+    /* border-radius: 1.3rem; */
+    font-size: 0.8rem;
+}
+.searchItem{
+  border-bottom: 1px solid grey ;
+  color: black;
+  padding: 0.4rem;
+}
+#searcgField{
+  width: 95%;
+}
+.searchItem:hover{
+
+  color: blue;
+  cursor:pointer
+}
+@media screen and (max-width:540px) {
+  .custom-viewDetailsContainer{
+    padding: 0;
+  }
+  .modifiedContainer2{
+    padding: 0
+  }
+  .custom-overview{
+    margin:0 !important;
+    margin-left: 0 !important;
+  }
+  .custom-booking-child-container{
+    display: flex;
+    flex-direction: column;
+  }
+  .searchResultsContainer{
+    width: 100%;
+  }
+}
+
+@media screen and (min-width:600px) and  (max-width:992px){
+  .custom-adv-fil{
+    margin-left: 10rem;
   }
 }

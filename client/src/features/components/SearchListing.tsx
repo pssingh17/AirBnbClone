@@ -10,6 +10,7 @@ import { Pagination } from './common/Pagination'
 import { searchListingData } from '../SearchListingReducer/SearchListingSlice'
 import { useNavigate } from 'react-router-dom'
 import { LoaderStatus } from '../LoaderReducer/LoaderSlice'
+import { SearchListingBar } from './common/SearchListingBar'
 
 
 
@@ -62,7 +63,7 @@ export const SearchListing = () => {
  
   return (<>
  
-
+  <SearchListingBar />
     {searchlistingsData?searchlistingsData.map((item : any)=>{
         return (
             

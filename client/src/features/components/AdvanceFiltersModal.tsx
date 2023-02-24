@@ -64,7 +64,7 @@ export function AdvanceFiltersModal(filterStateSetter:any) {
 
   return (
     <>
-      <Button className='customBtnHover' variant="dark" onClick={handleShow}>
+      <Button className='customBtnHover custom-adv-fil' variant="dark" onClick={handleShow}>
         Advance Filters
       </Button>
 

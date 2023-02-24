@@ -6,6 +6,7 @@ import { useDispatch,useSelector } from 'react-redux'
 import { allListingsData } from '../AllListingsReducer/AllListingsSlice'
 import { Pagination } from './common/Pagination'
 import { LoaderStatus } from '../LoaderReducer/LoaderSlice'
+import { SearchListingBar } from './common/SearchListingBar'
 
 
 
@@ -28,9 +29,10 @@ export const Trending = () => {
         }).catch(err=>{console.log(err)})
     },[])
   return (<>
-  <div className='mt-2 text-center'>
-    {/* <p style={{fontSize:"1.2rem",color:"aqua", display:"inline-block", padding:"0.3rem", backgroundColor:"#212529", borderRadius:"13px" ,marginBottom:"0"}}><i>Top Trends</i></p> */}
-  </div>
+  {/* <div className='mt-2 text-center'>
+    <p style={{fontSize:"1.2rem",color:"aqua", display:"inline-block", padding:"0.3rem", backgroundColor:"#212529", borderRadius:"13px" ,marginBottom:"0"}}><i>Top Trends</i></p>
+  </div> */}
+  <SearchListingBar />
  
                {listingsData.newData?listingsData.newData.map((item : any)=>{
         return (

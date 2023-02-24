@@ -9,6 +9,7 @@ import { AdvanceFiltersModal } from './AdvanceFiltersModal'
 import { Pagination } from './common/Pagination'
 
 import { LoaderStatus } from '../LoaderReducer/LoaderSlice'
+import { SearchListingBar } from './common/SearchListingBar'
 
 
 
@@ -100,7 +101,7 @@ export const LandingPage = () => {
      }
     },[listingsDataPRange])
   return (<>
- 
+ <SearchListingBar />
                <div className='container d-flex align-items-center flex-wrap'>
   <div className='m-1'>
  <AdvanceFiltersModal filterStateSetter={filterStateSetter} />
