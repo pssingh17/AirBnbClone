@@ -55,7 +55,8 @@ export const SearchListingBar = () => {
     <>
      <form className="d-flex justify-content-center" role="search" onSubmit={handleSubmit(onSubmit)} style={{alignSelf:"normal"}}>
             <div className='searchResultsContainer'>
-            <input className="form-control me-2" type="search" placeholder="Search" autoComplete='off' aria-label="Search"  id='searchField'   {...register("searchString")}
+              <div className='customCross d-flex align-items-center'>
+            <input className="form-control me-2" type="text" placeholder="Search" autoComplete='off' aria-label="Search"  id='searchField'   {...register("searchString")}
              onChange={debounce(async (e:any) => {
               let str = e.target.value
               // console.log("str check", str)
@@ -92,7 +93,8 @@ export const SearchListingBar = () => {
             }, 500)}
             
             />
-          
+            <button type="button" className="btn-close" aria-label="Close" onClick={()=>setSearchResults([])} style={{position:"absolute", right:"13px", border:"none"}}></button>
+          </div>
             {searchResults?.length>0? 
               <div className='searchResults'>
             {searchResults?.length>0? searchResults.map((result:any,index:number)=>{
