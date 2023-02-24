@@ -54,12 +54,12 @@ export function DatePickerModal() {
   return (
     <>
       <Button className='m-1 px-3 customBtnHover' variant="dark" onClick={handleShow}>
-        Reserve this place
+      Book Now
       </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Select Date</Modal.Title>
+          <Modal.Title>Book Now</Modal.Title>
         </Modal.Header>
         <Modal.Body>
   
@@ -73,7 +73,7 @@ export function DatePickerModal() {
                   className="slign-self-end float-end btn btn-dark mt-auto m-1 customBtnPosition customBtnHover"
                   onClick={Payment}
                 >
-                  Book Now
+                  Confirm
                 </button>
         </Modal.Footer>
       </Modal>
