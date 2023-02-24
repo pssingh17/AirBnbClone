@@ -14,6 +14,7 @@ type SearchInput = {
   };
 export const SearchListingBar = () => {
   const[searchResults, setSearchResults] = useState([])
+  const [showCross, setShowCross] = useState(false)
     const dispatch = useDispatch()
 
   const { register, handleSubmit, setValue  } = useForm<SearchInput>();
@@ -56,10 +57,16 @@ export const SearchListingBar = () => {
      <form className="d-flex justify-content-center" role="search" onSubmit={handleSubmit(onSubmit)} style={{alignSelf:"normal"}}>
             <div className='searchResultsContainer'>
               <div className='customCross d-flex align-items-center'>
-            <input className="form-control me-2" type="text" placeholder="Search" autoComplete='off' aria-label="Search"  id='searchField'   {...register("searchString")}
+            <input className="form-control" type="text" placeholder="Search" autoComplete='off' aria-label="Search"  id='searchField'   {...register("searchString")}
              onChange={debounce(async (e:any) => {
               let str = e.target.value
               // console.log("str check", str)
+              if(str.length>0){
+                setShowCross(true)
+              }
+              else{
+                setShowCross(false)
+              }
               let data={
                 searchString: str,
                 title:"title"
@@ -93,9 +100,12 @@ export const SearchListingBar = () => {
             }, 500)}
             
             />
-            <button type="button" className="btn-close" aria-label="Close" onClick={()=>{
+            {showCross?  <button type="button" className="btn-close" aria-label="Close" onClick={()=>{
                setValue("searchString", "")
-              setSearchResults([])}} style={{position:"absolute", right:"13px", border:"none"}}></button>
+              setSearchResults([])
+              setShowCross(false)
+              }} style={{position:"absolute", right:"13px", border:"none"}}></button>:""}
+           
           </div>
             {searchResults?.length>0? 
               <div className='searchResults'>
@@ -119,7 +129,7 @@ export const SearchListingBar = () => {
           }</div>:""}
           
           </div>
-            <button className="btn btn-dark btn-outline-primary px-3" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" type="submit">Search</button>
+            <button className="btn btn-dark btn-outline-primary px-3 ms-2" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" type="submit">Search</button>
             
             
           </form>
