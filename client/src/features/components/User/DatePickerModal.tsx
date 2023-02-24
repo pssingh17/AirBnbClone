@@ -53,7 +53,7 @@ export function DatePickerModal() {
 
   return (
     <>
-      <Button className='m-1 px-5 customBtnHover' variant="dark" onClick={handleShow}>
+      <Button className='m-1 px-3 customBtnHover' variant="dark" onClick={handleShow}>
         Reserve this place
       </Button>
 

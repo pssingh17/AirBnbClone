@@ -378,3 +378,7 @@ background-color: #212529 !important;
 #searchField{
   padding-right: 2rem !important;
 }
+.searchSvg{
+  position: relative;
+  bottom: 2.5px;
+}
