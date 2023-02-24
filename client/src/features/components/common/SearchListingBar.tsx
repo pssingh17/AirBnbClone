@@ -93,7 +93,9 @@ export const SearchListingBar = () => {
             }, 500)}
             
             />
-            <button type="button" className="btn-close" aria-label="Close" onClick={()=>setSearchResults([])} style={{position:"absolute", right:"13px", border:"none"}}></button>
+            <button type="button" className="btn-close" aria-label="Close" onClick={()=>{
+               setValue("searchString", "")
+              setSearchResults([])}} style={{position:"absolute", right:"13px", border:"none"}}></button>
           </div>
             {searchResults?.length>0? 
               <div className='searchResults'>
