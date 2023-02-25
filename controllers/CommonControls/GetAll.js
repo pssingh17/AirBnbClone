@@ -10,7 +10,7 @@ async function GetAll(req) {
   let maxNumber
   // console.log("1st check",priceRange)
   const amenitiesOptions = ["TV","Internet","Kitchen","Free parking on premises","Heating","Washer","Smoke detector","Laptop friendly workspace","Air conditioning","Gym","Wheelchair accessible","Family/kid friendly"];
-
+  let allAmenities = amenitiesOptions
   amenities === "All"
     ? (amenities = [...amenitiesOptions])
     : (amenities =req.body.amenities.map((item)=>{return item.value}));
@@ -79,6 +79,7 @@ async function GetAll(req) {
     page: page + 1,
     limit,
     amenities: amenities,
+    totalAmenities: allAmenities,
     priceRange:maxNumber,
     newData,
     

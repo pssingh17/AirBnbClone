@@ -19,7 +19,7 @@ export function AdvanceFiltersModal(filterStateSetter:any) {
   const [listings, setlistings] = useState <String []>([])
     const dispatch = useDispatch()
   let listingsData : any = useSelector((state: RootState) => state.AllListingsSlice.value)
-  let amenities = listingsData.amenities
+  let amenities = listingsData.totalAmenities
   const applyFilters = () =>{ 
     dispatch(LoaderStatus(true))
     // console.log("slected price:", selectedPrice)
