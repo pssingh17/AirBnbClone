@@ -132,7 +132,7 @@ export const SearchListingBar = () => {
                           setSearchResults([]);
                         }}
                       >
-                        <div style={{whiteSpace:"nowrap",overflow:"hidden", textOverflow:"ellipsis"}}>
+                        <div className="customEllipse">
                           
                             <i style={{fontSize:"1rem"}}>{result.name}</i>
                           

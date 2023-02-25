@@ -393,3 +393,9 @@ background-color: #212529 !important;
   margin-left: 5rem;
 }
 }
+
+.customEllipse{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
