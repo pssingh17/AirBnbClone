@@ -5,6 +5,8 @@ async function SearchListing(data) {
   const limit = parseInt(data.limit) || 12;
   let title= data?.title || null
   let newData
+  data.searchString = data.searchString.replace('(','\\(');
+  data.searchString = data.searchString.replace(')','\\)');
   // console.log("Req body:", data)
   if(title != null){
      newData = await Model.find({
