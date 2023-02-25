@@ -7,6 +7,7 @@ async function SearchListing(data) {
   let newData
   data.searchString = data.searchString.replace('(','\\(');
   data.searchString = data.searchString.replace(')','\\)');
+  data.searchString = data.searchString.replace(':','\\:');
   // console.log("Req body:", data)
   if(title != null){
      newData = await Model.find({
