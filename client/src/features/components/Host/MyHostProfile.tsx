@@ -26,7 +26,7 @@ export const MyHostProfile = () => {
   // console.log("My fav redux in profile:", MyFavouritesRedux)
 
   useEffect(()=>{
-    dispatch(LoaderStatus(true))
+    // dispatch(LoaderStatus(true))
     let token = cookie.token
     axios({
       method:'post',
@@ -49,7 +49,7 @@ export const MyHostProfile = () => {
     }).catch(err=>{
       console.log("Error-",err)
       if (err?.response?.data?.loggedIn === false){
-    dispatch(LoaderStatus(true))
+    // dispatch(LoaderStatus(true))
         console.log("Token expired.Please Verify- ", err?.response?.data.message)
         removeCookie("token")
         localStorage.clear()
