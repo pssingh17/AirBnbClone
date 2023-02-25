@@ -13,7 +13,7 @@ async function SearchListing(data) {
       { "address.suburb": { $regex: data.searchString, $options: "i" } },
       { name: { $regex: data.searchString, $options: "i" }} ,
       { amenities: { $regex: data.searchString, $options: "i" } },
-      { summary: { $regex: data.searchString, $options: "i" } },
+      
     ],
   },{name:1, address:1}).skip(page * 5)
   .limit(5)
@@ -25,13 +25,11 @@ async function SearchListing(data) {
       { "address.country": { $regex: data.searchString, $options: "i" }} ,
       { "address.suburb": { $regex: data.searchString, $options: "i" }} ,
       { name: { $regex: data.searchString, $options: "i" } },
-      { description: { $regex: data.searchString, $options: "" } },
-      { property_type: { $regex: data.searchString, $options: "i" } },
+     
       { "address.street": { $regex: data.searchString, $options: "i" } },
-      { "address.country": { $regex: data.searchString, $options: "i" } },
-      { "address.suburb": { $regex: data.searchString, $options: "i" } },
+    
       { amenities: { $regex: data.searchString, $options: "i" } },
-      { summary: { $regex: data.searchString, $options: "i" } },
+
     ],
   },{password:0,verifyToken:0}).skip(page * limit)
   .limit(limit);
