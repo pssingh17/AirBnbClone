@@ -55,7 +55,7 @@ const dispatch = useDispatch()
       // console.log("two dates are required")
     }
     // @ts-ignore
-    localStorage.setItem("NumberOFDays",JSON.stringify(Difference_In_Days)|| null)
+    localStorage.setItem("NumberOFDays",JSON.stringify(Difference_In_Days)|| 0)
     localStorage.setItem("DateFrom",JSON.stringify(range?.from))
     localStorage.setItem("DateTo",JSON.stringify(range?.to))
 

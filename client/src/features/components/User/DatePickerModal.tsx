@@ -30,7 +30,7 @@ export function DatePickerModal() {
       try{
          // @ts-ignore
        let NumberOFDays = JSON.parse(localStorage.getItem("NumberOFDays"))
-       if(NumberOFDays != null){
+       if(NumberOFDays !== 0){
 
          return navigate("/user/payment");
        }
@@ -54,12 +54,12 @@ export function DatePickerModal() {
   return (
     <>
       <Button className='m-1 px-3 customBtnHover' variant="dark" onClick={handleShow}>
-      Book Now
+        Reserve this place
       </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Book Now</Modal.Title>
+          <Modal.Title>Select Date</Modal.Title>
         </Modal.Header>
         <Modal.Body>
   
@@ -73,7 +73,7 @@ export function DatePickerModal() {
                   className="slign-self-end float-end btn btn-dark mt-auto m-1 customBtnPosition customBtnHover"
                   onClick={Payment}
                 >
-                  Confirm
+                  Book Now
                 </button>
         </Modal.Footer>
       </Modal>
