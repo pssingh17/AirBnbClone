@@ -102,7 +102,7 @@ export const MyFavourites = () => {
   useEffect(() => {
     let token = cookies.get("token");
     // console.log("token in useEfect:", token)
-    dispatch(LoaderStatus(true))
+    // dispatch(LoaderStatus(true))
     axios({
       method: "post",
       url: "/user/MyUserProfile",

@@ -24,7 +24,7 @@ export const MyUserProfile = () => {
 
   useEffect(()=>{
     let token = cookies.get('token')
-    dispatch(LoaderStatus(true))
+    // dispatch(LoaderStatus(true))
     axios({
       method:'post',
       url: '/user/MyUserProfile',

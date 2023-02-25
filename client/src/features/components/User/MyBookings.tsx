@@ -65,7 +65,7 @@ export const MyBookings = () => {
     if(token != undefined){
 
     
-    dispatch(LoaderStatus(true))
+    // dispatch(LoaderStatus(true))
     // console.log("token in useEfect:", token)
     axios({
       method:'post',

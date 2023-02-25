@@ -140,7 +140,7 @@ export const ViewDetails = () => {
     // @ts-ignore
     let userType = JSON.parse(localStorage.getItem("UserType"));
     if (userType === "User") {
-      dispatch(LoaderStatus(true))
+      // dispatch(LoaderStatus(true))
       setUserTypeUser("User");
       if(token){
         axios({
@@ -170,7 +170,7 @@ export const ViewDetails = () => {
       }
     }
      else if(userType === "Host"){
-      dispatch(LoaderStatus(true))
+      // dispatch(LoaderStatus(true))
       setUserTypeUser("Host")
       axios({
         method: "post",
