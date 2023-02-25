@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
+import { LoaderStatus } from "../../LoaderReducer/LoaderSlice";
 
 // import Cookies from 'js-cookie'
 
@@ -86,6 +87,8 @@ export const ULogin = () => {
      setAlertValue(AlertMessage)
      setShowRed(true)
    }
+   dispatch(LoaderStatus(false))
+
   },[])
   return (
     <>

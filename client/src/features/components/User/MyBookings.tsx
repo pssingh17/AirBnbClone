@@ -62,7 +62,9 @@ export const MyBookings = () => {
   }
   useEffect(()=>{
     let token = cookies.get('token')
-    if(token != undefined){
+     // @ts-ignore
+    let lstorageUType = JSON.parse(localStorage.getItem("UserType"))
+    if(token != undefined && lstorageUType==="User"){
 
     
     dispatch(LoaderStatus(true))
@@ -92,6 +94,10 @@ export const MyBookings = () => {
         navigate('/user/login')
       }
     })
+  }
+  else{
+    navigate('/user/login')
+    dispatch(LoaderStatus(false))
   }
   },[])
   useEffect(()=>{

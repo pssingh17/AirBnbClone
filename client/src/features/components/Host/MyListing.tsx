@@ -75,7 +75,10 @@ export const MyListing = () => {
 
   useEffect(()=>{
     let token = cookie.token
-    if(token != undefined){
+     // @ts-ignore
+     let lstorageUType = JSON.parse(localStorage.getItem("UserType"))
+    // console.log("token", token)
+    if(token != undefined && lstorageUType==="Host"){
       dispatch(LoaderStatus(true))
       axios({
         method:'post',
@@ -109,6 +112,10 @@ export const MyListing = () => {
         }
       })
     }
+    else{
+      navigate('/host/login')
+      dispatch(LoaderStatus(false))
+    }
 
   },[])
  
@@ -141,7 +148,7 @@ export const MyListing = () => {
 {UserDataRedux?.images?.picture_url ? <>
   <img
                       style={{
-                        height:"364px",
+
                         borderRadius: "13px",
                       }}
                       src={UserDataRedux?.images?.picture_url}

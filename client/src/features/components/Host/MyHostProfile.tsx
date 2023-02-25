@@ -26,8 +26,12 @@ export const MyHostProfile = () => {
   // console.log("My fav redux in profile:", MyFavouritesRedux)
 
   useEffect(()=>{
-    // dispatch(LoaderStatus(true))
+    dispatch(LoaderStatus(true))
     let token = cookie.token
+    // @ts-ignore
+    let lstorageUType = JSON.parse(localStorage.getItem("UserType"))
+    // console.log("token", token)
+    if(token != undefined && lstorageUType==="Host"){
     axios({
       method:'post',
       url: '/host/MyHostProfile',
@@ -49,14 +53,18 @@ export const MyHostProfile = () => {
     }).catch(err=>{
       console.log("Error-",err)
       if (err?.response?.data?.loggedIn === false){
-    // dispatch(LoaderStatus(true))
+    
         console.log("Token expired.Please Verify- ", err?.response?.data.message)
         removeCookie("token")
         localStorage.clear()
         localStorage.setItem("AlertMessageLogin", JSON.stringify("Please verify your identity again"))
         navigate('/host/login')
       }
-    })
+    })}
+    else{
+      navigate('/host/login')
+      dispatch(LoaderStatus(false))
+    }
   },[])
  
   

@@ -82,7 +82,7 @@ function App() {
       
       <Route path='/host/changePassword' element={<HChangePassword />} />
 
-     
+      <Route path="*" element={<LandingPage />} />
       
       </Routes>
     </div>

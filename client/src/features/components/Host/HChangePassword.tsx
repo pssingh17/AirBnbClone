@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
+import { LoaderStatus } from "../../LoaderReducer/LoaderSlice";
 
 // import Cookies from 'js-cookie'
 
@@ -66,14 +67,18 @@ export const HChangePassword = () => {
       }).catch(err=>{console.log(err)})
     
   });
-//   // useEffect(()=>{console.log("fields",fields)},[fields])
-//   useEffect(()=>{
-//     // @ts-ignore
-//     let token = cookie.token
-//     if(token){
-//      return navigate('/')
-//     }
-//   },[])
+  useEffect(()=>{
+    // @ts-ignore
+    let token = cookie.token
+     // @ts-ignore
+     let lstorageUType = JSON.parse(localStorage.getItem("UserType"))
+     if(token != undefined && lstorageUType==="Host"){
+    dispatch(LoaderStatus(false))
+    }
+    else{
+      navigate('/')
+    }
+  },[])
   return (
     <>
      {showGreen?<>

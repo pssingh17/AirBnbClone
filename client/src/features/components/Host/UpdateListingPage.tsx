@@ -7,6 +7,7 @@ import axios from 'axios';
 import { userData } from '../../UserDataReducer/UserDataSlice';
 import { useNavigate } from 'react-router-dom';
 import { ListingDataInterface } from '../../../model/ListingDataInterface';
+import { LoaderStatus } from '../../LoaderReducer/LoaderSlice';
 
 type FormValues = ListingDataInterface
 
@@ -111,6 +112,10 @@ export const UpdateListingPage = () => {
   });
   useEffect(()=>{
     let token = cookie.token
+     // @ts-ignore
+     let lstorageUType = JSON.parse(localStorage.getItem("UserType"))
+     // console.log("token", token)
+     if(token != undefined && lstorageUType==="Host"){
     axios({
       method:'post',
       url: '/host/updateHostListing',
@@ -132,6 +137,11 @@ export const UpdateListingPage = () => {
         navigate('/host/login')
       }
     })
+  }
+  else{
+    navigate('/host/login')
+    dispatch(LoaderStatus(false))
+  }
   },[])
 
     return (

@@ -102,7 +102,10 @@ export const MyFavourites = () => {
   useEffect(() => {
     let token = cookies.get("token");
     // console.log("token in useEfect:", token)
-    // dispatch(LoaderStatus(true))
+    // @ts-ignore
+    let lstorageUType = JSON.parse(localStorage.getItem("UserType"))
+    if(token != undefined && lstorageUType==="User"){
+    dispatch(LoaderStatus(true))
     axios({
       method: "post",
       url: "/user/MyUserProfile",
@@ -128,6 +131,11 @@ export const MyFavourites = () => {
         navigate('/user/login')
       }
     });
+  }
+    else{
+      navigate('/user/login')
+      dispatch(LoaderStatus(false))
+    }
   }, []);
   
 

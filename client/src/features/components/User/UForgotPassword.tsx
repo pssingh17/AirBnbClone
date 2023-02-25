@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
+import { LoaderStatus } from "../../LoaderReducer/LoaderSlice";
 
 // import Cookies from 'js-cookie'
 
@@ -62,6 +63,9 @@ export const UForgotPassword = () => {
           }).catch(err=>{console.log(err)})
         
       });
+      useEffect(()=>{
+        dispatch(LoaderStatus(false))
+      },[])
   return (
     <>
      {showGreen?<>
