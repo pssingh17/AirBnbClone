@@ -132,7 +132,7 @@ export const SearchListingBar = () => {
                           setSearchResults([]);
                         }}
                       >
-                        <div className="customEllipse">
+                        <div className="customEllipse" style={{maxWidth:"70%"}}>
                           
                             <i style={{fontSize:"1rem"}}>{result.name}</i>
                           
