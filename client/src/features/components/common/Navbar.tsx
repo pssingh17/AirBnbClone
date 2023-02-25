@@ -157,34 +157,34 @@ export const CNavbar = () => {
          <NavDropdown className='customDrop' align="end" title={login?.userEmail.slice(0,login.userEmail.indexOf('@')) || userData?.credentials?.email.slice(0,userData?.credentials?.email.indexOf('@'))} id="basic-nav-dropdown" renderMenuOnMount={true}>
           <NavDropdown.Item href="" onClick={()=>{
             setExpanded(false)
-            navigate('/user/myUserProfile')}} style={{borderTopLeftRadius:"13px", borderTopRightRadius:"13px"}}>My Profile</NavDropdown.Item>
+            navigate('/user/myUserProfile')}} style={{borderTopLeftRadius:"13px", borderTopRightRadius:"13px", padding:"0.65rem"}}>My Profile</NavDropdown.Item>
           <NavDropdown.Item href="" onClick={()=>{
             setExpanded(false)
            
-          navigate('/user/bookings')} }>My Bookings</NavDropdown.Item>
+          navigate('/user/bookings')} } style={{padding:"0.65rem"}}>My Bookings</NavDropdown.Item>
           <NavDropdown.Item href="" onClick={()=>{
             setExpanded(false)
             
-            navigate('/user/favourites')}}>My Favourites</NavDropdown.Item>
+            navigate('/user/favourites')}} style={{padding:"0.65rem"}}>My Favourites</NavDropdown.Item>
           
           <NavDropdown.Item href="" onClick={()=>{
             setExpanded(false)
-            logout()}} style={{borderBottomLeftRadius:"13px", borderBottomRightRadius:"13px"}}>Sign Out</NavDropdown.Item>
+            logout()}} style={{borderBottomLeftRadius:"13px", borderBottomRightRadius:"13px",padding:"0.65rem"}}>Sign Out</NavDropdown.Item>
         </NavDropdown>
          </>: 
          <>
           <NavDropdown  className='customDrop 'align="end"  title={login?.userEmail.slice(0,login.userEmail.indexOf('@')) || userData?.credentials?.email.slice(0,userData?.credentials?.email.indexOf('@'))}id="basic-nav-dropdown" renderMenuOnMount={true}>
           <NavDropdown.Item href="" onClick={()=>{
             setExpanded(false)
-            navigate('/host/myHostProfile')} } style={{borderTopLeftRadius:"13px", borderTopRightRadius:"13px"}}>My Profile</NavDropdown.Item>
+            navigate('/host/myHostProfile')} } style={{borderTopLeftRadius:"13px", borderTopRightRadius:"13px",padding:"0.65rem"}}>My Profile</NavDropdown.Item>
           <NavDropdown.Item href="" onClick={()=>{
             setExpanded(false)
         
-          navigate('/host/MyListing')} }>My Listings</NavDropdown.Item>
+          navigate('/host/MyListing')} } style={{padding:"0.65rem"}}>My Listings</NavDropdown.Item>
           
           <NavDropdown.Item href="" onClick={()=>{
             setExpanded(false)
-            logout()}} style={{borderBottomLeftRadius:"13px", borderBottomRightRadius:"13px"}}>Sign Out</NavDropdown.Item>
+            logout()}} style={{borderBottomLeftRadius:"13px", borderBottomRightRadius:"13px",padding:"0.65rem"}}>Sign Out</NavDropdown.Item>
         </NavDropdown>
         
          </>
@@ -195,11 +195,11 @@ export const CNavbar = () => {
        <NavDropdown  className='customDrop ' align="end" title="SignIn" id="basic-nav-dropdown" renderMenuOnMount={true}>
           <NavDropdown.Item href="" onClick={()=>{
             setExpanded(false)
-            navigate('/user/login')} } style={{borderTopLeftRadius:"13px", borderTopRightRadius:"13px"}}>Sign In As User</NavDropdown.Item>
+            navigate('/user/login')} } style={{borderTopLeftRadius:"13px", borderTopRightRadius:"13px",padding:"0.65rem"}}>Sign In As User</NavDropdown.Item>
           
           <NavDropdown.Item href="" onClick={()=>{
             setExpanded(false)
-            navigate('/host/login')} } style={{borderBottomLeftRadius:"13px", borderBottomRightRadius:"13px"}}>Host An Experience</NavDropdown.Item>
+            navigate('/host/login')} } style={{borderBottomLeftRadius:"13px", borderBottomRightRadius:"13px",padding:"0.65rem"}}>Host An Experience</NavDropdown.Item>
          
         </NavDropdown>
        
