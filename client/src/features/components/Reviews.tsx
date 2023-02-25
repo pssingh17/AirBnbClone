@@ -172,7 +172,7 @@ const deleteReview = (Id:String)=>{
       })}
      {next < ReviewsReduxState?.length && (
         <button
-          className="align-self-end btn btn-dark mt-auto m-1 customBtnPosition"
+          className="align-self-end btn btn-dark mt-auto m-1 customBtnPosition customBtnHover"
           onClick={handleMoreReviews}
         >
           Load more
