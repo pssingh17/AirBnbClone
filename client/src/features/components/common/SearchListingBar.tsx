@@ -134,13 +134,13 @@ export const SearchListingBar = () => {
                       >
                         <div>
                           {result?.name?.length > 35 ? (
-                            <i>{result.name.slice(0, 35)}...</i>
+                            <i style={{fontSize:"1rem"}}>{result.name.slice(0, 35)}...</i>
                           ) : (
-                            <i>{result.name}</i>
+                            <i style={{fontSize:"1rem"}}>{result.name}</i>
                           )}
                         </div>
                         <div className="">
-                          <b>{result?.address?.country}</b>
+                          <b style={{fontSize:"1rem"}}>{result?.address?.country}</b>
                         </div>
                       </div>
                     );

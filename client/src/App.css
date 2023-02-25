@@ -347,7 +347,8 @@ background-color: #212529 !important;
 }
 .searchItem:hover{
 
-  color: blue;
+  color: aqua;
+  background-color: rgb(55, 44, 44);
   cursor:pointer
 }
 @media screen and (max-width:540px) {
@@ -378,6 +379,7 @@ background-color: #212529 !important;
 #searchField{
   padding-right: 2rem !important;
 }
+
 .searchSvg{
   position: relative;
   bottom: 2.5px;
@@ -387,7 +389,7 @@ background-color: #212529 !important;
 }
 
 @media screen and (min-width:1289px) and  (max-width:1543px){
-  .custom-adv-fil{
-    margin-left: 5rem;
-  }
-  }
+.custom-adv-fil{
+  margin-left: 5rem;
+}
+}
