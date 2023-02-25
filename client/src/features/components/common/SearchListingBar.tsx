@@ -137,7 +137,7 @@ export const SearchListingBar = () => {
                             <i style={{fontSize:"1rem"}}>{result.name}</i>
                           
                         </div>
-                        <div className="">
+                        <div className="customEllipse">
                           <b style={{fontSize:"1rem"}}>{result?.address?.country}</b>
                         </div>
                       </div>
