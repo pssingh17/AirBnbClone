@@ -9,9 +9,9 @@ async function SearchListing(data) {
   if(title != null){
      newData = await Model.find({
     $or: [
-      { name: { $regex: data.searchString, $options: "i" }} ,
       { "address.country": { $regex: data.searchString, $options: "i" } },
       { "address.suburb": { $regex: data.searchString, $options: "i" } },
+      { name: { $regex: data.searchString, $options: "i" }} ,
       { amenities: { $regex: data.searchString, $options: "i" } },
       { summary: { $regex: data.searchString, $options: "i" } },
     ],
@@ -22,14 +22,16 @@ async function SearchListing(data) {
       newData = await Model.find({
     $or: [
       { name: { $regex: data.searchString, $options: "i" }} ,
-      { name: { $regex: data.searchString, $options: "ix" } },
+      { "address.country": { $regex: data.searchString, $options: "i" }} ,
+      { "address.suburb": { $regex: data.searchString, $options: "i" }} ,
+      { name: { $regex: data.searchString, $options: "i" } },
       { description: { $regex: data.searchString, $options: "" } },
-      { property_type: { $regex: data.searchString, $options: "ix" } },
-      { "address.street": { $regex: data.searchString, $options: "ix" } },
-      { "address.country": { $regex: data.searchString, $options: "ix" } },
-      { "address.suburb": { $regex: data.searchString, $options: "ix" } },
-      { amenities: { $regex: data.searchString, $options: "ix" } },
-      { summary: { $regex: data.searchString, $options: "ix" } },
+      { property_type: { $regex: data.searchString, $options: "i" } },
+      { "address.street": { $regex: data.searchString, $options: "i" } },
+      { "address.country": { $regex: data.searchString, $options: "i" } },
+      { "address.suburb": { $regex: data.searchString, $options: "i" } },
+      { amenities: { $regex: data.searchString, $options: "i" } },
+      { summary: { $regex: data.searchString, $options: "i" } },
     ],
   },{password:0,verifyToken:0}).skip(page * limit)
   .limit(limit);
