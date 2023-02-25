@@ -29,7 +29,7 @@ export const LandingPage = () => {
    // @ts-ignore
    let listingsDataPRange : any = useSelector((state: RootState) => state.AllListingsSlice.value?.priceRange)
   
-  // console.log("lisyin data page no::", listingsData.page)
+  // console.log("lisyin data pRange no::", listingsDataPRange)
   
   const clearFilters = ()=>{
     axios.post("/api/getAll").then(res=>{
@@ -114,8 +114,8 @@ export const LandingPage = () => {
  <button type='button' className='btn btn-dark customBtnHover' onClick={clearFilters}>Clear Filters</button>
  </div>
  <div className='amenityContainer px-2 d-flex align-items-center flex-wrap'>
- {listingsDataAmenities?.length>11 ? "":
- <>
+  {listingsDataAmenities?.length>11 ? "":
+  <>
 {listingsDataAmenities?.length>4 ? 
  <><>
  <div><b><i>Selected Amenities :  </i></b></div>
@@ -130,23 +130,21 @@ export const LandingPage = () => {
             return <span className="badge bg-light custom-badge" style={{width:"auto !important"}} key={index as number}>{amenity}</span>
           })}
          
- 
+ </>}
   </>
   }
-  </>
-}
  </div>
-
-
- 
- </>:""
-}
-<div className='priceContainer px-2 d-flex align-items-center mx-3'>
-        {selectedPriceState? <>
+ <div className='priceContainer px-2 d-flex align-items-center mx-3'>
+        {selectedPriceState && listingsDataPRange? <>
  <div><b><i>Price Range : </i></b></div>
           <span className="badge bg-light custom-badge" style={{width:"auto !important"}} >{selectedPriceState}</span>
         </>:""}
  </div>
+
+ 
+ </>:""
+}
+
  </div>
  </>:""}
     {listingsData.newData?listingsData.newData.map((item : any)=>{
