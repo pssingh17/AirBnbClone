@@ -97,7 +97,7 @@ export const SearchListingBar = () => {
                       console.log("Error block", error);
                     });
                 }
-              }, 355)}
+              }, 500)}
             />
             {showCross ? (
               <button
@@ -132,12 +132,10 @@ export const SearchListingBar = () => {
                           setSearchResults([]);
                         }}
                       >
-                        <div>
-                          {result?.name?.length > 35 ? (
-                            <i style={{fontSize:"1rem"}}>{result.name.slice(0, 35)}...</i>
-                          ) : (
+                        <div style={{whiteSpace:"nowrap",overflow:"hidden", textOverflow:"ellipsis"}}>
+                          
                             <i style={{fontSize:"1rem"}}>{result.name}</i>
-                          )}
+                          
                         </div>
                         <div className="">
                           <b style={{fontSize:"1rem"}}>{result?.address?.country}</b>
