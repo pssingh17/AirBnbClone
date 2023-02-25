@@ -101,7 +101,9 @@ export const LandingPage = () => {
      }
     },[listingsDataPRange])
   return (<>
+  
  <SearchListingBar />
+ {isLoading===false? <>
                <div className='container d-flex align-items-center flex-wrap'>
   <div className='m-1'>
  <AdvanceFiltersModal filterStateSetter={filterStateSetter} />
@@ -141,8 +143,8 @@ export const LandingPage = () => {
  
  </>:""
 }
- 
  </div>
+ </>:""}
     {listingsData.newData?listingsData.newData.map((item : any)=>{
         return (
             
@@ -152,9 +154,9 @@ export const LandingPage = () => {
     })
   
     :
-    "NO data found"}
-    
-    <Pagination dataFrom="getAll" page={listingsData.page}/>
+    "No data found"}
+    {isLoading===false?<> <Pagination dataFrom="getAll" page={listingsData.page}/></>:""}
+   
               
 
 

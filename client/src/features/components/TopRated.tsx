@@ -45,9 +45,8 @@ export const TopRated = () => {
     })
     :
     "NO data found"}
-    <Pagination dataFrom="topRated" page={listingsData.page}/>
-              
- 
+    {isLoading===false?<> <Pagination dataFrom="getAll" page={listingsData.page}/></>:""}
+   
    
     </>
   )

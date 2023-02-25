@@ -43,7 +43,8 @@ export const Trending = () => {
     })
     :
     "NO data found"}
-    <Pagination dataFrom="popular" page={listingsData.page}/>
+     {isLoading===false?<> <Pagination dataFrom="getAll" page={listingsData.page}/></>:""}
+   
               
  
    

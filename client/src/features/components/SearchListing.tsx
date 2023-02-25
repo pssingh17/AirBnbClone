@@ -74,8 +74,8 @@ export const SearchListing = () => {
     :
     <><h5>No Data found</h5>
     <button type='button' className='btn btn-dark w-auto customBtnHover' onClick={HomePage}>Go Back to Home Page</button></>}
-    <Pagination dataFrom="search" page={searchlistingspage}/>
-    
+    {isLoading===false?<> <Pagination dataFrom="getAll" page={listingsData.page}/></>:""}
+   
     </>
 
   )

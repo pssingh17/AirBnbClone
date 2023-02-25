@@ -68,11 +68,11 @@ export function AdvanceFiltersModal(filterStateSetter:any) {
         Advance Filters
       </Button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal className='customAdvFilterBody' show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Filters</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body >
     <div>
      <h5>Amenities</h5>
       {/* <pre>{JSON.stringify(selectedAmenity)}</pre>

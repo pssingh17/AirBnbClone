@@ -382,3 +382,6 @@ background-color: #212529 !important;
   position: relative;
   bottom: 2.5px;
 }
+.customAdvFilterBody > .modal-dialog{
+  height: 85vh !important;
+}

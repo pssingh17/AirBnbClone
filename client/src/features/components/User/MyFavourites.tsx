@@ -187,14 +187,14 @@ export const MyFavourites = () => {
                       Price <b>${fav.price}</b>
                     </p>
                     <button
-                      className="btn btn-dark m-2 px-3 "
+                      className="btn btn-dark m-2 px-3 customBtnHover"
                       style={{ width: "fit-content" }}
                       onClick={()=>{removeFromFavourites(fav.fav_id)}}
                     >
                       Remove From Favourites
                     </button>
                     <button
-                      className="btn btn-dark m-2 px-3 "
+                      className="btn btn-dark m-2 px-3 customBtnHover"
                       style={{ width: "fit-content" }}
                       onClick = {()=>{goToListing(fav?.host?.host_id)}}
                     >
