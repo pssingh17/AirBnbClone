@@ -396,3 +396,8 @@ background-color: #212529 !important;
   width: 20rem !important;
 }
 }
+@media screen and  (max-width:850px){
+  .customListingCardStyle{
+    width: 21rem !important;
+  }
+}
