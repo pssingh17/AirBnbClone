@@ -44,7 +44,7 @@ export const StripePayment = () => {
       let newData = {
         ...viewDetailsRedux,
         userType:"User",
-        paymentDone: viewDetailsRedux?.price * viewDetailsRedux?.NumberOFDays,
+        paymentDone: viewDetailsRedux?.price * Math.round(viewDetailsRedux?.NumberOFDays),
         booking_id: viewDetailsRedux.listing_url.substring(
           viewDetailsRedux.listing_url.lastIndexOf("/") + 1
         ),
@@ -162,7 +162,7 @@ export const StripePayment = () => {
     <p className='mb-0'><b>Rating :</b> <i> {viewDetailsRedux?.newData?.review_scores?.review_scores_rating || "No Ratings Yet"} </i></p>
     <div><b>Cancellation Policy :</b> <i>{viewDetailsRedux?.cancellation_policy}</i></div>
     <div><b>Price Per Night :</b> <i>{viewDetailsRedux?.price}</i></div>
-    <div><b>Dates Selected :</b> <i>From {viewDetailsRedux?.DateFrom} to {viewDetailsRedux?.DateTo} - {viewDetailsRedux?.NumberOFDays} Days</i></div>
+    <div><b>Dates Selected :</b> <i>From {viewDetailsRedux?.DateFrom} to {viewDetailsRedux?.DateTo} - {Math.round(viewDetailsRedux?.NumberOFDays)} Days</i></div>
     <div>For demo purpose, only card accepted at the moment is <b>"4242 4242 4242 4242"</b></div>
     </div>
    
