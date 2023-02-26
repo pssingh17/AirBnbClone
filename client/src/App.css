@@ -415,5 +415,6 @@ background-color: #212529 !important;
 @media screen and  (max-width:300px){
 .modal-body{
   overflow-x: scroll;
+  height: 58vh;
 }
 }
