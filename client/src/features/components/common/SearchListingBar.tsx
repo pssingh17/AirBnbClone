@@ -97,7 +97,7 @@ export const SearchListingBar = () => {
                       console.log("Error block", error);
                     });
                 }
-              }, 500)}
+              }, 274)}
             />
             {showCross ? (
               <button
