@@ -15,6 +15,10 @@ async function SearchListing(data) {
     $or: [
       { "address.country": { $regex: data.searchString, $options: "i" } },
       { "address.suburb": { $regex: data.searchString, $options: "i" } },
+      { "address.street": { $regex: data.searchString, $options: "i" } },
+      { "address.government_area": { $regex: data.searchString, $options: "i" } },
+      { "address.market": { $regex: data.searchString, $options: "i" } },
+      { "address.country_code": { $regex: data.searchString, $options: "i" } },
       { name: { $regex: data.searchString, $options: "i" }} ,
       { amenities: { $regex: data.searchString, $options: "i" } },
       
@@ -27,7 +31,11 @@ async function SearchListing(data) {
     $or: [
       { name: { $regex: data.searchString, $options: "i" }} ,
       { "address.country": { $regex: data.searchString, $options: "i" }} ,
-      { "address.suburb": { $regex: data.searchString, $options: "i" }} ,
+        { "address.suburb": { $regex: data.searchString, $options: "i" } },
+      { "address.street": { $regex: data.searchString, $options: "i" } },
+      { "address.government_area": { $regex: data.searchString, $options: "i" } },
+      { "address.market": { $regex: data.searchString, $options: "i" } },
+      { "address.country_code": { $regex: data.searchString, $options: "i" } },
       { name: { $regex: data.searchString, $options: "i" } },
      
       { "address.street": { $regex: data.searchString, $options: "i" } },
