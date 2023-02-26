@@ -11,6 +11,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { LoaderStatus } from '../../LoaderReducer/LoaderSlice'
 import MyListingImg from '../../../images/myListing.jpeg'
 import CPImg from '../../../images/cp.jpeg'
+import axiosRetry from 'axios-retry'
 
 
 
@@ -24,7 +25,19 @@ export const MyHostProfile = () => {
   
   const UserDataRedux:any = useSelector((state: RootState) => state.UserDataSlice.value)
   // console.log("My fav redux in profile:", MyFavouritesRedux)
-
+  axiosRetry(axios, {
+    retries: 5, // number of retries
+    retryDelay: (retryCount) => {
+        console.log(`retry attempt: ${retryCount}`);
+        return retryCount * 2000; // time interval between retries
+    },
+    // @ts-ignore
+    retryCondition: (error) => {
+        // if retry condition is not specified, by default idempotent requests are retried
+        // @ts-ignore
+        return error;
+    },
+});
   useEffect(()=>{
     dispatch(LoaderStatus(true))
     let token = cookie.token

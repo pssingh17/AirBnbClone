@@ -10,6 +10,7 @@ import { userData } from '../../UserDataReducer/UserDataSlice'
 import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 import { LoaderStatus } from '../../LoaderReducer/LoaderSlice'
+import axiosRetry from 'axios-retry'
 
 
 
@@ -72,7 +73,19 @@ export const MyListing = () => {
     })
 
   }
-
+  axiosRetry(axios, {
+    retries: 5, // number of retries
+    retryDelay: (retryCount) => {
+        console.log(`retry attempt: ${retryCount}`);
+        return retryCount * 2000; // time interval between retries
+    },
+    // @ts-ignore
+    retryCondition: (error) => {
+        // if retry condition is not specified, by default idempotent requests are retried
+        // @ts-ignore
+        return error;
+    },
+});
   useEffect(()=>{
     let token = cookie.token
      // @ts-ignore

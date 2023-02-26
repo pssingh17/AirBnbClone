@@ -10,7 +10,7 @@ import { Pagination } from './common/Pagination'
 
 import { LoaderStatus } from '../LoaderReducer/LoaderSlice'
 import { SearchListingBar } from './common/SearchListingBar'
-
+import axiosRetry from 'axios-retry'
 
 
 
@@ -44,7 +44,19 @@ export const LandingPage = () => {
             setFilterPresent(false)
         }).catch(err=>{console.log(err)})
   }
-    
+  axiosRetry(axios, {
+    retries: 5, // number of retries
+    retryDelay: (retryCount) => {
+        console.log(`retry attempt: ${retryCount}`);
+        return retryCount * 2000; // time interval between retries
+    },
+    // @ts-ignore
+    retryCondition: (error) => {
+        // if retry condition is not specified, by default idempotent requests are retried
+        // @ts-ignore
+        return error;
+    },
+});
     useEffect(()=>{
       dispatch(LoaderStatus(true))
       let SelectedAmenity = JSON.parse(localStorage.getItem("SelectedAmenity") || '{}')

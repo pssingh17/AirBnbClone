@@ -11,6 +11,7 @@ import { LoaderStatus } from '../../LoaderReducer/LoaderSlice'
 import FavImg from '../../../images/fav.jpeg'
 import BookImg from '../../../images/booking.jpeg'
 import CPImg from '../../../images/cp.jpeg'
+import axiosRetry from 'axios-retry'
 
 
 export const MyUserProfile = () => {
@@ -21,7 +22,19 @@ export const MyUserProfile = () => {
   
   const MyFavouritesRedux:any = useSelector((state: RootState) => state.FavouritesSlice.value)
   // console.log("My fav redux in profile:", MyFavouritesRedux)
-
+  axiosRetry(axios, {
+    retries: 5, // number of retries
+    retryDelay: (retryCount) => {
+        console.log(`retry attempt: ${retryCount}`);
+        return retryCount * 2000; // time interval between retries
+    },
+    // @ts-ignore
+    retryCondition: (error) => {
+        // if retry condition is not specified, by default idempotent requests are retried
+        // @ts-ignore
+        return error;
+    },
+});
   useEffect(()=>{
     let token = cookies.get('token')
      // @ts-ignore

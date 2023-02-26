@@ -7,6 +7,7 @@ import ListingCard from "../ListingCard";
 import { FavouritesData } from "../../FavouritesReducer/FavouritesSlice";
 import { useNavigate } from "react-router-dom";
 import { LoaderStatus } from "../../LoaderReducer/LoaderSlice";
+import axiosRetry from "axios-retry";
 
 
 export const MyFavourites = () => {
@@ -98,7 +99,19 @@ export const MyFavourites = () => {
       }
     })
   }
-
+  axiosRetry(axios, {
+    retries: 5, // number of retries
+    retryDelay: (retryCount) => {
+        console.log(`retry attempt: ${retryCount}`);
+        return retryCount * 2000; // time interval between retries
+    },
+    // @ts-ignore
+    retryCondition: (error) => {
+        // if retry condition is not specified, by default idempotent requests are retried
+        // @ts-ignore
+        return error;
+    },
+});
   useEffect(() => {
     let token = cookies.get("token");
     // console.log("token in useEfect:", token)
