@@ -37,7 +37,7 @@ const ListingCard = (props: listingsProp) => {
   }
   return (
     
-    <div className="card col-sm-4 m-2 p-1 customHover" onClick={()=>{ViewDetails(props.listing)}} >
+    <div className="card col-sm-4 m-2 p-1 customHover customListingCardStyle" onClick={()=>{ViewDetails(props.listing)}} >
       {props.listing.images?
        <img style={{width:"100%",height:"200px"}}src={props.listing.images.picture_url} className="card-img-top" alt="No image found" onError={replaceImage}/> :
        <img style={{width:"100%",height:"200px"}} src="https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" className="card-img-top" alt="No image" />
