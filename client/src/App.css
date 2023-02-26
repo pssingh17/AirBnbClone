@@ -412,7 +412,8 @@ background-color: #212529 !important;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
+@media screen and  (max-width:300px){
 .modal-body{
-  overflow-x: auto;
+  overflow-x: scroll;
+}
 }
