@@ -20,6 +20,8 @@ async function SearchListing(data) {
       { "address.market": { $regex: data.searchString, $options: "i" } },
       { "address.country_code": { $regex: data.searchString, $options: "i" } },
       { name: { $regex: data.searchString, $options: "i" }} ,
+      { description: { $regex: data.searchString, $options: "i" } },
+      { summary: { $regex: data.searchString, $options: "i" } },
       { amenities: { $regex: data.searchString, $options: "i" } },
       
     ],
@@ -36,7 +38,8 @@ async function SearchListing(data) {
       { "address.government_area": { $regex: data.searchString, $options: "i" } },
       { "address.market": { $regex: data.searchString, $options: "i" } },
       { "address.country_code": { $regex: data.searchString, $options: "i" } },
-      { name: { $regex: data.searchString, $options: "i" } },
+      { description: { $regex: data.searchString, $options: "i" } },
+      { summary: { $regex: data.searchString, $options: "i" } },
      
       { "address.street": { $regex: data.searchString, $options: "i" } },
     
