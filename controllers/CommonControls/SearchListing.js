@@ -24,7 +24,7 @@ async function SearchListing(data) {
       
     ],
   },{name:1, address:1}).skip(page * 5)
-  .limit(5)
+  .limit(30)
   }
   else{
       newData = await Model.find({

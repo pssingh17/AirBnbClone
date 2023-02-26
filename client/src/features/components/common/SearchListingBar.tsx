@@ -65,7 +65,6 @@ export const SearchListingBar = () => {
               autoComplete="off"
               aria-label="Search"
               id="searchField"
-              spellCheck="false"
               {...register("searchString")}
               onChange={debounce(async (e: any) => {
                 let str = e.target.value;
@@ -123,7 +122,7 @@ export const SearchListingBar = () => {
                     return (
                       <div
                         key={index}
-                        className="searchItem p-2 d-flex justify-content-between"
+                        className="searchItem p-2 d-flex justify-content-between align-items-center "
                         onClick={() => {
                           setValue("searchString", result.name);
                           // // @ts-ignore
@@ -131,7 +130,7 @@ export const SearchListingBar = () => {
                           // @ts-ignore
                           document.getElementById("searchField").focus();
                           setSearchResults([]);
-                           axios({
+                          axios({
                             method: "post",
                       
                             url: "/api/search",
@@ -156,14 +155,16 @@ export const SearchListingBar = () => {
                           });
                         }}
                       >
-                        <div className="customEllipse" style={{maxWidth:"70%"}}>
-                          
-                            <i style={{fontSize:"1rem"}}>{result.name}</i>
-                          
+                        <div  className="customEllipse"
+                        >
+                          <i style={{ fontSize: "1rem" }}>{result.name}</i>
                         </div>
-                        <div className="customEllipse">
-                          <b style={{fontSize:"1rem"}}>{result?.address?.country}</b>
+                        <div className="customEllipse ms-2" style={{width: "157px", textAlign:"end"}}>
+                          <b style={{ fontSize: "1rem" , }}>
+                            {result?.address?.country}
+                          </b>
                         </div>
+                       
                       </div>
                     );
                   })

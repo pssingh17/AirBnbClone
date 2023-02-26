@@ -418,3 +418,27 @@ background-color: #212529 !important;
   height: 58vh;
 }
 }
+.searchResults{
+  height: 15.3rem;
+    overflow: auto;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5.6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(rgb(112, 104, 104),rgb(115, 206, 206),rgb(83, 239, 239),rgb(42, 40, 40));
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: grey;
+}
