@@ -192,7 +192,7 @@ export const MyFavourites = () => {
                     )}
                     <p className="text-start m-2"><b>Rating :</b> <i> {fav?.review_scores?.review_scores_rating || "No Ratings Yet"} </i></p>
                     <p className="text-start m-2">
-                     <b> Price :</b><i>${fav.price}</i>
+                     <b> Price : </b><i>${fav.price}</i>
                     </p>
                     <button
                       className="btn btn-dark m-2 px-3 customBtnHover"
