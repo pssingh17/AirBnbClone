@@ -130,6 +130,7 @@ export const SearchListingBar = () => {
                           // @ts-ignore
                           document.getElementById("searchField").focus();
                           setSearchResults([]);
+                          dispatch(LoaderStatus(true))
                           axios({
                             method: "post",
                       
