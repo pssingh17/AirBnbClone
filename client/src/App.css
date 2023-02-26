@@ -419,7 +419,7 @@ background-color: #212529 !important;
 }
 }
 .searchResults{
-  height: 15.3rem;
+  max-height: 15.3rem;
     overflow: auto;
 }
 
