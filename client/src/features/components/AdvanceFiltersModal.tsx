@@ -100,6 +100,7 @@ export function AdvanceFiltersModal(filterStateSetter:any) {
         value={selectedCountry}
         onChange={setSelectedCountry}
         closeOnChangedValue={true}
+        disableSearch={true}
         labelledBy="Select"
       />
     </div>
