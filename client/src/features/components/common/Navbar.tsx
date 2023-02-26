@@ -99,7 +99,9 @@ export const CNavbar = () => {
     <Navbar expanded={expanded} bg="light" variant='light' expand="lg" style={{paddingTop:"0.5rem", paddingBottom:"0.5rem",borderBottom:"1px solid #979797"}}>
     <Container fluid>
     <NavLink style={{textDecoration:"none"}}
-    onClick={() => setExpanded(false)}
+    onClick={() =>{
+      localStorage.removeItem("SearchString")
+      setExpanded(false)}}
               to="/"><Navbar.Brand >Demo Site</Navbar.Brand>
     </NavLink>
         <Navbar.Toggle
@@ -111,7 +113,9 @@ export const CNavbar = () => {
             <NavLink
               to="/"
               className="nav-link px-2"
-              onClick={() => setExpanded(false)}
+              onClick={() => {
+                localStorage.removeItem("SearchString")
+                setExpanded(false)}}
               style={({ isActive }) =>
               isActive ? activeStyle : undefined
             } 
@@ -121,7 +125,9 @@ export const CNavbar = () => {
             <NavLink
               to="/trending"
               className="nav-link px-2"
-              onClick={() => setExpanded(false)}
+              onClick={() => {
+                localStorage.removeItem("SearchString")
+                setExpanded(false)}}
               style={({ isActive }) =>
               isActive ? activeStyle : undefined
             }
@@ -131,7 +137,9 @@ export const CNavbar = () => {
             <NavLink
               to="topPicks"
               className="nav-link px-2"
-              onClick={() => setExpanded(false)}
+              onClick={() => {
+                localStorage.removeItem("SearchString")
+                setExpanded(false)}}
               style={({ isActive }) =>
               isActive ? activeStyle : undefined
             }
@@ -141,7 +149,9 @@ export const CNavbar = () => {
             <NavLink
               to="topRated"
               className="nav-link px-2"
-              onClick={() => setExpanded(false)}
+              onClick={() =>{
+                localStorage.removeItem("SearchString")
+                setExpanded(false)}}
               style={({ isActive }) =>
               isActive ? activeStyle : undefined
             }

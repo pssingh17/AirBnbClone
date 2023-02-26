@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -47,7 +47,14 @@ export const SearchListingBar = () => {
       }
     });
   };
-
+  useEffect(()=>{
+    // @ts-ignore
+    let searchString = JSON.parse(localStorage.getItem("SearchString"))
+    if(searchString != undefined){
+      setValue("searchString", searchString)
+    }
+  }
+  );
   return (
     <>
       <form
