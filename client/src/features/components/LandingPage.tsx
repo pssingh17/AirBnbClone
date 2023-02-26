@@ -134,7 +134,7 @@ export const LandingPage = () => {
   </>
   }
  </div>
- <div className='priceContainer px-2 d-flex align-items-center mx-3'>
+ <div className='priceContainer px-2 d-flex align-items-center'>
         {selectedPriceState && listingsDataPRange? <>
  <div><b><i>Price Range : </i></b></div>
           <span className="badge bg-light custom-badge" style={{width:"auto !important"}} >{selectedPriceState}</span>
