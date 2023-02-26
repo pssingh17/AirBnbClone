@@ -168,15 +168,15 @@ export const MyListing = () => {
 
 
     <div className=' text-start custom-margin-listing'>
-        <h6>Name : <i>{UserDataRedux.name}</i></h6>
-        <h6>Summary : <i>{UserDataRedux.summary}</i></h6>
-        <h6>Description : <i>{UserDataRedux.description}</i></h6>
-        <h6>Address : <i>{UserDataRedux.address}</i></h6>
-        <h6>Price : <i>{UserDataRedux.price}</i></h6>
-        <h6>Rooms : <i>{UserDataRedux.rooms}</i></h6>
-        <h6>Bathrooms : <i>{UserDataRedux.bathrooms}</i></h6>
-        <h6>Cancellation Policy : <i>{UserDataRedux.cancellation_policy}</i></h6>
-        <h6>Date Posted : <i>{UserDataRedux.date.slice(0,10)}</i></h6>
+        <div><b>Title </b>: <i>{UserDataRedux.name}</i></div>
+        <div><b>Summary </b>: <i>{UserDataRedux.summary}</i></div>
+        <div><b>Description </b>: <i>{UserDataRedux.description}</i></div>
+        <div><b>Address </b>: <i>{UserDataRedux.address}</i></div>
+        <div><b>Price </b>: <i>{UserDataRedux.price}</i></div>
+        <div><b>Rooms </b>: <i>{UserDataRedux.rooms}</i></div>
+        <div><b>Bathrooms </b>: <i>{UserDataRedux.bathrooms}</i></div>
+        <div><b>Cancellation Policy </b>: <i>{UserDataRedux.cancellation_policy}</i></div>
+        <div><b>Date Posted </b>: <i>{UserDataRedux.date.slice(0,10)}</i></div>
     </div>
     </div>
         <div className='text-start mt-2'>

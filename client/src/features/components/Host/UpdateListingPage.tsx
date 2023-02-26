@@ -125,10 +125,12 @@ export const UpdateListingPage = () => {
       }
     }).then(res=>{
       // console.log("rrsponse from myHostProfile",res.data)
+    dispatch(LoaderStatus(false))
       setUserDataState(res.data)
       dispatch(userData(res.data))
     }).catch(err=>{
       console.log("Error-",err)
+    dispatch(LoaderStatus(false))
       if (err?.response?.data?.loggedIn === false){
         console.log("Token expired.Please Verify- ", err?.response?.data.message)
         removeCookie("token")
@@ -139,8 +141,8 @@ export const UpdateListingPage = () => {
     })
   }
   else{
-    navigate('/host/login')
     dispatch(LoaderStatus(false))
+    navigate('/host/login')
   }
   },[])
 
@@ -168,8 +170,7 @@ export const UpdateListingPage = () => {
                       </div>
                       <div className="mb-3">
                         <p className="form-label text-start">Description</p>
-                        <input
-                          type="description"
+                        <textarea
                           className="form-control"
                           {...register("description",{ required: true,minLength:30, maxLength: 2000 })}  defaultValue={UserDataRedux?.description}
                         />
@@ -178,8 +179,7 @@ export const UpdateListingPage = () => {
                       </div>
                       <div className="mb-3">
                         <p className="form-label text-start">Summary</p>
-                        <input
-                          type="text"
+                        <textarea
                           className="form-control"
                           {...register("summary",{ required: true,minLength:20, maxLength: 100 })} defaultValue={UserDataRedux?.summary}
                         />
