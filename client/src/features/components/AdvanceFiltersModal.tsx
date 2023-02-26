@@ -78,7 +78,7 @@ export function AdvanceFiltersModal(filterStateSetter:any) {
         <Modal.Header closeButton>
           <Modal.Title>Filters</Modal.Title>
         </Modal.Header>
-        <Modal.Body style={{overflow:"auto",height:"100vh"}} >
+        <Modal.Body style={{overflow:"auto",height:"58vh"}} >
     <div>
      <h5>Amenities</h5>
       {/* <pre>{JSON.stringify(selectedAmenity)}</pre>
