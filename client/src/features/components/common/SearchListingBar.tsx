@@ -65,6 +65,7 @@ export const SearchListingBar = () => {
               autoComplete="off"
               aria-label="Search"
               id="searchField"
+              spellCheck="false"
               {...register("searchString")}
               onChange={debounce(async (e: any) => {
                 let str = e.target.value;
