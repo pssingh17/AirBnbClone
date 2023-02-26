@@ -53,8 +53,9 @@ export const SearchListingBar = () => {
     if(searchString != undefined){
       setValue("searchString", searchString)
     }
-  }
-  );
+  },
+ [] );
+
   return (
     <>
       <form
@@ -71,6 +72,7 @@ export const SearchListingBar = () => {
               placeholder="Search"
               autoComplete="off"
               aria-label="Search"
+              spellCheck="false"
               id="searchField"
               {...register("searchString")}
               onChange={debounce(async (e: any) => {
@@ -131,8 +133,9 @@ export const SearchListingBar = () => {
                         key={index}
                         className="searchItem p-2 d-flex justify-content-between align-items-center "
                         onClick={() => {
-                          setValue("searchString", result.name);
-                        
+                          // setValue("searchString", result.name);
+                          // @ts-ignore
+                          document.getElementById("searchField").setValue = result.name;
                           // @ts-ignore
                           // document.getElementById("searchField").focus();
                           setSearchResults([]);
@@ -150,14 +153,15 @@ export const SearchListingBar = () => {
                             },
                           }).then((res) => {
                             //  console.log("Search data", res.data)
-                            // setValue("searchString","")
+                            
                             setSearchResults([]);
                       
                             if (res.data) {
                               dispatch(searchListingData(res.data));
                               dispatch(LoaderStatus(false));
                               localStorage.setItem("SearchString", JSON.stringify(result.name));
-                              return navigate("/searchListing");
+                               navigate("/searchListing");
+                              setValue("searchString",result.name)
                             }
                           });
                         }}
