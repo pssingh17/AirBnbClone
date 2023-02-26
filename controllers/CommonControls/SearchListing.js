@@ -20,8 +20,11 @@ async function SearchListing(data) {
       { "address.market": { $regex: data.searchString, $options: "i" } },
       { "address.country_code": { $regex: data.searchString, $options: "i" } },
       { name: { $regex: data.searchString, $options: "i" }} ,
+      { name: { $regex: data.searchString, $options: "ix" }} ,
       { description: { $regex: data.searchString, $options: "i" } },
+      { description: { $regex: data.searchString, $options: "ix" } },
       { summary: { $regex: data.searchString, $options: "i" } },
+      { summary: { $regex: data.searchString, $options: "ix" } },
       { amenities: { $regex: data.searchString, $options: "i" } },
       
     ],
@@ -32,6 +35,7 @@ async function SearchListing(data) {
       newData = await Model.find({
     $or: [
       { name: { $regex: data.searchString, $options: "i" }} ,
+      { name: { $regex: data.searchString, $options: "ix" }} ,
       { "address.country": { $regex: data.searchString, $options: "i" }} ,
         { "address.suburb": { $regex: data.searchString, $options: "i" } },
       { "address.street": { $regex: data.searchString, $options: "i" } },
@@ -39,7 +43,9 @@ async function SearchListing(data) {
       { "address.market": { $regex: data.searchString, $options: "i" } },
       { "address.country_code": { $regex: data.searchString, $options: "i" } },
       { description: { $regex: data.searchString, $options: "i" } },
+      { description: { $regex: data.searchString, $options: "ix" } },
       { summary: { $regex: data.searchString, $options: "i" } },
+      { summary: { $regex: data.searchString, $options: "ix" } },
      
       { "address.street": { $regex: data.searchString, $options: "i" } },
     
