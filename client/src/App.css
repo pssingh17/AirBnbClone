@@ -372,9 +372,9 @@ background-color: #212529 !important;
 }
 
 @media screen and (min-width:600px) and  (max-width:992px){
-  .custom-adv-fil{
+  /* .custom-adv-fil{
     margin-left: 10rem;
-  }
+  } */
 }
 #searchField{
   padding-right: 2rem !important;
