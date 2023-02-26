@@ -33,7 +33,8 @@ export const Pagination = ({dataFrom,page}:Page) => {
       page = page+1
           let SelectedAmenity = JSON.parse(localStorage.getItem("SelectedAmenity") || '{}')
           let SelectedPrice = JSON.parse(localStorage.getItem("SelectedPrice") || '{}')
-          if(SelectedAmenity?.length>0 || SelectedPrice?.length>0){
+          let SelectedCountry = JSON.parse(localStorage.getItem("SelectedCountry") || '{}')
+      if(SelectedAmenity.length>0 || SelectedPrice.length>0 || SelectedCountry.length>0){
             // console.log("LOcal storage vals:", SelectedAmenity, SelectedPrice)
             axios({
       
@@ -41,7 +42,7 @@ export const Pagination = ({dataFrom,page}:Page) => {
               
               url: '/api/getAll',
               
-              data:{amenities:SelectedAmenity,priceRange:SelectedPrice, page:page}, 
+              data:{amenities:SelectedAmenity,priceRange:SelectedPrice,country:SelectedCountry, page:page}, 
 
               headers: {
                 'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
@@ -53,6 +54,7 @@ export const Pagination = ({dataFrom,page}:Page) => {
               dispatch(allListingsData(res.data))
               localStorage.setItem("SelectedAmenity",JSON.stringify(SelectedAmenity))
               localStorage.setItem("SelectedPrice",JSON.stringify(SelectedPrice))
+              localStorage.setItem("SelectedCountry",JSON.stringify(SelectedCountry))
               }
               dispatch(LoaderStatus(false))
 
@@ -161,7 +163,8 @@ axios({
       
       let SelectedAmenity = JSON.parse(localStorage.getItem("SelectedAmenity") || '{}')
       let SelectedPrice = JSON.parse(localStorage.getItem("SelectedPrice") || '{}')
-      if(SelectedAmenity?.length>0 || SelectedPrice?.length>0){
+      let SelectedCountry = JSON.parse(localStorage.getItem("SelectedCountry") || '{}')
+      if(SelectedAmenity.length>0 || SelectedPrice.length>0 || SelectedCountry.length>0){
         // console.log("LOcal storage vals:", SelectedAmenity, SelectedPrice)
         axios({
   
@@ -169,7 +172,7 @@ axios({
           
           url: '/api/getAll',
           
-          data:{amenities:SelectedAmenity,priceRange:SelectedPrice, page:page}, 
+          data:{amenities:SelectedAmenity,priceRange:SelectedPrice,country:SelectedCountry, page:page}, 
 
           headers: {
             'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
@@ -181,6 +184,7 @@ axios({
           dispatch(allListingsData(res.data))
           localStorage.setItem("SelectedAmenity",JSON.stringify(SelectedAmenity))
           localStorage.setItem("SelectedPrice",JSON.stringify(SelectedPrice))
+          localStorage.setItem("SelectedCountry",JSON.stringify(SelectedCountry))
           }
           dispatch(LoaderStatus(false))
 

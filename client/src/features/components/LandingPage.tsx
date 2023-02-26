@@ -140,7 +140,7 @@ export const LandingPage = () => {
   }
  </div>
  <div className='priceContainer px-2 d-flex align-items-center'>
-        {listingsDataCountry.length>0? <>
+        {listingsDataCountry?.length>0? <>
  <div><b><i>Country : </i></b></div>
           <span className="badge bg-light custom-badge" style={{width:"auto !important"}} >{listingsDataCountry[0].value}</span>
         </>:""}
