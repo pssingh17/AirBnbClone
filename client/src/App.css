@@ -414,5 +414,5 @@ background-color: #212529 !important;
 }
 
 .modal-body{
-  overflow-x: scroll;
+  overflow-x: auto;
 }
