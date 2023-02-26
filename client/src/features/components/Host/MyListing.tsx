@@ -123,7 +123,7 @@ export const MyListing = () => {
   return (
     <>
   {showGreen?<>
-      <Alert className="col-12 col-md-8 col-lg-6 p-1" show={showGreen} variant="success" >
+      <Alert className="col-12 col-md-8 col-lg-6 p-1" show={showGreen} variant="success" style={{position:"sticky",top:"0px", height:"3rem"}}>
         <p>{alertValue}</p>
         <Button style={{fontSize:"80%"}} onClick={() => 
           {setShowGreen(false)
@@ -133,7 +133,7 @@ export const MyListing = () => {
             </Button>
       </Alert>
     </>:<>
-    <Alert className="col-12 col-md-8 col-lg-6 p-1" show={showRed} variant="danger" >
+    <Alert className="col-12 col-md-8 col-lg-6 p-1" show={showRed} variant="danger" style={{position:"sticky",top:"0px", height:"3rem"}}>
         <p>{alertValue}</p>
         <Button style={{fontSize:"80%"}} onClick={() => setShowRed(false)} variant="outline-danger">
             Close

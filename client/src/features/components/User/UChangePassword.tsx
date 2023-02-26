@@ -83,7 +83,7 @@ export const UChangePassword = () => {
   return (
     <>
      {showGreen?<>
-      <Alert className="col-12 col-md-8 col-lg-6 p-1 d-flex align-items-center justify-content-between"  show={showGreen} variant="success" >
+      <Alert className="col-12 col-md-8 col-lg-6 p-1 d-flex align-items-center justify-content-between"  show={showGreen} variant="success" style={{position:"sticky",top:"0px", height:"3rem"}}>
         <p style={{marginBottom:"0"}}>{alertValue || "check"}</p>
         <Button style={{fontSize:"80%"}} onClick={() => {
           setShowGreen(false)
@@ -93,7 +93,7 @@ export const UChangePassword = () => {
             </Button>
       </Alert>
     </>:<>
-    <Alert className="col-12 col-md-8 col-lg-6 p-1 d-flex align-items-center justify-content-between" show={showRed} variant="danger" >
+    <Alert className="col-12 col-md-8 col-lg-6 p-1 d-flex align-items-center justify-content-between" show={showRed} variant="danger" style={{position:"sticky",top:"0px", height:"3rem"}}>
         <p style={{marginBottom:"0"}}>{alertValue || "not check"}</p>
         <Button style={{fontSize:"80%"}} onClick={() => setShowRed(false)} variant="outline-danger">
             Close

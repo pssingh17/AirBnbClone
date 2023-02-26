@@ -412,3 +412,7 @@ background-color: #212529 !important;
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.modal-body{
+  overflow-x: scroll;
+}
