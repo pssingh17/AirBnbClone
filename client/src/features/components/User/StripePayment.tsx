@@ -155,17 +155,17 @@ export const StripePayment = () => {
     <div className='custom-details text-start p-2'>
     <div><h4>{viewDetailsRedux?.name}</h4></div>
     {viewDetailsRedux?.address.street ? <>
-    <div>Address : <b><i>{viewDetailsRedux?.address.street},{viewDetailsRedux?.address.suburb},{viewDetailsRedux?.address.country}</i></b></div>
-    </>:<>Address : {viewDetailsRedux?.address.street}</>}
-    <p className='mb-0'>Rating : <b><i> {viewDetailsRedux.newData?.review_scores?.review_scores_rating || "No Ratings Yet"} </i></b></p>
-    <div>Cancellation Policy : <b><i>{viewDetailsRedux?.cancellation_policy}</i></b></div>
-    <div>Price Per Night : <b><i>{viewDetailsRedux?.price}</i></b></div>
-    <div>Dates Selected : <b><i>From {viewDetailsRedux?.DateFrom} to {viewDetailsRedux?.DateTo} - {viewDetailsRedux?.NumberOFDays} Days</i></b></div>
+    <div><b>Address :</b> <i>{viewDetailsRedux?.address.street},{viewDetailsRedux?.address.suburb},{viewDetailsRedux?.address.country}</i></div>
+    </>:<><b>Address :</b> {viewDetailsRedux?.address.street}</>}
+    <p className='mb-0'><b>Rating :</b> <i> {viewDetailsRedux.newData?.review_scores?.review_scores_rating || "No Ratings Yet"} </i></p>
+    <div><b>Cancellation Policy :</b> <i>{viewDetailsRedux?.cancellation_policy}</i></div>
+    <div><b>Price Per Night :</b> <i>{viewDetailsRedux?.price}</i></div>
+    <div><b>Dates Selected :</b> <i>From {viewDetailsRedux?.DateFrom} to {viewDetailsRedux?.DateTo} - {viewDetailsRedux?.NumberOFDays} Days</i></div>
     <div>For demo purpose, only card accepted at the moment is <b>"4242 4242 4242 4242"</b></div>
     </div>
    
    </div>
-   <div><b><i>Continue to pay : ${viewDetailsRedux?.price* (viewDetailsRedux?.NumberOFDays)}</i></b></div>
+   <div>Continue to pay :<b><i> ${viewDetailsRedux?.price* (viewDetailsRedux?.NumberOFDays)}</i></b></div>
     <Stripe stripeKey='pk_test_51MUqu0K16nSfUndiDYDDQwKwc7ODG00g2inFW5YZdGgYVdCZVGtWnelJw5uUQbOCavzOStGQGR18JM7R8am5Xm2R004ZZV1Kps' token={tokenHandler} 
     shippingAddress
     billingAddress
