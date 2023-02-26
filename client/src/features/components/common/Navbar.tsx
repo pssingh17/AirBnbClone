@@ -132,7 +132,7 @@ export const CNavbar = () => {
               isActive ? activeStyle : undefined
             }
             >
-              Trending
+              Popular
             </NavLink>
             <NavLink
               to="topPicks"

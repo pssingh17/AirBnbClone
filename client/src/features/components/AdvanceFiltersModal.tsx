@@ -92,7 +92,7 @@ export function AdvanceFiltersModal(filterStateSetter:any) {
       />
     </div>
     <div>
-     <h5>Countries</h5>
+     <h5 className='mt-2'>Countries</h5>
       {/* <pre>{JSON.stringify(selectedAmenity)}</pre>
       <pre>{JSON.stringify(selectedPrice)}</pre> */}
       <MultiSelect
@@ -104,7 +104,7 @@ export function AdvanceFiltersModal(filterStateSetter:any) {
       />
     </div>
     <div>
-      <h5>Price</h5>
+      <h5 className='mt-2'>Price</h5>
       {/* <pre>{JSON.stringify(selected)}</pre> */}
       <MultiSelect
         options={price}
