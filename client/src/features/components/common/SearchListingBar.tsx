@@ -131,6 +131,29 @@ export const SearchListingBar = () => {
                           // @ts-ignore
                           document.getElementById("searchField").focus();
                           setSearchResults([]);
+                           axios({
+                            method: "post",
+                      
+                            url: "/api/search",
+                      
+                            data: {
+                              searchString:result.name
+                            },
+                            headers: {
+                              "content-type": "application/x-www-form-urlencoded;charset=utf-8",
+                            },
+                          }).then((res) => {
+                            //  console.log("Search data", res.data)
+                            // setValue("searchString","")
+                            setSearchResults([]);
+                      
+                            if (res.data) {
+                              dispatch(searchListingData(res.data));
+                              dispatch(LoaderStatus(false));
+                              localStorage.setItem("SearchString", JSON.stringify(result.name));
+                              return navigate("/searchListing");
+                            }
+                          });
                         }}
                       >
                         <div className="customEllipse" style={{maxWidth:"70%"}}>
