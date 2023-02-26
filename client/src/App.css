@@ -387,15 +387,12 @@ background-color: #212529 !important;
 .customAdvFilterBody > .modal-dialog{
   height: 85vh !important;
 }
-
+.customListingCardStyle{
+  width: 18rem !important;
+}
 @media screen and (min-width:1289px) and  (max-width:1543px){
-.custom-adv-fil{
-  margin-left: 5rem;
-}
-}
 
-.customEllipse{
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.customListingCardStyle{
+  width: 20rem !important;
+}
 }
