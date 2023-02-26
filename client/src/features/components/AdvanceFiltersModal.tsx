@@ -16,10 +16,15 @@ export function AdvanceFiltersModal(filterStateSetter:any) {
   const [show, setShow] = useState(false);
   const [selectedPrice, setSelectedPrice] = useState<any[]>([]);
   const [selectedAmenity, setSelectedAmenity] = useState<any[]>([]);
+  const [selectedCountry, setSelectedCountry] = useState<any[]>([]);
   const [listings, setlistings] = useState <String []>([])
     const dispatch = useDispatch()
   let listingsData : any = useSelector((state: RootState) => state.AllListingsSlice.value)
   let amenities = listingsData.totalAmenities
+  const countriesList=[{label:"Turkey",value:"Turkey"},{label:"Spain",value:"Spain"},{label:"Portugal",value:"Portugal"},{label:"Canada",value:"Canada"},{label:"Brazil",value:"Brazil"},{label:"Hong Kong",value:"Hong Kong"},{label:"Austrailia",value:"Austrailia"},{label:"China",value:"China"},{label:"United States",value:"United States"},]
+
+
+
   const applyFilters = () =>{ 
     dispatch(LoaderStatus(true))
     // console.log("slected price:", selectedPrice)
@@ -29,7 +34,7 @@ export function AdvanceFiltersModal(filterStateSetter:any) {
       
       url: '/api/getAll',
       
-      data:{amenities:selectedAmenity,priceRange:selectedPrice}, 
+      data:{amenities:selectedAmenity,priceRange:selectedPrice,country:selectedCountry}, 
       headers: {
         'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
       }
@@ -40,6 +45,7 @@ export function AdvanceFiltersModal(filterStateSetter:any) {
       dispatch(LoaderStatus(false))
       localStorage.setItem("SelectedAmenity",JSON.stringify(selectedAmenity))
       localStorage.setItem("SelectedPrice",JSON.stringify(selectedPrice))
+      localStorage.setItem("SelectedCountry",JSON.stringify(selectedCountry))
       filterStateSetter.filterStateSetter()
   }).catch(err=>{console.log(err)})
     setShow(false)};
@@ -82,6 +88,18 @@ export function AdvanceFiltersModal(filterStateSetter:any) {
         value={selectedAmenity}
         onChange={setSelectedAmenity}
         disableSearch={true}
+        labelledBy="Select"
+      />
+    </div>
+    <div>
+     <h5>Countries</h5>
+      {/* <pre>{JSON.stringify(selectedAmenity)}</pre>
+      <pre>{JSON.stringify(selectedPrice)}</pre> */}
+      <MultiSelect
+        options={countriesList}
+        value={selectedCountry}
+        onChange={setSelectedCountry}
+        closeOnChangedValue={true}
         labelledBy="Select"
       />
     </div>

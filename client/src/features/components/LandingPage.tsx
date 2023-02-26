@@ -28,6 +28,8 @@ export const LandingPage = () => {
   let listingsDataAmenities : any = useSelector((state: RootState) => state.AllListingsSlice.value?.amenities)
    // @ts-ignore
    let listingsDataPRange : any = useSelector((state: RootState) => state.AllListingsSlice.value?.priceRange)
+   // @ts-ignore
+   let listingsDataCountry : any = useSelector((state: RootState) => state.AllListingsSlice.value?.country)
   
   // console.log("lisyin data pRange no::", listingsDataPRange)
   
@@ -47,7 +49,8 @@ export const LandingPage = () => {
       dispatch(LoaderStatus(true))
       let SelectedAmenity = JSON.parse(localStorage.getItem("SelectedAmenity") || '{}')
       let SelectedPrice = JSON.parse(localStorage.getItem("SelectedPrice") || '{}')
-      if(SelectedAmenity.length>0 || SelectedPrice.length>0){
+      let SelectedCountry = JSON.parse(localStorage.getItem("SelectedCountry") || '{}')
+      if(SelectedAmenity.length>0 || SelectedPrice.length>0 || SelectedCountry.length>0){
         // console.log("LOcal storage vals:", SelectedAmenity, SelectedPrice)
         setFilterPresent(true)
         axios({
@@ -56,7 +59,7 @@ export const LandingPage = () => {
           
           url: '/api/getAll',
           
-          data:{amenities:SelectedAmenity,priceRange:SelectedPrice}, 
+          data:{amenities:SelectedAmenity,priceRange:SelectedPrice, country: SelectedCountry}, 
 
           headers: {
             'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
@@ -68,6 +71,7 @@ export const LandingPage = () => {
           dispatch(allListingsData(res.data))
           localStorage.setItem("SelectedAmenity",JSON.stringify(SelectedAmenity))
           localStorage.setItem("SelectedPrice",JSON.stringify(SelectedPrice))
+          localStorage.setItem("SelectedCountry",JSON.stringify(SelectedCountry))
           
       }).catch(err=>{console.log(err)})
     }
@@ -78,6 +82,7 @@ export const LandingPage = () => {
             dispatch(allListingsData(res.data))
             localStorage.removeItem("SelectedAmenity")
             localStorage.removeItem("SelectedPrice") 
+            localStorage.removeItem("SelectedCountry") 
         }).catch(err=>{console.log(err)})
     }
    
@@ -133,6 +138,12 @@ export const LandingPage = () => {
  </>}
   </>
   }
+ </div>
+ <div className='priceContainer px-2 d-flex align-items-center'>
+        {listingsDataCountry.length>0? <>
+ <div><b><i>Country : </i></b></div>
+          <span className="badge bg-light custom-badge" style={{width:"auto !important"}} >{listingsDataCountry[0].value}</span>
+        </>:""}
  </div>
  <div className='priceContainer px-2 d-flex align-items-center'>
         {selectedPriceState && listingsDataPRange? <>
