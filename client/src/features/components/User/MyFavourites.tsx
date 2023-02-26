@@ -182,7 +182,7 @@ export const MyFavourites = () => {
                     {fav?.address?.street ? (
                       <>
                         <p className="text-start m-2">
-                           <b>Address :</b> <i> {fav?.address?.street},
+                           <b>Location :</b> <i> {fav?.address?.street},
                           {fav?.address?.government_area},
                           {fav?.address?.country}</i>
                         </p>

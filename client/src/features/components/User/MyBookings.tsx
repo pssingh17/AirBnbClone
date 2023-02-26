@@ -137,7 +137,7 @@ export const MyBookings = () => {
          {booking?.address?.street ? (
                       <>
                         <p className="text-start m-2">
-                           <b>Address :</b> <i> {booking?.address?.street},
+                           <b>Location :</b> <i> {booking?.address?.street},
                           {booking?.address?.government_area},
                           {booking?.address?.country}</i>
                         </p>

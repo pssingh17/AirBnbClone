@@ -157,8 +157,8 @@ export const StripePayment = () => {
     <div className='custom-details text-start p-2'>
     <div><h4>{viewDetailsRedux?.name}</h4></div>
     {viewDetailsRedux?.address.street ? <>
-    <div><b>Address :</b> <i>{viewDetailsRedux?.address.street},{viewDetailsRedux?.address.suburb},{viewDetailsRedux?.address.country}</i></div>
-    </>:<><b>Address :</b> {viewDetailsRedux?.address.street}</>}
+    <div><b>Location :</b> <i>{viewDetailsRedux?.address.street},{viewDetailsRedux?.address.suburb},{viewDetailsRedux?.address.country}</i></div>
+    </>:<><b>Location :</b> {viewDetailsRedux?.address.street}</>}
     <p className='mb-0'><b>Rating :</b> <i> {viewDetailsRedux?.newData?.review_scores?.review_scores_rating || "No Ratings Yet"} </i></p>
     <div><b>Cancellation Policy :</b> <i>{viewDetailsRedux?.cancellation_policy}</i></div>
     <div><b>Price Per Night :</b> <i>{viewDetailsRedux?.price}</i></div>

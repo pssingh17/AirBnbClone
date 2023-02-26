@@ -255,13 +255,13 @@ export const ViewDetails = () => {
               {viewDetailsRedux?.address?.street ? (
                       <>
                         <p className="text-start m-1 my-2">
-                          <i> Address : </i> <b>  {viewDetailsRedux?.address?.street},
+                          <i> Location : </i> <b>  {viewDetailsRedux?.address?.street},
                           {viewDetailsRedux?.address?.government_area},
                           {viewDetailsRedux?.address?.country}</b>
                         </p>
                       </>
                     ) : (
-                      <p className="text-start my-2"> Address {viewDetailsRedux?.address}</p>
+                      <p className="text-start my-2"> Location {viewDetailsRedux?.address}</p>
                     )}
               {viewDetailsRedux?.review_scores?.review_scores_rating ? <div className="text-start m-1 my-1">Average Rating :<b> {viewDetailsRedux?.review_scores?.review_scores_rating}</b></div> :
               ""}
