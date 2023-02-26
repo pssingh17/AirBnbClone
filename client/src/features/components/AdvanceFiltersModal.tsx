@@ -21,7 +21,7 @@ export function AdvanceFiltersModal(filterStateSetter:any) {
     const dispatch = useDispatch()
   let listingsData : any = useSelector((state: RootState) => state.AllListingsSlice.value)
   let amenities = listingsData.totalAmenities
-  const countriesList=[{label:"Turkey",value:"Turkey"},{label:"Spain",value:"Spain"},{label:"Portugal",value:"Portugal"},{label:"Canada",value:"Canada"},{label:"Brazil",value:"Brazil"},{label:"Hong Kong",value:"Hong Kong"},{label:"Austrailia",value:"Austrailia"},{label:"China",value:"China"},{label:"United States",value:"United States"},]
+  const countriesList=[{label:"Turkey",value:"Turkey"},{label:"Spain",value:"Spain"},{label:"Portugal",value:"Portugal"},{label:"Canada",value:"Canada"},{label:"Brazil",value:"Brazil"},{label:"Hong Kong",value:"Hong Kong"},{label:"Australia",value:"Australia"},{label:"China",value:"China"},{label:"United States",value:"United States"},]
 
 
 
