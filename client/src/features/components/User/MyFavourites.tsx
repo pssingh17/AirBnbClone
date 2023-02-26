@@ -182,17 +182,17 @@ export const MyFavourites = () => {
                     {fav?.address?.street ? (
                       <>
                         <p className="text-start m-2">
-                           Address : <b> {fav?.address?.street},
+                           <b>Address :</b> <i> {fav?.address?.street},
                           {fav?.address?.government_area},
-                          {fav?.address?.country}</b>
+                          {fav?.address?.country}</i>
                         </p>
                       </>
                     ) : (
-                      <p className="text-start m-2"> Address <b> {fav?.address}</b></p>
+                      <p className="text-start m-2"><b> Address :</b><i> {fav?.address}</i></p>
                     )}
-                    <p className="text-start m-2">Rating : <b> {fav?.review_scores?.review_scores_rating || "No Ratings Yet"} </b></p>
+                    <p className="text-start m-2"><b>Rating :</b> <i> {fav?.review_scores?.review_scores_rating || "No Ratings Yet"} </i></p>
                     <p className="text-start m-2">
-                      Price <b>${fav.price}</b>
+                     <b> Price :</b><i>${fav.price}</i>
                     </p>
                     <button
                       className="btn btn-dark m-2 px-3 customBtnHover"

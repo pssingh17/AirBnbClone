@@ -137,17 +137,17 @@ export const MyBookings = () => {
          {booking?.address?.street ? (
                       <>
                         <p className="text-start m-2">
-                           Address : <b> {booking?.address?.street},
+                           <b>Address :</b> <i> {booking?.address?.street},
                           {booking?.address?.government_area},
-                          {booking?.address?.country}</b>
+                          {booking?.address?.country}</i>
                         </p>
                       </>
                     ) : (
-                      <p className="text-start m-2"> Address <b> {booking?.address}</b></p>
+                      <p className="text-start m-2"><b> Address :</b><i> {booking?.address}</i></p>
                     )}
-         <p className='text-start m-2'>From <i> <b>{booking?.DateFrom} to {booking?.DateTo} </b></i></p>
-        <p className='text-start m-2'>Total Days Booked : {booking.NumberOFDays}</p>
-        <p className='text-start m-2'>Payment received: <b>${booking.paymentDone}</b></p>
+         <p className='text-start m-2'><b>From :</b> <i>{booking?.DateFrom} <b>to</b> {booking?.DateTo} </i></p>
+        <p className='text-start m-2'><b>Total Days Booked :</b> <i>{booking.NumberOFDays}</i></p>
+        <p className='text-start m-2'><b>Payment received :</b> <i>${booking.paymentDone}</i></p>
         <button
           className="btn btn-dark m-2 customBtnHover"
           style={{width:"10rem"}}
