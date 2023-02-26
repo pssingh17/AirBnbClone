@@ -125,8 +125,7 @@ export const SearchListingBar = () => {
                         className="searchItem p-2 d-flex justify-content-between align-items-center "
                         onClick={() => {
                           setValue("searchString", result.name);
-                          // @ts-ignore
-                          document.getElementById("searchField").setValue = result.name;
+                        
                           // @ts-ignore
                           // document.getElementById("searchField").focus();
                           setSearchResults([]);
