@@ -406,3 +406,9 @@ background-color: #212529 !important;
     width: 21rem !important;
   }
 }
+
+.customEllipse{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
