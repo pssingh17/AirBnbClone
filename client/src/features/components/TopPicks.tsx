@@ -59,7 +59,7 @@ export const TopPicks = () => {
 
     })
     :
-    "NO data found"}
+    ""}
  {isLoading===false?<> <Pagination dataFrom="getAll" page={listingsData.page}/></>:""}
    
  

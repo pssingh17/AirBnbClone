@@ -180,7 +180,7 @@ export const LandingPage = () => {
     })
   
     :
-    "No data found"}
+    ""}
     {isLoading===false?<> <Pagination dataFrom="getAll" page={listingsData.page}/></>:""}
    
               

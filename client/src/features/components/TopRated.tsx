@@ -57,7 +57,7 @@ export const TopRated = () => {
 
     })
     :
-    "NO data found"}
+    ""}
     {isLoading===false?<> <Pagination dataFrom="getAll" page={listingsData.page}/></>:""}
    
    
