@@ -159,7 +159,7 @@ export const StripePayment = () => {
     {viewDetailsRedux?.address.street ? <>
     <div><b>Location :</b> <i>{viewDetailsRedux?.address.street},{viewDetailsRedux?.address.suburb},{viewDetailsRedux?.address.country}</i></div>
     </>:<><b>Location :</b> {viewDetailsRedux?.address.street}</>}
-    <p className='mb-0'><b>Rating :</b> <i> {viewDetailsRedux?.newData?.review_scores?.review_scores_rating || "No Ratings Yet"} </i></p>
+    <p className='mb-0'>Rating : <b><i> {viewDetailsRedux?.review_scores?.review_scores_rating || "No Ratings Yet"} </i></b></p>
     <div><b>Cancellation Policy :</b> <i>{viewDetailsRedux?.cancellation_policy}</i></div>
     <div><b>Price Per Night :</b> <i>{viewDetailsRedux?.price}</i></div>
     <div><b>Dates Selected :</b> <i>From {viewDetailsRedux?.DateFrom} to {viewDetailsRedux?.DateTo} - {Math.round(viewDetailsRedux?.NumberOFDays)} Days</i></div>

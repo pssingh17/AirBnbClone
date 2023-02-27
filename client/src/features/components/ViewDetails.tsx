@@ -263,8 +263,8 @@ export const ViewDetails = () => {
                     ) : (
                       <p className="text-start my-2"> Location {viewDetailsRedux?.address}</p>
                     )}
-              {viewDetailsRedux?.review_scores?.review_scores_rating ? <div className="text-start m-1 my-1">Average Rating :<b> {viewDetailsRedux?.review_scores?.review_scores_rating}</b></div> :
-              ""}
+               {viewDetailsRedux?.review_scores?.review_scores_rating ? <div className="text-start m-1 my-1">Average Rating :<b> {viewDetailsRedux?.review_scores?.review_scores_rating} <i style={{fontWeight:"400"}}>({viewDetailsRedux?.number_of_reviews})</i></b></div> :
+              <div className="text-start m-1 my-1">Average Rating : <b>NA</b></div>}
               {viewDetailsRedux?.property_type ? <div className="text-start m-1"> Propert Type: <b>{viewDetailsRedux?.property_type}</b></div>: ""}
               {viewDetailsRedux?.price? <div className="text-start m-1"><b>Price: ${viewDetailsRedux.price}</b></div>:""}
               <div className="custom-buttons text-start mt-3">
