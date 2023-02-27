@@ -41,6 +41,7 @@ export const LandingPage = () => {
             dispatch(allListingsData(res.data))
             localStorage.removeItem("SelectedAmenity")
             localStorage.removeItem("SelectedPrice")  
+            localStorage.removeItem("SelectedCountry")  
             setFilterPresent(false)
         }).catch(err=>{console.log(err)})
   }
