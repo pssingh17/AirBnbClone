@@ -226,7 +226,9 @@ export const MyFavourites = () => {
               
             );
           })
-        : <><h5>Nothing in Favourites</h5></>}
+        : <><h3>Favourites List Empty</h3>
+        <button className='btn btn-dark customBtnHover' style={{width:"10rem"}} onClick={()=>{navigate('/')}}>Browse Now</button>
+      </>}
        
     </>
   );

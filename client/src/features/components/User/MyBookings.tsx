@@ -181,6 +181,8 @@ export const MyBookings = () => {
    
    
     </>
-    :<h5>No bookings yet</h5>
+    :<><h2>You have not booked anything Yet</h2>
+    <button className='btn btn-dark customBtnHover' style={{width:"10rem"}} onClick={()=>{navigate('/')}}>Start Browsing</button>
+   </>
   )
 }
