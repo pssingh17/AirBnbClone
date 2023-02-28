@@ -44,10 +44,10 @@ function App() {
  
   return (
     <>
-    {/* {isLoading===true?
+    {isLoading===true?
     <div className='parentSpinner'>
   <div id="cover-spin"></div></div>
-     :<></>} */}
+     :<></>}
      <CNavbar />
     
      <div className="App mt-2">
