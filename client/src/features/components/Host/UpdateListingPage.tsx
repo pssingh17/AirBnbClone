@@ -199,10 +199,12 @@ export const UpdateListingPage = () => {
                       <div className="mb-3">
                         <p className="form-label text-start">Rooms</p>
                         <input
-                          type="number"
+                  
                           className="form-control"
                           {...register("bedrooms",{required: true,
-                            min: 1,max:10
+                            min: 1,max:10,
+                            valueAsNumber: true,
+                            validate: (value:any) => value > 0,
                           })} defaultValue={UserDataRedux?.bedrooms}
                         />
                         {errors.bedrooms && <p style={{color:"red"}}>Must be a valid number between 1 & 10</p>}
@@ -211,10 +213,12 @@ export const UpdateListingPage = () => {
                       <div className="mb-3">
                         <p className="form-label text-start">Bathrooms</p>
                         <input
-                          type="number"
+                        
                           className="form-control"
                           {...register("bathrooms",{required: true,
-                            min: 1,max:10
+                            min: 1,max:10,
+                            valueAsNumber: true,
+                            validate: (value:any) => value > 0,
                           })} defaultValue={UserDataRedux?.bathrooms}
                         />
                         {errors.bathrooms && <p style={{color:"red"}}>Must be a valid number between 1 & 10</p>}
