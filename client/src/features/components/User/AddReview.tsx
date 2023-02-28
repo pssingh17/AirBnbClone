@@ -140,7 +140,7 @@ export const AddReview = () => {
     className=" w-auto btn btn-dark mt-auto m-1  customBtnHover  px-4" onClick={displayBox} > Add Your Experience</button>
     {displayCommentBox?<>
     <form className="mb-3 mt-md-4 " onSubmit={handleSubmit(onSubmit)}>
-        <textarea
+        <input
                       style={{width:"50%"}}
                       className="form-control customTextArea"
                       {...register("comment",{
