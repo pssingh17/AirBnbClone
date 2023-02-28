@@ -52,7 +52,7 @@ function App() {
     
      <div className="App mt-2">
     <div className='customContainer'>
-    <div className='row justify-content-center'> 
+    <div className='row justify-content-center mt-3'> 
     <Routes>
       <Route path='/' element={<LandingPage />} />
       <Route path='/trending' element={<Trending />} />
