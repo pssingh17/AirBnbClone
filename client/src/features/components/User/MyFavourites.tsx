@@ -207,7 +207,7 @@ export const MyFavourites = () => {
                     <i style={{fontWeight:"400"}}> {fav?.number_of_reviews && fav?.review_scores?.review_scores_rating ? <>({fav?.number_of_reviews})</>: ""}</i>
                      </b></p>
                     <p className="text-start m-2">
-                     <b> Price : </b><i>${fav.price}</i>
+                     <b> Price : </b><i>${fav.price} Per Night</i>
                     </p>
                     <button
                       className="btn btn-dark m-2 px-3 customBtnHover"

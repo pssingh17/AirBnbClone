@@ -48,7 +48,7 @@ const ListingCard = (props: listingsProp) => {
     
     {props.listing.summary?<p className=" text-start" style={{ marginBottom: "3px"}}>{props.listing.summary.slice(0,100)}...</p>:""}
     {props.listing.review_scores?.review_scores_rating?<b className="card-text text-start mt-auto">Average Rating : {props.listing.review_scores.review_scores_rating} <i style={{fontWeight:"400"}}>({props.listing?.number_of_reviews})</i></b>:<b className="card-text text-start mt-auto">Average Rating : NA</b>}
-    <b className='text-start'>Price: ${props.listing.price} </b>
+    <b className='text-start'>Price: ${props.listing.price} Per Night</b>
    
     {/* <button  className="slign-self-end btn btn-dark mt-auto m-1 customBtnPosition" onClick={()=>{ViewDetails(props.listing)}}>View Details</button> */}
     

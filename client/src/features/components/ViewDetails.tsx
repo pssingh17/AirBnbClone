@@ -255,18 +255,18 @@ export const ViewDetails = () => {
               {viewDetailsRedux?.address?.street ? (
                       <>
                         <p className="text-start m-1 my-2">
-                          <i> Location : </i> <b>  {viewDetailsRedux?.address?.street},
+                          <b> Location : </b>   {viewDetailsRedux?.address?.street},
                           {viewDetailsRedux?.address?.government_area},
-                          {viewDetailsRedux?.address?.country}</b>
+                          {viewDetailsRedux?.address?.country}
                         </p>
                       </>
                     ) : (
                       <p className="text-start my-2"> Location {viewDetailsRedux?.address}</p>
                     )}
-               {viewDetailsRedux?.review_scores?.review_scores_rating ? <div className="text-start m-1 my-1">Average Rating :<b> {viewDetailsRedux?.review_scores?.review_scores_rating} <i style={{fontWeight:"400"}}>({viewDetailsRedux?.number_of_reviews})</i></b></div> :
-              <div className="text-start m-1 my-1">Average Rating : <b>NA</b></div>}
-              {viewDetailsRedux?.property_type ? <div className="text-start m-1"> Propert Type: <b>{viewDetailsRedux?.property_type}</b></div>: ""}
-              {viewDetailsRedux?.price? <div className="text-start m-1"><b>Price: ${viewDetailsRedux.price}</b></div>:""}
+               {viewDetailsRedux?.review_scores?.review_scores_rating ? <div className="text-start m-1 my-1"><b>Average Rating </b>: {viewDetailsRedux?.review_scores?.review_scores_rating} <i style={{fontWeight:"400"}}>({viewDetailsRedux?.number_of_reviews})</i></div> :
+              <div className="text-start m-1 my-1"><b>Average Rating </b>:NA</div>}
+              {viewDetailsRedux?.property_type ? <div className="text-start m-1"><b> Propert Type:</b> {viewDetailsRedux?.property_type}</div>: ""}
+              {viewDetailsRedux?.price? <div className="text-start m-1"><b>Price:</b> ${viewDetailsRedux.price} Per Night</div>:""}
               <div className="custom-buttons text-start mt-3">
                  {userTypeUser==="User" ? (
                   <>
