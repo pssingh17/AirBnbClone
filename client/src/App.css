@@ -489,6 +489,9 @@ padding-bottom: 0 !important;
     padding-left: 1.3rem !important;
     padding-right: 1.3rem !important;
   }
+  .navbar{
+    border-bottom: 0 !important;
+  }
 .customNavbarUser{
   display: none;
 }
@@ -497,7 +500,7 @@ padding-bottom: 0 !important;
 }
 .nav-link.active{
   font-weight: 400 !important;
-  border-radius: 5.8px !important;
+  border-radius: 7.6px !important;
 }
 #basic-nav-dropdown:hover{
   
@@ -512,6 +515,7 @@ padding-bottom: 0 !important;
 }
 @media screen and (max-width:500px){
   .nav-link{
+    
     padding-left: 1rem !important;
     padding-right: 1rem !important;
   }
@@ -523,11 +527,14 @@ padding-bottom: 0 !important;
   .nav-link{
     padding-left: 0.8rem !important;
     padding-right: 0.8rem !important;
+    padding-top: 4.9px !important;
+    padding-bottom: 4.9px !important;
   }
 }
 @media screen and (max-width:393px){
   .nav-link{
-    padding: 0.5rem !important;
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
   }
 }
 @media screen and (max-width:351px){
