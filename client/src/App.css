@@ -489,9 +489,9 @@ padding-bottom: 0 !important;
     padding-left: 1.3rem !important;
     padding-right: 1.3rem !important;
   }
-  .navbar{
+  /* .navbar{
     border-bottom: 0 !important;
-  }
+  } */
 .customNavbarUser{
   display: none;
 }
