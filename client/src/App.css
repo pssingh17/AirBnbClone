@@ -519,9 +519,9 @@ padding-bottom: 0 !important;
     padding-left: 1rem !important;
     padding-right: 1rem !important;
   }
-  .navbar{
+  /* .navbar{
     padding: 0 !important;
-  }
+  } */
 }
 @media screen and (max-width:418px){
   .nav-link{
