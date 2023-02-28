@@ -59,7 +59,7 @@ export const SearchListingBar = () => {
   return (
     <>
       <form
-        className="d-flex justify-content-center"
+        className="d-flex justify-content-center mb-2"
         role="search"
         onSubmit={handleSubmit(onSubmit)}
         style={{ alignSelf: "normal" }}

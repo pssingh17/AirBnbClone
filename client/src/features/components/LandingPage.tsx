@@ -122,7 +122,7 @@ export const LandingPage = () => {
   
  <SearchListingBar />
  {isLoading===false? <>
-               <div className='container d-flex align-items-center flex-wrap'style={{marginTop:"0.5rem"}}>
+               <div className='container d-flex align-items-center flex-wrap'>
   <div className='m-1'>
  <AdvanceFiltersModal filterStateSetter={filterStateSetter} />
  </div>
