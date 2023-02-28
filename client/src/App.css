@@ -451,13 +451,14 @@ padding-bottom: 0 !important;
   padding-left: 1.5rem !important;
   padding-right: 1.5rem !important;
 }
-@media screen and (min-width:393px){
+
 .nav-link.active{
   border: 1px solid;
   background-color: black;
   color: aqua !important;
+  border-radius: 13px !important;
 }
-}
+
 @media screen and (min-width:651px){
   #basic-nav-dropdown:hover{
     color:aqua;
@@ -485,14 +486,18 @@ padding-bottom: 0 !important;
 
 @media screen and (max-width:500px){
   .nav-link{
-    padding-left: 0.8rem !important;
-    padding-right: 0.8rem !important;
+    padding-left: 1.3rem !important;
+    padding-right: 1.3rem !important;
   }
 .customNavbarUser{
   display: none;
 }
 .svgInDropdown{
   display: block;
+}
+.nav-link.active{
+  font-weight: 400 !important;
+  border-radius: 5.8px !important;
 }
 #basic-nav-dropdown:hover{
   
@@ -505,19 +510,37 @@ padding-bottom: 0 !important;
   /* top: 22px; */
 }
 }
-
-@media screen and (max-width:393px){
+@media screen and (max-width:500px){
   .nav-link{
-    padding: 0.3rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
   }
 }
-@media screen and (max-width:313px){
+@media screen and (max-width:418px){
   .nav-link{
-    padding-left: 0.15rem !important;
-    padding-right: 0.15rem !important;
+    padding-left: 0.8rem !important;
+    padding-right: 0.8rem !important;
+  }
+}
+@media screen and (max-width:393px){
+  .nav-link{
+    padding: 0.5rem !important;
+  }
+}
+@media screen and (max-width:351px){
+  .nav-link{
+    padding-left: 0.3rem !important;
+    padding-right: 0.3rem !important;
     font-size: 0.9rem !important;
   }
  
+}
+@media screen and (max-width:293px){
+  .nav-link{
+    padding-left: 0.3rem !important;
+    padding-right: 0.3rem !important;
+    font-size: 0.8rem !important;
+  }
 }
 .dropdown-menu{
   border-radius: 13px !important;
