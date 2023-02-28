@@ -37,7 +37,7 @@ export const MyBookings = () => {
     
     axios({
       method:'post',
-      url: `http://localhost:8000/api/getById`,
+      url: `/api/getById`,
       data:{Id:Id},
       headers: {
         Authorization: `Bearer ${token}`,
@@ -85,7 +85,7 @@ export const MyBookings = () => {
     // console.log("token in useEfect:", token)
     axios({
       method:'post',
-      url: 'http://localhost:8000/user/MyUserProfile',
+      url: '/user/MyUserProfile',
       headers: {
         Authorization: `Bearer ${token}`,
         'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
