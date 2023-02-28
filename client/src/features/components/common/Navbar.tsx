@@ -96,14 +96,9 @@ export const CNavbar = () => {
   return (
     <>
    
-    <Navbar expanded={expanded} bg="light" variant='light' expand="lg" style={{paddingTop:"0.5rem", paddingBottom:"0.5rem",borderBottom:"1px solid #979797"}}>
+    <Navbar expanded={expanded} bg="light" variant='light' style={{paddingTop:"0.5rem", paddingBottom:"0.5rem",borderBottom:"1px solid #979797"}}>
     <Container fluid>
-    <NavLink style={{textDecoration:"none"}}
-    onClick={() =>{
-      localStorage.removeItem("SearchString")
-      setExpanded(false)}}
-              to="/"><Navbar.Brand >Demo Site</Navbar.Brand>
-    </NavLink>
+   
         <Navbar.Toggle
           aria-controls="navbarScroll"
           onClick={() => setExpanded(!expanded)}
@@ -112,7 +107,7 @@ export const CNavbar = () => {
           <Nav className="me-auto my-2 my-lg-0" style={{alignItems:"flex-start"}} navbarScroll>
             <NavLink
               to="/"
-              className="nav-link px-2"
+              className="nav-link"
               onClick={() => {
                 localStorage.removeItem("SearchString")
                 setExpanded(false)}}
@@ -124,7 +119,7 @@ export const CNavbar = () => {
             </NavLink>
             <NavLink
               to="/trending"
-              className="nav-link px-2"
+              className="nav-link"
               onClick={() => {
                 localStorage.removeItem("SearchString")
                 setExpanded(false)}}
@@ -136,7 +131,7 @@ export const CNavbar = () => {
             </NavLink>
             <NavLink
               to="topPicks"
-              className="nav-link px-2"
+              className="nav-link"
               onClick={() => {
                 localStorage.removeItem("SearchString")
                 setExpanded(false)}}
@@ -148,7 +143,7 @@ export const CNavbar = () => {
             </NavLink>
             <NavLink
               to="topRated"
-              className="nav-link px-2"
+              className="nav-link"
               onClick={() =>{
                 localStorage.removeItem("SearchString")
                 setExpanded(false)}}
@@ -164,7 +159,13 @@ export const CNavbar = () => {
         
          userData?.credentials?.userType=="User" || login?.userType=="User"?
          <>
-         <NavDropdown className='customDrop' align="end" title={login?.userEmail.slice(0,login.userEmail.indexOf('@')) || userData?.credentials?.email.slice(0,userData?.credentials?.email.indexOf('@'))} id="basic-nav-dropdown" renderMenuOnMount={true}>
+         <NavDropdown className='customDrop' align="end" title={
+          <>
+          <div className='customNavbarUser'>{login?.userEmail.slice(0,login.userEmail.indexOf('@')) || userData?.credentials?.email.slice(0,userData?.credentials?.email.indexOf('@'))} </div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-three-dots-vertical svgInDropdown" viewBox="0 0 16 16">
+          <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+        </svg></>
+         } id="basic-nav-dropdown" renderMenuOnMount={true}>
           <NavDropdown.Item href="" onClick={()=>{
             setExpanded(false)
             navigate('/user/myUserProfile')}} style={{borderTopLeftRadius:"13px", borderTopRightRadius:"13px", padding:"0.65rem"}}>My Profile</NavDropdown.Item>
@@ -183,7 +184,13 @@ export const CNavbar = () => {
         </NavDropdown>
          </>: 
          <>
-          <NavDropdown  className='customDrop 'align="end"  title={login?.userEmail.slice(0,login.userEmail.indexOf('@')) || userData?.credentials?.email.slice(0,userData?.credentials?.email.indexOf('@'))}id="basic-nav-dropdown" renderMenuOnMount={true}>
+          <NavDropdown  className='customDrop 'align="end"  title={
+          <>
+          <div className='customNavbarUser'>{login?.userEmail.slice(0,login.userEmail.indexOf('@')) || userData?.credentials?.email.slice(0,userData?.credentials?.email.indexOf('@'))} </div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-three-dots-vertical svgInDropdown" viewBox="0 0 16 16">
+          <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+        </svg></>
+         }id="basic-nav-dropdown" renderMenuOnMount={true}>
           <NavDropdown.Item href="" onClick={()=>{
             setExpanded(false)
             navigate('/host/myHostProfile')} } style={{borderTopLeftRadius:"13px", borderTopRightRadius:"13px",padding:"0.65rem"}}>My Profile</NavDropdown.Item>
@@ -202,7 +209,12 @@ export const CNavbar = () => {
        
       :
       <>
-       <NavDropdown  className='customDrop ' align="end" title="SignIn" id="basic-nav-dropdown" renderMenuOnMount={true}>
+       <NavDropdown  className='customDrop ' align="end" title={<>
+       <div className='customNavbarUser'>SignIn</div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-three-dots-vertical svgInDropdown" viewBox="0 0 16 16">
+          <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+        </svg>
+       </>} id="basic-nav-dropdown" renderMenuOnMount={true}>
           <NavDropdown.Item href="" onClick={()=>{
             setExpanded(false)
             navigate('/user/login')} } style={{borderTopLeftRadius:"13px", borderTopRightRadius:"13px",padding:"0.65rem"}}>Sign In As User</NavDropdown.Item>

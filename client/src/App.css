@@ -83,10 +83,10 @@ height: 265px !important;
       grid-template-columns: 1fr 1fr;
     }
   
-    .customDrop{
+    /* .customDrop{
       position: relative !important;
       
-    }
+    } */
   }
   @media screen and (min-width:992px) {
     #signInEnd{
@@ -127,6 +127,7 @@ height: 265px !important;
   }
   .fav-container-child{
     display: flex;
+    cursor: pointer;
   }
 
   .customContainer{
@@ -183,26 +184,19 @@ height: 265px !important;
   border-radius: 13px;
   
 }
-#basic-nav-dropdown:hover{
-  color:aqua;
-  background-color: #212529;
-  border-radius: 13px;
-}
+
 .dropdown-menu{
 padding-top: 0 !important;
 padding-bottom: 0 !important;
 }
-.dropdown-item:hover{
-color: aqua !important;
-background-color: #212529 !important;
-}
+
   @media screen and (max-width:992px){
-    .customDrop{
+    /* .customDrop{
     
       position: relative !important;
       left: 3px;
-    }}
-
+    }} */
+  }
     .customBtnHover:hover{
       color: aqua !important;
     }
@@ -441,4 +435,94 @@ background-color: #212529 !important;
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: grey;
+}
+.dropdown-toggle::after{
+  display: none !important;
+}
+
+.customNavbarUser{
+  display: inline-block;
+}
+.svgInDropdown{
+  display: none;
+}
+
+.nav-link{
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+}
+@media screen and (min-width:393px){
+.nav-link.active{
+  border: 1px solid;
+  background-color: black;
+  color: aqua !important;
+}
+}
+@media screen and (min-width:651px){
+  #basic-nav-dropdown:hover{
+    color:aqua;
+    background-color: #212529;
+    border-radius: 13px;
+  }
+}
+
+@media screen and (max-width:651px){
+
+  .nav-link{
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+}
+  
+
+@media screen and (max-width:600px){
+
+  .nav-link{
+    padding-left: 0.3rem !important;
+    padding-right: 0.3rem !important;
+  }
+}
+
+@media screen and (max-width:500px){
+  .nav-link{
+    padding-left: 0.8rem !important;
+    padding-right: 0.8rem !important;
+  }
+.customNavbarUser{
+  display: none;
+}
+.svgInDropdown{
+  display: block;
+}
+#basic-nav-dropdown:hover{
+  
+  background-color: transparent !important;
+  color:black
+}
+.customDrop{
+    align-self: center;
+  right: 5.8px;
+  /* top: 22px; */
+}
+}
+
+@media screen and (max-width:393px){
+  .nav-link{
+    padding: 0.3rem !important;
+  }
+}
+@media screen and (max-width:313px){
+  .nav-link{
+    padding-left: 0.15rem !important;
+    padding-right: 0.15rem !important;
+    font-size: 0.9rem !important;
+  }
+ 
+}
+.dropdown-menu{
+  border-radius: 13px !important;
+}
+.dropdown-item:hover{
+  background-color: #353535 !important;
+  color: aqua !important;
 }
