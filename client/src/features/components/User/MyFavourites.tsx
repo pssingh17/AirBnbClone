@@ -203,9 +203,9 @@ export const MyFavourites = () => {
                     ) : (
                       <p className="text-start m-2"><b> Address :</b><i> {fav?.address}</i></p>
                     )}
-                    <p className="text-start m-2">Rating : <b> {fav?.review_scores?.review_scores_rating || "No Ratings Yet"}
+                    <p className="text-start m-2"><b>Rating :</b> {fav?.review_scores?.review_scores_rating || "No Ratings Yet"}
                     <i style={{fontWeight:"400"}}> {fav?.number_of_reviews && fav?.review_scores?.review_scores_rating ? <>({fav?.number_of_reviews})</>: ""}</i>
-                     </b></p>
+                     </p>
                     <p className="text-start m-2">
                      <b> Price : </b><i>${fav.price} Per Night</i>
                     </p>
