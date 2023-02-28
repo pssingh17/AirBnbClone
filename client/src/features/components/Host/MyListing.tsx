@@ -186,7 +186,7 @@ export const MyListing = () => {
         <div><b>Description </b>: <i>{UserDataRedux.description}</i></div>
         <div><b>Address </b>: <i>{UserDataRedux.address}</i></div>
         <div><b>Price </b>: <i>{UserDataRedux.price}</i></div>
-        <div><b>Rooms </b>: <i>{UserDataRedux.rooms}</i></div>
+        <div><b>Rooms </b>: <i>{UserDataRedux.bedrooms}</i></div>
         <div><b>Bathrooms </b>: <i>{UserDataRedux.bathrooms}</i></div>
         <div><b>Cancellation Policy </b>: <i>{UserDataRedux.cancellation_policy}</i></div>
         <div><b>Date Posted </b>: <i>{UserDataRedux.date.slice(0,10)}</i></div>

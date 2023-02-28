@@ -31,7 +31,7 @@ export const UpdateListingPage = () => {
     // @ts-ignore
     formData.append("address", data.address)
     // @ts-ignore
-    formData.append("rooms", data.bedrooms)
+    formData.append("bedrooms", data.bedrooms)
     // @ts-ignore
     formData.append("bathrooms", data.bathrooms)
     // @ts-ignore
