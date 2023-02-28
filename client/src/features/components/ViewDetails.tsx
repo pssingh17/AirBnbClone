@@ -230,10 +230,10 @@ export const ViewDetails = () => {
     <>
      
         <div className="modifiedContainer">
-          <div className="custom-viewDetailsContainer ">
+          <div className="custom-viewDetailsContainer align-items-center">
             {viewDetailsRedux?.images?.picture_url?
             <img
-              style={{ width: "100%", height: "21rem",borderRadius: "13px" }}
+              style={{ width: "100%", height: "19rem",borderRadius: "13px" }}
               src={viewDetailsRedux?.images?.picture_url}
               className="card-img-top"
               alt="No image found"
