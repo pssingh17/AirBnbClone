@@ -34,10 +34,10 @@ export const MyBookings = () => {
   };
   const goToListing = (Id:any)=>{
     let token = cookies.get('token')
-
+    
     axios({
       method:'post',
-      url: `/api/getById`,
+      url: `http://localhost:8000/api/getById`,
       data:{Id:Id},
       headers: {
         Authorization: `Bearer ${token}`,
@@ -85,7 +85,7 @@ export const MyBookings = () => {
     // console.log("token in useEfect:", token)
     axios({
       method:'post',
-      url: '/user/MyUserProfile',
+      url: 'http://localhost:8000/user/MyUserProfile',
       headers: {
         Authorization: `Bearer ${token}`,
         'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
@@ -121,9 +121,11 @@ export const MyBookings = () => {
     }
    },[MyBookingsRedux])
   return (
-    MyBookingsReduxState?.length>0? 
     <>
      <h3 className='text-start mb-5 ml-2 mt-2'><i>MyBookings</i></h3>
+   { MyBookingsReduxState?.length>0? 
+    <>
+    
     
     {MyBookingsReduxState?.map((booking:any)=>{
       return(
@@ -183,6 +185,6 @@ export const MyBookings = () => {
     </>
     :<><h2>You have not booked anything Yet</h2>
     <button className='btn btn-dark customBtnHover' style={{width:"10rem"}} onClick={()=>{navigate('/')}}>Start Browsing</button>
-   </>
-  )
+   </>}
+ </> )
 }
