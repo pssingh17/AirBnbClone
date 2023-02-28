@@ -86,7 +86,7 @@ export const CNavbar = () => {
   let activeStyle = {
     color:"",
     // backgroundColor:"grey",
-    borderRadius:"13px",
+    // borderRadius:"13px",
     
     fontWeight:"700"
   };
@@ -168,7 +168,9 @@ export const CNavbar = () => {
          } id="basic-nav-dropdown" renderMenuOnMount={true}>
           <NavDropdown.Item href="" onClick={()=>{
             setExpanded(false)
-            navigate('/user/myUserProfile')}} style={{borderTopLeftRadius:"13px", borderTopRightRadius:"13px", padding:"0.65rem"}}>My Profile</NavDropdown.Item>
+            navigate('/user/myUserProfile')}} style={{borderTopLeftRadius:"13px", borderTopRightRadius:"13px", padding:"0.65rem"}}><div className='myProfile'>My Profile</div>
+            <div className='userName'>{login?.userEmail.slice(0,login.userEmail.indexOf('@')) || userData?.credentials?.email.slice(0,userData?.credentials?.email.indexOf('@'))} </div>
+            </NavDropdown.Item>
           <NavDropdown.Item href="" onClick={()=>{
             setExpanded(false)
            
@@ -193,7 +195,8 @@ export const CNavbar = () => {
          }id="basic-nav-dropdown" renderMenuOnMount={true}>
           <NavDropdown.Item href="" onClick={()=>{
             setExpanded(false)
-            navigate('/host/myHostProfile')} } style={{borderTopLeftRadius:"13px", borderTopRightRadius:"13px",padding:"0.65rem"}}>My Profile</NavDropdown.Item>
+            navigate('/host/myHostProfile')} } style={{borderTopLeftRadius:"13px", borderTopRightRadius:"13px",padding:"0.65rem"}}><div className='myProfile'>My Profile</div>
+            <div className='userName'>{login?.userEmail.slice(0,login.userEmail.indexOf('@')) || userData?.credentials?.email.slice(0,userData?.credentials?.email.indexOf('@'))} </div></NavDropdown.Item>
           <NavDropdown.Item href="" onClick={()=>{
             setExpanded(false)
         
