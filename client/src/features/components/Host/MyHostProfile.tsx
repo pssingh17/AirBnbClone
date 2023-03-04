@@ -92,7 +92,7 @@ export const MyHostProfile = () => {
    <h2 className=" text-danger">
             <i>Welcome {UserDataRedux?.credentials?.email}</i>
           </h2>
-          {UserDataRedux?.notifications ? <>
+          {UserDataRedux?.notifications?.length>0 ? <>
             <h5 className='mt-2'>Woohoo....Your Listing Is Booked</h5>
             <div className='bookingNotoficationBox'>
             {UserDataRedux?.notifications.map((notificationData:any,index:number)=>{
