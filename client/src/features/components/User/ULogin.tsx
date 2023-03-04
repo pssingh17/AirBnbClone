@@ -67,7 +67,7 @@ export const ULogin = () => {
         setShowRed(true)
         setAlertValue(res.data)
       }
-      
+      localStorage.removeItem("AlertMessageLogin")
       
       // console.log(res.data)
       }).catch(err=>{console.log(err)})

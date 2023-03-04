@@ -574,3 +574,18 @@ padding-bottom: 0 !important;
 	.navbar .dropdown-menu.fade-up{ top:180%;  }
 	.navbar .nav-item:hover .dropdown-menu{ transition: .3s; opacity:1; visibility:visible; top:100%; transform: rotateX(0deg); }
 }
+.notificationDiv{
+  background-color: #f1f1f1;
+  border-bottom: 1px solid gray;
+  font-style: italic;
+  padding: 0.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+@media all and (max-width: 550px){
+  .notificationDiv{
+    display: flex !important;
+    flex-wrap: wrap;
+  }
+}
+

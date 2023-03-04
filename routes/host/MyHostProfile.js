@@ -31,13 +31,37 @@ router.post("/MyHostProfile", async (req, res) => {
     }
 
 
-    const userData = await Model.findOne({ _id: o_id },{password:0,verifyToken:0});
-   if(userData){
-    let response = {
+    const hostData = await Model.findOne({ _id: o_id },{password:0,verifyToken:0});
+    const userData = await User.find({ "bookings.listing_id": hostData?.host?.host_id },{password:0,verifyToken:0});
+    // console.log("Userdata",userData)
+    let response
+    let notificationData=[]
+   if(hostData){
+    if(userData){
+      for(var i=0 ; i< userData.length; i++){
+        let filter = (userData[i].bookings.filter((data)=>{
+          return data.listing_id == hostData?.host?.host_id
+        }))
+        // console.log("FIlter", filter)
+        notificationData.push({...filter, userName:userData[i].email})
+      }
+    
+      // console.log("notification inside", notificationData)
+      response = {
         message:"Success",
         token:token,
-        credentials: userData
+        credentials: hostData,
+        notifications:notificationData
     }
+    }
+    else{
+      response = {
+        message:"Success",
+        token:token,
+        credentials: hostData
+    }
+    }
+   
     res.json(response)
    }
    else{

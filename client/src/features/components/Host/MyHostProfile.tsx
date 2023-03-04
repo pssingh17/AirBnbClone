@@ -92,8 +92,22 @@ export const MyHostProfile = () => {
    <h2 className=" text-danger">
             <i>Welcome {UserDataRedux?.credentials?.email}</i>
           </h2>
+          {UserDataRedux?.notifications ? <>
+            <h5 className='mt-2'>Woohoo....Your Listing Is Booked</h5>
+            <div className='bookingNotoficationBox'>
+            {UserDataRedux?.notifications.map((notificationData:any,index:number)=>{
+              return(<div className='notificationDiv text-start' key={index}>
+              <p >Booking By : <b> {notificationData?.userName}</b></p>
+              <p>Days Booked : <b> From - {notificationData[0]?.DateFrom} To - {notificationData[0]?.DateTo} </b></p>
+              <p>The amount sent to your account is : <b>${notificationData[0]?.paymentDone} </b></p>
+             
+          </div>    )
+            })}
+            </div>
+            <h5 className='mt-2 mb-5' >Please Make arrangements to ensure smooth customer experience</h5>
+          </>:""}
           <div className="text-start">
-            <h5 className="text-center">Shortcuts for your data</h5>
+            <h5 className="text-start ">Shortcuts for your data</h5>
             <div className="d-flex justify-content-around mt-4 flex-wrap">
               <Link to="/host/myListing">
             <div className="card m-2 customHover" style={{ width: "19rem" }}>
