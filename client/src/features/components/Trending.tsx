@@ -11,7 +11,7 @@ import axiosRetry from 'axios-retry'
 
 
 
-export const Trending = () => {
+const Trending = () => {
     const [listings, setlistings] = useState <String []>([])
     
     const isLoading = useSelector((state:RootState)=>state.LoaderSlice.value)
@@ -64,3 +64,5 @@ export const Trending = () => {
     </>
   )
 }
+
+export default Trending

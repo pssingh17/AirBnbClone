@@ -13,7 +13,7 @@ import axiosRetry from 'axios-retry'
 
 
 
-export const TopPicks = () => {
+ const TopPicks = () => {
     const [listings, setlistings] = useState <String []>([])
   const isLoading = useSelector((state:RootState)=>state.LoaderSlice.value)
 
@@ -67,3 +67,4 @@ export const TopPicks = () => {
     </>
   )
 }
+export default TopPicks

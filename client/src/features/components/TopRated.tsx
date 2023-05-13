@@ -12,8 +12,7 @@ import axiosRetry from 'axios-retry'
 
 
 
-
-export const TopRated = () => {
+const TopRated = () => {
     const [listings, setlistings] = useState <String []>([])
     const isLoading = useSelector((state:RootState)=>state.LoaderSlice.value)
 
@@ -64,3 +63,5 @@ export const TopRated = () => {
     </>
   )
 }
+
+export default TopRated

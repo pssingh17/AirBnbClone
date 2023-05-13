@@ -1,13 +1,13 @@
-import React from 'react';
-import logo from './logo.svg';
+import React,{ComponentType, Suspense, lazy} from 'react';
+// import logo from './logo.svg';
 import './App.css';
 import { Routes, Route } from "react-router-dom";
 import { LandingPage } from './features/components/LandingPage';
 import {CNavbar}  from './features/components/common/Navbar'
 import { Pagination } from './features/components/common/Pagination';
-import { Trending } from './features/components/Trending';
-import { TopPicks } from './features/components/TopPicks';
-import { TopRated } from './features/components/TopRated';
+// import  Trending  from './features/components/Trending';
+// import  TopPicks from './features/components/TopPicks';
+// import  TopRated from './features/components/TopRated';
 import { ULogin } from './features/components/User/ULogin';
 import { HLogin } from './features/components/Host/HLogin';
 import {  HostSignUp} from './features/components/Host/HostSignUp';
@@ -34,6 +34,15 @@ import { VerifyUserEmail } from './features/components/User/VerifyUserEmail';
 import { useSelector } from 'react-redux';
 import type { RootState } from './app/store'
 
+const LazyTrending = lazy(
+  () => import('./features/components/Trending').then((module) => ({ default: module.default }))
+);
+const LazyTopPicks = lazy(
+  () => import('./features/components/TopPicks').then((module) => ({ default: module.default }))
+);
+const LazyTopRated = lazy(
+  () => import('./features/components/TopRated').then((module) => ({ default: module.default }))
+);
 
 
 // import { AdvanceFiltersModal } from './features/AdvanceFiltersModal';
@@ -53,11 +62,13 @@ function App() {
      <div className="App mt-2">
     <div className='customContainer'>
     <div className='row justify-content-center mt-3'> 
+    <Suspense fallback={<div>Loading...</div>}>
     <Routes>
+      
       <Route path='/' element={<LandingPage />} />
-      <Route path='/trending' element={<Trending />} />
-      <Route path='/topPicks' element={<TopPicks />} />
-      <Route path='/topRated' element={<TopRated />} />
+      <Route path='/trending' element={<LazyTrending />} />
+      <Route path='/topPicks' element={<LazyTopPicks />} />
+      <Route path='/topRated' element={<LazyTopRated />} />
       <Route path='/searchListing' element={<SearchListing />} />
       <Route path='/viewDetails' element={<ViewDetails />} />
       <Route path='/user/login' element={<ULogin />} />
@@ -85,6 +96,7 @@ function App() {
       <Route path="*" element={<LandingPage />} />
       
       </Routes>
+      </Suspense>
     </div>
     </div>
    
